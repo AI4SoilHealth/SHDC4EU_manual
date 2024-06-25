@@ -1,3 +1,0 @@
-# Data use tutorials
-
-## Derivaton of Soil Health Index

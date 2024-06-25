@@ -232,7 +232,7 @@
     "href": "2-points.html",
     "title": "Point data import and quality control",
     "section": "",
-    "text": "Point data import and quality control\nThis section provides detailed steps implemented to import and bind all soil laboratory / soil site data.",
+    "text": "This section provides detailed steps implemented to import and bind all soil laboratory / soil site data.",
     "crumbs": [
       "Project repositories",
       "Soil Health Data Cube components",

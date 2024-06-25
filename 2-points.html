@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>preface – Soil Health Data Cube for Europe</title>
+<title>points – Soil Health Data Cube for Europe</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,7 +74,10 @@ ul.task-list li input[type="checkbox"] {
 <meta property="og:description" content="Soil Health Data Cube for pan-EU (SHDC4EU) is compilation of pan-EU layers organized into a data cube and served through an API as analysis or decision ready data.">
 <meta property="og:site_name" content="Soil Health Data Cube for Europe">
 <meta name="twitter:title" content="Soil Health Data Cube for Europe">
-<meta name="twitter:image" content="images/cover.png">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://AI4SoilHealth.github.io/SHDC4EU_manual/images/cover.png">
+<meta name="twitter:image-height" content="1407">
+<meta name="twitter:image-width" content="1094">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -141,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Soil Health Data Cube components</a></li><li class="breadcrumb-item"><a href="./preface.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Soil Health Data Cube components</a></li><li class="breadcrumb-item"><a href="./2-points.html">Point data import and quality control</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -170,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./preface.html" class="sidebar-item-text sidebar-link active">
+  <a href="./preface.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -182,7 +185,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2-points.html" class="sidebar-item-text sidebar-link">
+  <a href="./2-points.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Point data import and quality control</span></a>
   </div>
 </li>
@@ -209,13 +212,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <li><a href="#point-data-import-and-quality-control" id="toc-point-data-import-and-quality-control" class="nav-link active" data-scroll-target="#point-data-import-and-quality-control">Point data import and quality control</a>
   <ul class="collapse">
-  <li><a href="#who-this-book-is-for" id="toc-who-this-book-is-for" class="nav-link" data-scroll-target="#who-this-book-is-for">Who this book is for</a></li>
-  <li><a href="#data-and-services" id="toc-data-and-services" class="nav-link" data-scroll-target="#data-and-services">Data and services</a></li>
+  <li><a href="#import-and-quality-control-of-lucas-points" id="toc-import-and-quality-control-of-lucas-points" class="nav-link" data-scroll-target="#import-and-quality-control-of-lucas-points">Import and quality control of LUCAS points</a></li>
+  <li><a href="#import-and-quality-control-of-national-data-sets" id="toc-import-and-quality-control-of-national-data-sets" class="nav-link" data-scroll-target="#import-and-quality-control-of-national-data-sets">Import and quality control of national data sets</a></li>
+  <li><a href="#final-bind" id="toc-final-bind" class="nav-link" data-scroll-target="#final-bind">Final bind</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/edit/main/preface.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/edit/main/2-points.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -223,20 +227,17 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<section id="who-this-book-is-for" class="level2">
-<h2 class="anchored" data-anchor-id="who-this-book-is-for">Who this book is for</h2>
-<p>Soil Health Data Cube for pan-EU (SHDC4EU) is imagined as a compilation of pan-EU layers organized into a cloud-optimized data cube and served through an API / as analysis or decision ready data (in later phases of the project this data will be accessible also via a mobile phone app and various web-GIS applications). This is one of the main deliverables of AI4SoilHealth WP5 (“Harmonised EU-wide soil monitoring tools and services”) and is intended to cover most of the pan-EU mapping and cloud data services efforts. This document describes general development principles and specifications of the SHDC4EU and envisages the proposed optimal usage of the data cube. To read and understand what a data cube is and which technology is used to optimize access and usability, please refer to <a href="https://medium.com/mlearning-ai/present-and-future-of-data-cubes-an-european-eo-perspective-735d3f16f7c9">the medium article</a>.</p>
+<section id="point-data-import-and-quality-control" class="level1">
+<h1>Point data import and quality control</h1>
+<p>This section provides detailed steps implemented to import and bind all soil laboratory / soil site data.</p>
+<section id="import-and-quality-control-of-lucas-points" class="level2">
+<h2 class="anchored" data-anchor-id="import-and-quality-control-of-lucas-points">Import and quality control of LUCAS points</h2>
 </section>
-<section id="data-and-services" class="level2">
-<h2 class="anchored" data-anchor-id="data-and-services">Data and services</h2>
-<p>We provide code and examples of how to generate so-called <strong>Analysis-Ready training data sets</strong>. Some minimum conditions for a data set to be analysis ready include:</p>
-<ul>
-<li>It requires no special pre-processing to remove artifacts, harmonize values within columns, bind or subset data;</li>
-<li>It comes with extensive metadata so that there is no mistake about how was the data collected, prepared and distributed and by whom;</li>
-<li>It is ready in some standard format e.g.&nbsp;<a href="https://cogeo.org/">Cloud Optimized GeoTIFF</a>; for vector data sets we recommend using <strong>(open) cloud-native data formats</strong> to distribute data either Geopackage, <a href="https://geoparquet.org/">Geoparquet</a>, <a href="https://flatgeobuf.org/">Flatgeobuf</a> or similar;</li>
-</ul>
+<section id="import-and-quality-control-of-national-data-sets" class="level2">
+<h2 class="anchored" data-anchor-id="import-and-quality-control-of-national-data-sets">Import and quality control of national data sets</h2>
+</section>
+<section id="final-bind" class="level2">
+<h2 class="anchored" data-anchor-id="final-bind">Final bind</h2>
 
 
 </section>
@@ -479,7 +480,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/AI4SoilHealth\.github\.io\/SHDC4EU_manual\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -815,7 +816,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/edit/main/preface.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/edit/main/2-points.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
