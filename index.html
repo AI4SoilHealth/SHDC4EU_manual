@@ -222,7 +222,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
   <li><a href="#disclaimer" id="toc-disclaimer" class="nav-link" data-scroll-target="#disclaimer">Disclaimer</a></li>
   <li><a href="#how-to-cite" id="toc-how-to-cite" class="nav-link" data-scroll-target="#how-to-cite">How to cite</a></li>
-  <li><a href="#about-opengeohub" id="toc-about-opengeohub" class="nav-link" data-scroll-target="#about-opengeohub">About OpenGeoHub</a></li>
+  <li><a href="#about-ai4soilhealth" id="toc-about-ai4soilhealth" class="nav-link" data-scroll-target="#about-ai4soilhealth">About AI4SoilHealth</a></li>
   <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments">Acknowledgments</a></li>
   </ul></li>
   </ul>
@@ -236,21 +236,22 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="welcome" class="level1 unnumbered">
 <h1 class="unnumbered">Welcome</h1>
-<p>This document provides information about the Soil Health Data Cube for pan-EU (SHDC4EU). The main purpose of the SHDC is to be as a platform for more detailed computing i.e.&nbsp;to estimate trends in important soil health indicators (e.g.&nbsp;Bare Soil Fraction, vegetation cover, chemical soil properties and similar). The SHDC is available via S3 (Simple Storage Service) and STAC as open data, which means that any researcher across EU can access data directly using <a href="https://cran.r-project.org/package=rstac">rstac</a> or similar, and fetch values / aggregate per polygon or farm. list will be continuously updated and extended.</p>
+<p>This document provides information about the <strong>Soil Health Data Cube</strong> for pan-EU (SHDC4EU). The main purpose of the SHDC is to be as a platform for more detailed computing i.e.&nbsp;to estimate trends in important soil health indicators (e.g.&nbsp;Bare Soil Fraction, vegetation cover, chemical soil properties and similar). The SHDC is available via S3 (Simple Storage Service) and STAC as open data, which means that any researcher across EU can access data directly using <a href="https://cran.r-project.org/package=rstac">rstac</a> or similar, and fetch values / aggregate per polygon or farm. list will be continuously updated and extended. <strong>This document is continuously updated and new layers are continuosly added</strong>.</p>
 <p><a href="https://a4soilhealth.eu/"><img src="./images/cover.png" alt="AI4SoilHealth logo" width="300"></a></p>
 <p>Soil Health Data Cube for pan-EU (SHDC4EU) is compilation of pan-EU layers organized into a data cube and served through an API as analysis or decision ready data. It will be published via the EcoDataCube.eu infrastructure and served with unrestricted access as a genuine open data project comparable to Copernicus Land Monitoring services, Zenodo.org, Amazon AWS Open Data and similar. It aims at serving the <a href="https://joint-research-centre.ec.europa.eu/eu-soil-observatory-euso_en">EU Soil Observatory</a> hosted by the European Commission JRC. We are preparing a complete, consistent Data Cube which will include EU-wide seasonal crop-type maps, primary soil properties, land degradation indices, terrain parameters, and similar EO products, all at 30-m resolution and encompassing the period 2000–2024+, climatic time-series images (rainfall, soil moisture, surface temperature) and projected crop models (typically only at 1-km spatial resolution). These will then be combined into a unified complete consistent data cube that can be used to run machine learning models to detect and examine relationships between the field-estimated and EO-based SHI. The general workflow of using the SHDC4EU, in a nutshell, is: (1) assess the management and eventual degradation history of a piece of land, (2) assess current properties and states, and (3) assess potential of soil + land under different (climate change) scenarios. This is the basic framework which other WPs can use as a computing engine on top of which to build their particular applications. For processing: (1) data is used to assess the history of each pixel in terms of positive and negative trends in GPP, vegetation cover, SOC and other soil properties, (2) the most recent (actual) soil properties and classes will be provided to individual pixels / farms, and (3) the land potential will be estimated by extrapolating process-based and/or ML models to future climate land-use scenarios.</p>
 <section id="download-compiled-data" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="download-compiled-data">Download compiled data</h2>
 <p>Compiled data (imported, standardized, quality-controlled) is available through a diversity of standard formats:</p>
 <ul>
-<li>COG files (compressed Cloud Optimized GeoTIFFs);</li>
-<li>GPKG files (<a href="https://www.geopackage.org/">Geopackage file</a> ready to be opened in QGIS);</li>
+<li>Gridded data as COG files (compressed Cloud Optimized GeoTIFFs);</li>
+<li>Vector data as GPKG files (<a href="https://www.geopackage.org/">Geopackage file</a> ready to be opened in QGIS);</li>
+<li>Tabular data is available either as CSV files or as Google Sheets;</li>
 </ul>
-<p>All files can be downloaded using the STAC browser.</p>
+<p>All files can be downloaded using the STAC browser and/or using embedded links provided in this document.</p>
 </section>
 <section id="add-your-own-data" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="add-your-own-data">Add your own data</h2>
-<p>The minimum requirements to submit a dataset for inclusion to Soil Health Data Cube are:</p>
+<p>AI4SoilHealth project aims at buidling open development communities where data and code is exchange seamlessly under the Open Data / Open Source licenses (e.g.&nbsp;CC-BY, CC-BY-SA, ODbL, MIT, GPL and simlar). We are open to hosting contributed geospatial data produced by 3rd parties assuming that some minimum requirements are met. Currently, the minimum requirements to submit a dataset for inclusion to Soil Health Data Cube are:</p>
 <ul>
 <li><strong>Pan-EU coverage</strong> (or at least aiming at the global coverage) AND,<br>
 </li>
@@ -258,7 +259,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>Complete and consistent metadata that can ensure correct standardization and harmonization steps AND,<br>
 </li>
-<li>At least 50 unique spatial locations AND,<br>
+<li>Predictions of soil properties are Complete Consistent Current and Correct and based on the most significant data AND,<br>
 </li>
 <li>No broken or invalid URLs,</li>
 </ul>
@@ -298,14 +299,26 @@ ul.task-list li input[type="checkbox"] {
   url          = {https://shdc.ai4soilhealth.eu/}
 }</code></pre>
 </section>
-<section id="about-opengeohub" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="about-opengeohub">About OpenGeoHub</h2>
-<p><a href="https://opengeohub.org"><img src="./images/opengeohub_logo_ml.png" alt="OpenGeoHub logo" width="350"></a></p>
-<p><strong>OpenGeoHub foundation</strong> is a not-for-profit research foundation located in Wageningen, the Netherlands. We specifically promote publishing and sharing of Open Geographical and Geoscientific Data, using and developing Open Source Software and encouraging and empowering under-represented researchers e.g.&nbsp;those from ODA recipient countries and female researchers. We believe that the key measure of quality of research in all sciences (and especially in geographical information sciences) is in transparency and reproducibility of the computer code used to generate results (read more in: <a href="https://opengeohub.medium.com/">“Everyone has a right to know what is happening with the planet”</a>).</p>
+<section id="about-ai4soilhealth" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="about-ai4soilhealth">About AI4SoilHealth</h2>
+<p><a href="https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/eu-missions-horizon-europe/soil-deal-europe_en"><img src="./images/soil_deal_logo.png" alt="Soil Deal Europe" width="650"></a></p>
+<p><a href="https://ai4soilhealth.eu/about/">AI4SoilHealth</a> “Accelerating collection and use of soil health information using AI technology to support the Soil Deal for Europe and EU Soil Observatory” is one of a group of Horizon Europe funded projects which fit under the EU’s Soil Health Mission for 2030. The 8 Mission objectives include:</p>
+<ol type="1">
+<li>Reduce desertification</li>
+<li>Conserve soil organic carbon stocks</li>
+<li>Stop soil sealing and increase re-use of urban soils</li>
+<li>Reduce soil pollution and enhance restoration</li>
+<li>Prevent erosion</li>
+<li>Improve soil structure to enhance soil biodiversity</li>
+<li>Reduce the EU global footprint on soils</li>
+<li>Improve soil literacy in society</li>
+</ol>
+<p>The EU-funded AI4SoilHealth project will co-design, create and maintain an open access Europe-wide digital infrastructure founded on advanced AI methods combined with new and deep soil health understanding and measures. The AI-based data infrastructure will evolve a Soil Digital Twin. The project will deliver a coherent Soil Health Index methodology, Rapid Soil Health Assessment Toolbox, AI4SoilHealth Data Cube for Europe, Soil-Health-Soil-Degradation-Monitor, and AI4SoilHealth API and mobile phone app. AI4SoilHealth will test the tools, collecting feedback from target users.</p>
 </section>
 <section id="acknowledgments" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="acknowledgments">Acknowledgments</h2>
 <p><strong><a href="https://AI4SoilHealth.eu">AI4SoilHealth.eu</a></strong> project has received funding from the European Union’s Horizon Europe research an innovation programme under grant agreement <strong><a href="https://cordis.europa.eu/project/id/101086179">No.&nbsp;101086179</a></strong>.</p>
+<p>Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or European Research Executive Agency. Neither the European Union nor the granting authority can be held responsible for them.</p>
 
 
 </section>
