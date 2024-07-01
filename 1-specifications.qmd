@@ -18,34 +18,34 @@ soil health data easier to access and provide tools and standards for soil healt
   - Is there any land/soil degradation and how significant is it?
   - How has agronomic management impacted soil health?
   - How much did the land cover / vegetation cover change? What is the main [change class](https://docs.google.com/spreadsheets/d/1SX51OilNt-cUYpAa7t0LAvZRTzq3Sd4WJLnX6mWKfQk/edit#gid=1828976853)?
-                                                                                           - How much did the landscape heterogeneity change over time?
-                                                                                             2. **Determine current state of soil** (actual year):
-                                                                                             - What is the current state of physical and chemical soil properties?
-                                                                                             - What is the current (WRB) soil type / main soil forming processes and soil states?
-                                                                                             - What are the current derived soil properties?
-                                                                                             - What are the current macronutrient stocks in the soil?
-                                                                                             3. **Determine soil potential** (next 10, 20, 30 yrs):
-                                                                                             - What is the SOC sequestration potential of this soil?
-                                                                                             - What is the agricultural potential of this soil?
-                                                                                             - What are the other potential ecosystem functions provided some land use change or mitigations?
-                                                                                             4. **Collect extra soil samples, send to lab, and add to training points**:
-                                                                                             - Generate a sampling design that helps increase mapping accuracy. Optimize the number of samples while taking into account the costs of sampling.
-                                                                                           - Collect new samples and send them to the lab.
-                                                                                           5. **Import new local data then re-analyze and re-asses points 1, 2 and 3**.
-                                                                                           - Import new local samples / results and add to the training points. Re-assess local prediction accuracy.
-                                                                                           - Repredict layers in SHDC4EU for steps #1, #2 and #3. 
-                                                                                           6. **Suggest concrete KPI’s** (per farm / per land unit):
-                                                                                             - Provided that soil potential assessment reveals a significant gap between potential and actual.
-                                                                                           - Either directly provide concrete measures to help increase soil health and/or provide links to documents / organizations that can directly help increase soil health.
-                                                                                           7. **Track progress per farm and re-assess if required**:
-                                                                                             - Every 1–2 years update the indicators (pan-EU).
-                                                                                           - Compare with the planned transition in #6. If necessary recommend re-assessment.
-                                                                                           
-                                                                                           This framework can be either apply to assess health of a specific site (either in the field using a mobile phone app, or in the office using a desktop app), or complete farms / administrative units. We, thus, aim to complete the data cube with primary and derived soil variables that can directly serve this framework, and especially so that can be worked alongside other Work Packages in the project in their testing of methodology.
-                                                                                           
-                                                                                           ## Predictive soil mapping based on Machine Learning and HPC
-                                                                                           
-                                                                                           WP5 — with the tasks T5.2 Development of AI4SoilHealth computing engine and T5.3 Development of AI4SoilHealth Indicators data cube) — aims at implementing fully automated predictive soil mapping at high spatial resolution using large datasets (e.g. whole of Europe at 30-m spatial resolution). Prepared harmonized point datasets will are overlaid against time-series of EO images and/or static terrain-based or similar indices. These are then be used to predict values of target variables in 2D, 3D and 2D+T, 3D+T. The general workflow for predictive soil mapping based on **Spatiotemporal Machine Learning** and **High Performance Computing** (HPC) and assumes that all point data is analysis-ready, representative and correlates with the EO / covariate layers i.e. can be used to produce usable spatial predictions. Automated predictive soil mapping is currently implemented via the Python library [scikit-map](https://github.com/scikit-map/scikit-map) using OpenGeoHub’s High Performance Computing infrastructure. 
+  - How much did the landscape heterogeneity change over time?
+  2. **Determine current state of soil** (actual year):
+  - What is the current state of physical and chemical soil properties?
+  - What is the current (WRB) soil type / main soil forming processes and soil states?
+  - What are the current derived soil properties?
+  - What are the current macronutrient stocks in the soil?
+  3. **Determine soil potential** (next 10, 20, 30 yrs):
+  - What is the SOC sequestration potential of this soil?
+  - What is the agricultural potential of this soil?
+  - What are the other potential ecosystem functions provided some land use change or mitigations?
+  4. **Collect extra soil samples, send to lab, and add to training points**:
+  - Generate a sampling design that helps increase mapping accuracy. Optimize the number of samples while taking into account the costs of sampling.
+  - Collect new samples and send them to the lab.
+  5. **Import new local data then re-analyze and re-asses points 1, 2 and 3**.
+  - Import new local samples / results and add to the training points. Re-assess local prediction accuracy.
+  - Repredict layers in SHDC4EU for steps #1, #2 and #3. 
+  6. **Suggest concrete KPI’s** (per farm / per land unit):
+  - Provided that soil potential assessment reveals a significant gap between potential and actual.
+  - Either directly provide concrete measures to help increase soil health and/or provide links to documents / organizations that can directly help increase soil health.
+  7. **Track progress per farm and re-assess if required**:
+  - Every 1–2 years update the indicators (pan-EU).
+  - Compare with the planned transition in #6. If necessary recommend re-assessment.
+
+This framework can be either apply to assess health of a specific site (either in the field using a mobile phone app, or in the office using a desktop app), or complete farms / administrative units. We, thus, aim to complete the data cube with primary and derived soil variables that can directly serve this framework, and especially so that can be worked alongside other Work Packages in the project in their testing of methodology.
+
+## Predictive soil mapping based on Machine Learning and HPC
+
+WP5 — with the tasks T5.2 Development of AI4SoilHealth computing engine and T5.3 Development of AI4SoilHealth Indicators data cube) — aims at implementing fully automated predictive soil mapping at high spatial resolution using large datasets (e.g. whole of Europe at 30-m spatial resolution). Prepared harmonized point datasets will are overlaid against time-series of EO images and/or static terrain-based or similar indices. These are then be used to predict values of target variables in 2D, 3D and 2D+T, 3D+T. The general workflow for predictive soil mapping based on **Spatiotemporal Machine Learning** and **High Performance Computing** (HPC) and assumes that all point data is analysis-ready, representative and correlates with the EO / covariate layers i.e. can be used to produce usable spatial predictions. Automated predictive soil mapping is currently implemented via the Python library [scikit-map](https://github.com/scikit-map/scikit-map) using OpenGeoHub’s High Performance Computing infrastructure. 
 
 The key interest of WP5 is to produce pan-EU predictions at the highest possible spatial resolution and that can directly serve soil health assessment at continental scale. Some variables are, however, not available for the whole of pan-EU, and some point datasets will be produced experimentally and used for testing purposes only. Hence, within the WP5, all soil variables are modeled / mapped under one the following 3 tiers:
   
@@ -58,11 +58,11 @@ We expect that project partners + pilots will feed data for Tier 2 and Tier 3. H
 ## Training points
 
 Quality of the outputs would most likely be dictated by the following four key aspects of modeling:
-  
+
   1. **The general modeling design** i.e. how appropriate the statistical / machine learning methods are. For example: are all casualties considered, are all distributions represented, are all statistical assumptions met?
   2. **Predictive performance of the algorithms used** i.e. is the best / fastest algorithm used for modeling? Is the algorithm robust, noise-proof, artifacts-proof etc?
   3. **Quality and diversity of the covariate layers used**.
-4. **Quality and spatial and feature space representation of training points**. 
+  4. **Quality and spatial and feature space representation of training points**. 
 
 Assuming that #1 and #2 are optimized, then the only remaining factors that control success of the modeling / mapping processes are aspects #3 and #4 i.e. the quality of covariate layers and quality of training points. In the past (prior to 2010), it was relatively difficult to produce pan-EU maps of soil health indicators as there was only limited training point data. Thanks to the European Commission’s [LUCAS soil project](https://esdac.jrc.ec.europa.eu/projects/lucas), we now have 3–4 repetitions of ground measurements of soil properties of highest quality (about 22,000 sites are revisited per period) (see figure below). This is a unique opportunity to test building high resolution predictions, including dynamic soil property predictions. Ideally, such testing should be a joint effort of the AI4SoilHealth consortium, in an open collaboration with JRC and members of other sister projects funded by the same Soil mission.
 
@@ -82,36 +82,36 @@ To improve usability of predictions produced using LUCAS we have decided, in thi
 
 The second important aspect that will determine the quality of the SHDC4EU outputs is the quality of covariate layers. Quality of the covariate layers is basically determined by three things: (1) spatial and temporal resolution, (2) spectral / thematic content, (3) general quality of data in terms of completeness, consistency, correctness and quality of metadata. For producing SHDC4EU we plan to use an extensive compilation of covariate (base) layers to produce predictions for SHDC4EU. Already available layers for continental Europe include ([https://EcoDataCube.eu](https://EcoDataCube.eu)):
   
-  * Land mask (pan-EU: [https://zenodo.org/doi/10.5281/zenodo.8171860](https://zenodo.org/doi/10.5281/zenodo.8171860)) + World Settlement Footprint (WSF) i.e. world buildings 2000-2015, 2019 ([https://geoservice.dlr.de/web/maps/eoc:wsfevolution](https://geoservice.dlr.de/web/maps/eoc:wsfevolution) and [https://geoservice.dlr.de/web/maps/eoc:wsf2019](https://geoservice.dlr.de/web/maps/eoc:wsf2019));
+* Land mask (pan-EU: [https://zenodo.org/doi/10.5281/zenodo.8171860](https://zenodo.org/doi/10.5281/zenodo.8171860)) + World Settlement Footprint (WSF) i.e. world buildings 2000-2015, 2019 ([https://geoservice.dlr.de/web/maps/eoc:wsfevolution](https://geoservice.dlr.de/web/maps/eoc:wsfevolution) and [https://geoservice.dlr.de/web/maps/eoc:wsf2019](https://geoservice.dlr.de/web/maps/eoc:wsf2019));
 * Digital Terrain Model variables at 6–scales 30-m, 60, 120, 240, 480 and 960-m:
   * Elevation, slope (%), min- max-curvature,
-* Hillshade, northness, easterness,
-* Positive, negative openness,
-* Topidx (TWI), geomorphon classes (10), catchment area, LS factor,
+  * Hillshade, northness, easterness,
+  * Positive, negative openness,
+  * Topidx (TWI), geomorphon classes (10), catchment area, LS factor,
 * Lithological (surface geology) map of pan-EU at 250-m ([https://zenodo.org/doi/10.5281/zenodo.4787631](https://zenodo.org/doi/10.5281/zenodo.4787631)); 
 * Bimonthly / quarterly GLAD Landsat composites (all bands + biophysical indices, 2000–2022) (explained in: [https://doi.org/10.21203/rs.3.rs-4251113/v1](https://doi.org/10.21203/rs.3.rs-4251113/v1)):
   * Green, Red, NIR, SWIR1, SWIR2,
-* NDVI, FAPAR,
-* NDTI, NDWI, BSF,
-* Cumulative NDVI, NDTI and BSF;
+  * NDVI, FAPAR,
+  * NDTI, NDWI, BSF,
+  * Cumulative NDVI, NDTI and BSF;
 * Climatic variables at 1-km (long-term or monthly series):
   * CHELSA Climate Bioclimatic variables ([https://chelsa-climate.org/bioclim/](https://chelsa-climate.org/bioclim/));
-* CHELSA monthly precipitation time-series 2000–2022 ([https://chelsa-climate.org/timeseries/](https://chelsa-climate.org/timeseries/)); 
-* MODIS LST daytime and nighttime monthly time-series 2000–2022 ([https://zenodo.org/doi/10.5281/zenodo.1420114](https://zenodo.org/doi/10.5281/zenodo.1420114));
-* MODIS monthly water vapor time-series 2000–2022 ([https://zenodo.org/doi/10.5281/zenodo.8193738](https://zenodo.org/doi/10.5281/zenodo.8193738));
-* Cumulative annual precipitation (2000–2022); 
-* Monthly / annual snow images 2000-2022 e.g. DLR Snow pack at 500-m ([https://geoservice.dlr.de/web/maps/eoc:gsp:yearly](https://geoservice.dlr.de/web/maps/eoc:gsp:yearly)):
+  * CHELSA monthly precipitation time-series 2000–2022 ([https://chelsa-climate.org/timeseries/](https://chelsa-climate.org/timeseries/)); 
+  * MODIS LST daytime and nighttime monthly time-series 2000–2022 ([https://zenodo.org/doi/10.5281/zenodo.1420114](https://zenodo.org/doi/10.5281/zenodo.1420114));
+  * MODIS monthly water vapor time-series 2000–2022 ([https://zenodo.org/doi/10.5281/zenodo.8193738](https://zenodo.org/doi/10.5281/zenodo.8193738));
+  * Cumulative annual precipitation (2000–2022); 
+  * Monthly / annual snow images 2000-2022 e.g. DLR Snow pack at 500-m ([https://geoservice.dlr.de/web/maps/eoc:gsp:yearly](https://geoservice.dlr.de/web/maps/eoc:gsp:yearly)):
   * Long-term monthly snow probability time-series at 500-m ([https://doi.org/10.5281/zenodo.5774953](https://doi.org/10.5281/zenodo.5774953)); 
-* Cumulative annual snow probability 2000–2022;
-* Surface water dynamics: occurrence probability of water long-term 1999–2021 ([https://glad.umd.edu/dataset/global-surface-water-dynamics](https://glad.umd.edu/dataset/global-surface-water-dynamics)); 
+  * Cumulative annual snow probability 2000–2022;
+  * Surface water dynamics: occurrence probability of water long-term 1999–2021 ([https://glad.umd.edu/dataset/global-surface-water-dynamics](https://glad.umd.edu/dataset/global-surface-water-dynamics)); 
 * Optional: Global Flood Database v1 (2000-2018) at 250-m annual flood event ([http://global-flood-database.cloudtostreet.info/](http://global-flood-database.cloudtostreet.info/)); 
 * Light at night time-series at 500-m resolution 2000–2022 ([https://zenodo.org/doi/10.5281/zenodo.7750174](https://zenodo.org/doi/10.5281/zenodo.7750174));
-*  [Cropland extent](https://zenodo.org/doi/10.5281/zenodo.12527545) at 30-m for 2000 to 2022 based on ([https://glad.umd.edu/dataset/croplands](https://glad.umd.edu/dataset/croplands));
-*  [Bare soil percent](https://zenodo.org/doi/10.5281/zenodo.11961219) and photosythetical vegetation percent annual for 2000 to 2022 based on the MODIS MCD43A4 product (500-m spatial resolution);
+* [Cropland extent](https://zenodo.org/doi/10.5281/zenodo.12527545) at 30-m for 2000 to 2022 based on ([https://glad.umd.edu/dataset/croplands](https://glad.umd.edu/dataset/croplands));
+* [Bare soil percent](https://zenodo.org/doi/10.5281/zenodo.11961219) and photosythetical vegetation percent annual for 2000 to 2022 based on the MODIS MCD43A4 product (500-m spatial resolution);
 
 In addition to the existing layers above, we will also generate a number of novel layers tailored specifically for the purpose of representing land use practices and potential soil degradation factors. This include:
-  
-  * BSI, **Bare Soil Index** [@mzid2021analysis] and annual BEF, **Bare Earth Fraction** (e.g. proportion of pixels with NDVI <0.35 based on 16–day and/or bimonthly data; there are other possible thresholds combination that can be used to optimize the results),
+
+* BSI, **Bare Soil Index** [@mzid2021analysis] and annual BEF, **Bare Earth Fraction** (e.g. proportion of pixels with NDVI <0.35 based on 16–day and/or bimonthly data; there are other possible thresholds combination that can be used to optimize the results),
 * NDTI, **Normalized Differential Tillage Index** [@ettehadi2019separating],
 * NOS, **Number of Seasons** / NOCC,** Number of Cropping Cycles**,
 * LOS, **Length of Seasons** / CDR, **Crop Duration Ratio** [@estel2016mapping],
@@ -122,8 +122,8 @@ Note that from all covariate layers listed above, 16-day / bimonthly / quarterly
 ## Predictive mapping and derivation methods
 
 Based on the availability of the training points and nature of the target variable in the SHDC4EU, we will either predict or derive soil variables from primary variables. The output soil health indicators can, thus, be considered of type either:
-  
-  1. **Predicted dynamic pan-EU variables** (2000–2022+) available at standard depth intervals (0–20, 20–50, 50–100, 100–200 cm).
+
+1. **Predicted dynamic pan-EU variables** (2000–2022+) available at standard depth intervals (0–20, 20–50, 50–100, 100–200 cm).
 2. **Predicted static pan-EU variables**.
 3. **Predicted and/or simulated pan-EU variables** i.e. results of predictions of future conditions, scenario testing, simulations, process-based modeling.
 4. **Derived pan-EU variables and indices**.
@@ -132,8 +132,8 @@ Based on the availability of the training points and nature of the target variab
 Most of the soil chemical and biological variables are mapped as dynamic variables with annual or 5–year estimates (e.g. 5 maps for period 2000–2025) and at multiple depths [@witjes2023ecodatacube]. This means that the amount of produced data can be significant if predictions are also provided per depth. For example, to map soil organic carbon content (weight %), we can predict 23 annual maps at 4–5 standard depths resulting in over 180 images (assuming that we also produce prediction errors per pixel). AI4SoilHealth tasks T5.5 "Development of AI4SoilHealth present and future soil degradation products", T5.6 "Development of AI4SoilHealth forecasting services", and T5.7 "Development of AI4SoilHealth soil functions evidence / model chains" will also generate large amounts of predicted and/or simulated pan-EU variables i.e. results of predictions of future conditions, scenario testing, simulations, process-based modeling. 
 
 The following predictive soil modeling methods are considered for use so far for generating SHDC4EU:
-  
-  1. 2D and 3D predictive soil mapping (static predictions, time is ignored).
+
+1. 2D and 3D predictive soil mapping (static predictions, time is ignored).
 2. 2D+T predictive soil mapping spacetime.
 3. 3D+T predictive soil mapping spacetime.
 4. Predictive soil mapping focused on long-term indices.
@@ -147,8 +147,8 @@ For each derivation method we use sets of algorithms, usually implemented in pyt
 ## Targeted soil and soil-health variables
 
 The general objective of the SHDC4EU is to serve best possible, most detailed, complete and consistent predictions of the the number of targeted soil health indicators in the EU Mission’s [“Implementation Plan: A Soil Deal for Europe”](https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/eu-missions-horizon-europe/soil-deal-europe_en): 
-  
-  1. presence of pollutants, excess nutrients and salts, 
+
+1. presence of pollutants, excess nutrients and salts, 
 2. soil organic carbon stock, 
 3. soil structure including soil bulk density and absence of soil sealing and erosion, 
 4. soil biodiversity, 
@@ -161,15 +161,15 @@ If these are available for the complete land mask of pan-EU area, these can then
 
 Note that some of the soil health indicators recommended by the European Commission / JRC, are not _defacto_ soil variables (e.g. vegetation cover, landscape heterogeneity, forest cover) but will be generated in this project and integrated into SHDC4EU. Some potential options to represent the vegetation cover, landscape heterogeneity etc include:
   
-  * **[Canopy height](https://glad.earthengine.app/view/europe-tree-dynamics)**, data already available for EU but could also be improved by outputs from the Open-Earth-Monitor project,
+* **[Canopy height](https://glad.earthengine.app/view/europe-tree-dynamics)**, data already available for EU but could also be improved by outputs from the Open-Earth-Monitor project,
 * GPP, **Gross Primary Productivity** (bimonthly and/or annual; based on the last 2–5yrs),
 * Land cover and land use / **cropping systems and applications** (categories e.g. based on the EuroCrops), producing cropping system maps for the EU; 
 
 However, producing [cropping system maps](https://joint-research-centre.ec.europa.eu/jrc-news-and-updates/eu-crop-map-2021-10-18_en) for the EU, even only for the recent year is not trivial and producing such data should is at the moment optional.
 
 List of target soil variables that will be delivered in the SHDC4EU includes dynamic soil properties covering period 2000–2025+:
-  
-  *  **Soil organic carbon density** (kg/m3) ISO 10694. 1995 for 0–20, 20–50, 50–100 cm depth intervals, 5–year estimates;
+
+*  **Soil organic carbon density** (kg/m3) ISO 10694. 1995 for 0–20, 20–50, 50–100 cm depth intervals, 5–year estimates;
 *  **Soil carbon stock change** (t/ha/yr) ISO 10694. 1996 for 0–20, 20–50, 50–100 cm depth intervals; long-term
 *  **Soil pH in a suspension of soil in water** (-) ISO 10390. 1994 for 0–20, 20–50, 50–100 depth intervals, 5–year estimates;
 *  **Soil pH measured in a CaCl2 solution** (-) ISO 10390. 1994 for 0–20, 20–50, 50–100 cm depth intervals, 5–year;
@@ -187,8 +187,8 @@ List of target soil variables that will be delivered in the SHDC4EU includes dyn
 ## Variable registry
 
 For each variable we will organize a soil variable registry system, so that each variable should have unique (short-as-possible) code. As simple coding system for SHDC4EU is suggested where the variable name is a combination of the three components:
-  
-  * generic variable name,
+
+* generic variable name,
 * specific laboratory / field / O&M method (ISO standard or similar),
 * measurement unit,
 
@@ -199,15 +199,15 @@ Soil variable names can be also provided in a shorter version (assuming that onl
 ## Spatio-temporal reference
 
 The general interest of this project is to produce a time-series of predictions of key soil/vegetation/land use variables with either annual or monthly support and covering the period 1997–2022+ and at highest spatial resolution e.g. 30-m. For variables that vary by depth, we will predict at 5 standard depths (0, 20, 50, 100 and 200 cm), then aggregate values to standard depth intervals:
-  
-  * 0–20 cm (**topsoil**) LUCAS standard;
+
+* 0–20 cm (**topsoil**) LUCAS standard;
 * 20–50 cm (**subsoil1**);
 * 50–100 cm (**subsoil2**);
 * 100–200 cm (**subsoil3**);
 
 Temporal support of predictions / simulations can be one of the following:
-  
-  * Long-term primary soil properties and classes: e.g. soil types, soil water holding capacity;
+
+* Long-term primary soil properties and classes: e.g. soil types, soil water holding capacity;
 * Annual to 5–year values of primary soil and vegetation variables: e.g. annual bare soil fraction (index);
 * Bimonthly, monthly or seasonal values of soil and vegetation variables: e.g. bimonthly GPP. 
 * Weekly, 16–day values (original Landsat GLAD),
@@ -220,12 +220,12 @@ Aggregated values of target soil and vegetation variables can also refer to some
 As an ideal case, each predictive mapping model should produce / provide also 
 uncertainty per pixel (prediction error) and summary results of robust cross-validation. 
 Two options are possible for predictive error mapping:
-  
-  - **Provide lower and upper quantiles** `p=0.05` and `p=0.95` so that a 90% probability prediction interval can be derived. For variables with skewed distribution / log-normally distributed it is recommended that the lower values are computed in the log-transformed space to avoid predicting negative values.
+
+- **Provide lower and upper quantiles** `p=0.05` and `p=0.95` so that a 90% probability prediction interval can be derived. For variables with skewed distribution / log-normally distributed it is recommended that the lower values are computed in the log-transformed space to avoid predicting negative values.
 - **Provide prediction error as 1 standard deviation**: from this also prediction interval can be derived, assuming that the variable is normally distributed. 
 
 As a general recommendation we suggest using the **Conformal Prediction method** 
-  to produce prediction errors per pixel, best as implemented in the python libraries [mappie](https://mapie.readthedocs.io/en/latest/)
+to produce prediction errors per pixel, best as implemented in the python libraries [mappie](https://mapie.readthedocs.io/en/latest/)
 and/or [puncc](https://github.com/deel-ai/puncc).
 
 ## Back-end / front-end components
@@ -233,8 +233,8 @@ and/or [puncc](https://github.com/deel-ai/puncc).
 The back-end of the SHDC4EU is based on using open source software such as [PostGIS/PostGreSQL](https://postgis.net/) [Rio-tiler](https://cogeotiff.github.io/rio-tiler/), [FastAPI](https://fastapi.tiangolo.com/) and S3 in the back-end; [Vue.js](https://vuejs.org/), OpenLayers and Geoserver in front end. We are aiming at using / building upon simple scalable solutions built on top of existing open source solutions. Note that the most important about this back-end design is that the system will be (A) **cloud-native** i.e. building upon cloud-optimized solutions, (B) easy to extend, (C) focused on usability of data i.e. serving seamless layers (complete, consistent, documented, version-controlled with a live support channels).
 
 All pan-European layers (COGs) produced in this project, including majority of covariate layers, will be distributed through an existing infrastructure [http://EcoDataCube.eu](http://EcoDataCube.eu) (maintained by OpenGeoHub foundation). This means that all layers will be made available:
-  
-  * For viewing i.e. as **Web Mapping Service** (WMS) so it can be displayed using OpenLayers or similar;
+
+* For viewing i.e. as **Web Mapping Service** (WMS) so it can be displayed using OpenLayers or similar;
 * For direct data access via **Simple Storage Service** (S3) / files registered via the **SpatioTemporal Asset Catalog** (STAC) via [https://stac.ecodatacube.eu](https://stac.ecodatacube.eu);
 * Back-up copy available via the **NextCloud** including via [WebDAV](https://kwb-r.github.io/kwb.nextcloud/).
 
@@ -248,175 +248,171 @@ All tabular vector data will be stored in a **single PostGIS DB** and where poss
 
 All project partners agree to use standard formats to exchange data within the project and on the project websites. The recommended file formats for gridded spatial / spatiotemporal data include:
   
-  * [Cloud-Optimized GeoTIFF](https://www.cogeo.org/) (`*.tif`).
+* [Cloud-Optimized GeoTIFF](https://www.cogeo.org/) (`*.tif`).
 * [Zarr](https://gdal.org/drivers/raster/zarr.html) (`*.zarr`) (also in combination with [NetCDF](https://gdal.org/drivers/raster/netcdf.html) (`*.nc`).
-                                                                
-                                                                For vector geospatial data we recommend the following file formats:
-                                                                  
-                                                                  * For data subsets: [GeoJSON](https://geojson.org/) and/or KML.
-                                                                * For cloud-data serving: [Geoparquet](https://github.com/opengeospatial/geoparquet) (`*.geoparquet`) and/or [lance](https://github.com/eto-ai/lance).
-                                                                * For visualization: [Mapbox Vector Tiles](https://gdal.org/drivers/vector/mvt.html) (`*.mvt`).
-                                                                * For GIS analysis: [Geopackage](https://www.geopackage.org/) (`*.gpkg`).
-                                                                
-                                                                For tabular data, objects as [Simple Features](https://en.wikipedia.org/wiki/Simple_Features) and similar, the following file formats are accepted for delivery:
-                                                                  
-                                                                  * Comma Separated Value (`*.csv`) and [GeoCSV](https://giswiki.hsr.ch/GeoCSV) best compressed as `*.csv.gz`. 
-                                                                * R RDS (`*.rds`) and/or [QS](https://github.com/traversc/qs) files that can be [red and written in parallel](http://mgimond.github.io/ES218/Week02b.html).
-                                                                * [GeoJSON](https://gdal.org/drivers/vector/geojson.html#vector-geojson) (`*.json`).
-                                                                            * [FlatGeobuf](https://github.com/flatgeobuf/flatgeobuf) (`*.fgb`).
-                                                                            
-                                                                            For geospatial data to be FAIR, it should at least pass the following checks:
-                                                                              
-                                                                              * It is decision-ready, or at least analysis-ready (complete consistent optimized);
-                                                                            * It is available in a professional catalog e.g. [STAC catalog](https://stacspec.org/) and/or [Geonetwork](https://geonetwork-opensource.org/);
-                                                                            * It comes with technical documentation (ideally a peer-reviewed publication) / links to Github / Gitlab where users can find technical explanation of how was the data produced;
-                                                                            * It has a version and each version has unique [DOI](https://www.doi.org/);
-                                                                            * It can be accessed directly i.e. file URL is available for HTTP requests (through S3 or similar).
-                                                                            
-                                                                            For Cloud-Optimized GeoTIFFs (COG’s) it is highly recommended that all files are prepared using recommended settings i.e. a [command line](https://github.com/cogeotiff/cog-spec/blob/master/spec.md) (>GDALv3.2):
-                                                                              
-                                                                              ```
-                                                                            gdal_translate in.vrt out.tif -co TILED=YES -co COPY_SRC_OVERVIEWS=YES -co COMPRESS=LZW
-                                                                            ```
-                                                                            
-                                                                            Each COG will be quality controlled using (1) [COG validator](https://github.com/rouault/cog_validator), (2) by visual inspection, (3) random sampling point overlay to certify that >99% of pixels are available. After the quality control, all produced global mosaics will be registered and uploaded to S3 storage or similar.
-                                                                            
-                                                                            ## Standard spatial/temporal resolutions and support sizes
-                                                                            
-                                                                            For the sake of consistency and compatibility, project participants will use standard spatial resolutions to deliver and exchange data. Recommended standard pixel sizes / resolutions:
-                                                                              
-                                                                              _Table: Standard bounding box and spatial resolutions._
-                                                                            
-                                                                            <table>
-                                                                              <tr>
-                                                                              <td>Europe COG \
-                                                                            Bounding box
-                                                                            </td>
-                                                                              <td>Continental EU COG based on <a href="https://land.copernicus.eu/portal_vocabularies/geotags/eea39">Copernicus</a>  \
-                                                                            Spatial resolutions and image size <a href="https://epsg.io/3035">EPSG:3035</a>
-                                                                              </td>
-                                                                              </tr>
-                                                                              <tr>
-                                                                              <td>Xmin = 900,000
-                                                                            <p>
-                                                                              Ymin = 899,000
-                                                                            <p>
-                                                                              Xmax = 7,401,000
-                                                                            <p>
-                                                                              Ymax = 5,501,000
-                                                                            </td>
-                                                                              <td>10m | 650,100L x 460,200P
-                                                                            <p>
-                                                                              25m | 260,040L x 184,080P
-                                                                            <p>
-                                                                              30m | 216,700P x 153,400L
-                                                                            <p>
-                                                                              100m | 65,010P x 46,020L
-                                                                            <p>
-                                                                              250m | 26,004P x 18,408L
-                                                                            <p>
-                                                                              1km | 6501P x 4602L
-                                                                            </td>
-                                                                              </tr>
-                                                                              </table>
-                                                                              
-                                                                              
-                                                                              ## File Naming convention
-                                                                              
-                                                                              SHDC will consistently use the standard OpenLandMap file-naming convention to submit new data-sets and similar (compare e.g. with the MODIS file naming convention). This is to ensure consistency and ease of use within the AI4SoilHealth project, but also by the end-users. This applies especially to WP4, WP5 and WP6. 
-                                                                            
-                                                                            The OpenLandMap file-naming convention works with 10 fields that basically define the most important properties of the data (this way users can search files, prepare data analysis etc, without even needing to access or open files. The 10 fields include:
-                                                                                                                                                                                                           
-                                                                                                                                                                                                           1. Generic variable name (needs to be unique and approved by the AI4SoilHealth Coordination team): `lclu`;
-                                                                                                                                                                                                         2. Variable procedure combination i.e. method standard (standard abbreviation): `luisa`;
-                                                                                                                                                                                                         3. Position in the probability distribution / variable type: `c`;
-                                                                                                                                                                                                         4. Spatial support (usually horizontal block) in m or km: `30m`;
-                                                                                                                                                                                                         5. Depth reference or depth interval e.g. below ("b"), above ("a") ground or at surface ("s"): `s`;
-                                                                                                                                                                                                         6. Time reference begin time (YYYYMMDD): `20210101`;
-                                                                                                                                                                                                         7. Time reference end time: `20211231`;
-                                                                                                                                                                                                         8. Bounding box (2 letters max): `eu`; 
-                                                                                                                                                                                                         9. EPSG code: `epsg.3035`;
-                                                                                                                                                                                                         10. Version code i.e. creation date: `v20221015`;
-                                                                                                                                                                                                         
-                                                                                                                                                                                                         An example of a file-name based on the description above:
-                                                                                                                                                                                                           
-                                                                                                                                                                                                           ```
-                                                                                                                                                                                                         lclu_luisa_c_30m_s_20210101_20211231_eu_epsg.3035_v20221015.tif
-                                                                                                                                                                                                         ```
-                                                                                                                                                                                                         
-                                                                                                                                                                                                         Note that this file naming convention has the following properties:
-                                                                                                                                                                                                           
-                                                                                                                                                                                                           * Large quantities of files can be easily sorted and searched (one line queries in [Bash](https://www.gnu.org/software/bash/)).
-                                                                                                                                                                                                         * File-naming patterns can be used to seamlessly build virtual mosaics and composites.  
-                                                                                                                                                                                                         * Key spatiotemporal properties of the data are available in the file name e.g. variable type, O&M method, spatial resolution, bounding box, projection system, temporal references. Users can program analysis without opening or testing files.
-                                                                                                                                                                                                         * Versioning system is ubiquitous.
-                                                                                                                                                                                                         * All file-names are unique.
-                                                                                                                                                                                                         
-                                                                                                                                                                                                         Geonetwork and STAC will be further used to link the unique file names to: (1) WPs, deliverables, themes / keywords, (2) DOI’s, (3) project homepages, (4) contact pages for support and feedback. For keywords we recommend using the [INSPIRE keywords](https://inspire.ec.europa.eu/glossary). To confirm that metadata is complete and consistent, we recommend using the [INSPIRE metadata validator](https://inspire.ec.europa.eu/validator/home/index.html) and/or [https://data.europa.eu/en](https://data.europa.eu/en) validator.
-                                                                                                                                                                                                         
-                                                                                                                                                                                                         Some simple additional rules for generating the file name include:
-                                                                                                                                                                                                           
-                                                                                                                                                                                                           1. Codes and abbreviations should be human-readable as much as possible (hence short, but not too short!);
-                                                                                                                                                                                                         2. Use only English-US (en-us) language e.g. for months use `jan`, `feb` etc;
-                                                                                                                                                                                                         3. Consistently use [UNICODE standard](https://unicode.org/standard/standard.html): small letters only, no blank spaces, no non-ASCII characters;
-                                                                                                                                                                                                         4. Limit the total file name size in characters to `256`;
-                                                                                                                                                                                                         5. For time reference do not extend beyond hour minute and timezone;
-                                                                                                                                                                                                         6. For bounding boxes use as much as possible the 2–letter unique country code; for continents use the Equi7 Grid code i.e. `eu`,
-                                                                                                                                                                                                         7. For method codes use as much as possible unique IDs from [ISO - ICS](https://www.iso.org/standards-catalogue/browse-by-ics.html); 
-                                                                                                                                                                                                         8. For MODIS products use consistently the MODIS products codes e.g. [MOD11A2 v061](https://lpdaac.usgs.gov/products/mod11a2v061/); 
-                                                                                                                                                                                                         For long-term aggregates of seasonal, monthly, weekly values use the period name at the end of the method names (#3) for example the long-term estimate of MODIS LST daytime temperature for month August:
-                                                                                                                                                                                                           
-                                                                                                                                                                                                           ```
-                                                                                                                                                                                                           lst.d_mod11a2v061.aug_m_1km_s_20200101_20211231_eu_epsg.3035_v20221015.tif
-                                                                                                                                                                                                           ```
-                                                                                                                                                                                                           
-                                                                                                                                                                                                           A list of vocabularies to be used as abbreviated names of variables will be provided by OpenGeoHub. The same file-name convention described above can be also used for vector data (this would only have a different file extension) also. 
-                                                                                                                                                                                                           
-                                                                                                                                                                                                           ## Registering project outputs
-                                                                                                                                                                                                           
-                                                                                                                                                                                                           All project participants are required to register project outputs and inform other project participants about the progress (via [https://zenodo.org/communities/ai4soilhealth/](https://zenodo.org/communities/ai4soilhealth/)). For internal documents / draft versions of outputs the following submission principles need to be followed:
-                                                                                                                                                                                                             
-                                                                                                                                                                                                             * For internal datasets and documents use project Gitlab and Mattermost to inform parties about the progress and receive feedback;
-                                                                                                                                                                                                           * Regularly inform your WP about the progress and planned dates (best via Mattermost channel).
-                                                                                                                                                                                                           * To receive internal feedback please use project Gitlab; this way ALL project participants can follow discussion and can possibly help resolve bugs / open issues.
-                                                                                                                                                                                                           * For each new version of the output specify in short terms what has been improved, what has changed from last version.
-                                                                                                                                                                                                           * Tag people in Mattermost that you would like to request to review the outputs.   
-                                                                                                                                                                                                           
-                                                                                                                                                                                                           For official releases please refer to the Consortium Agreement for the correct procedure. For every public release of the new official AI4SoilHealth data set, functionality and/or software, the following procedure should be followed closely:
-                                                                                                                                                                                                             
-                                                                                                                                                                                                             * First register the produced data set, library, front-end via project management system (Gitlab) and confirm that the submission follows the **minimum requirements** regarding file formats and file naming, documentation and metadata.
-                                                                                                                                                                                                           * Make sure that no parts of the submission have any **copyright issues**. 
-                                                                                                                                                                                                           * Make sure that **all contributors are credited in detail**.
-                                                                                                                                                                                                           * Make sure you provide appropriate **disclaimer** and **terms of use**; we recommend using “No warranty” as default.
-                                                                                                                                                                                                           * Make sure the **license** is compatible to the AI4SoilHealth project following our Consortium Agreement;
-                                                                                                                                                                                                           * Make sure **acknowledgement** (see below) is clearly provided.
-                                                                                                                                                                                                           * Make sure you provide **contact information** and instructions for users to provide feedback and request support.
-                                                                                                                                                                                                           * Make sure all project partners are informed about the date of release (through Gitlab and Mattermost).
-                                                                                                                                                                                                           
-                                                                                                                                                                                                           Suggested 3rd party platforms for registering outputs (we recommend using multiple of the listed options e.g. a, b, c etc):
-                                                                                                                                                                                                             
-                                                                                                                                                                                                             1. Datasets: 
-                                                                                                                                                                                                             1. [https://zenodo.org/communities/ai4soilhealth/](https://zenodo.org/communities/ai4soilhealth/) and/or [https://onedata.org/](https://onedata.org/),
-                                                                                                                                                                                                           2. Metadata entry via: Geonetwork and/or STAC,
-                                                                                                                                                                                                           3. Structured summary via: [https://ai4soilhealth.eu](https://ai4soilhealth.eu),
-                                                                                                                                                                                                           4. Suggestion: registered on [https://data.europa.eu/en](https://data.europa.eu/en),
-                                                                                                                                                                                                           2. Software: 
-                                                                                                                                                                                                             5. Github ([https://github.com/ai4soilhealth](https://github.com/ai4soilhealth)) -> suggestion: always generate DOI and put on Zenodo.org,
-                                                                                                                                                                                                           6. [https://archive.softwareheritage.org/](https://archive.softwareheritage.org/), 
-                                                                                                                                                                                                           7. Structured summary via: [https://ai4soilhealth.eu](https://ai4soilhealth.eu),
-                                                                                                                                                                                                           3. Tutorials / data catalogs:
-                                                                                                                                                                                                             8. Webpages on github / gitlab (Rbookdown, python books) see e.g. [https://opengeohub.github.io/SoilSamples/](https://opengeohub.github.io/SoilSamples/),
-                                                                                                                                                                                                           9. MKdocs see e.g. [https://gee-community-catalog.org/](https://gee-community-catalog.org/); 
-                                                                                                                                                                                                           4. Data portals / web-GUI’s
-                                                                                                                                                                                                           10. Sub-domain under *.ai4soilhealth.eu,
-                                                                                                                                                                                                           11. Recommended portal: [https://gkhub.earthobservations.org/](https://gkhub.earthobservations.org/),
-                                                                                                                                                                                                           12. Video-tutorial published via: [https://av.tib.eu/](https://av.tib.eu/), 
-                                                                                                                                                                                                           
-                                                                                                                                                                                                           We are planning to have our own installation of Gitlab, [STAC browser](https://github.com/radiantearth/stac-browser), [Geonetwork](https://geonetwork-opensource.org/) and [Pretalx](https://pretalx.com/). Final workflow for registering outputs will be specified in the final version of the implementation plan.
-                                                                                                                                                                                                           
-                                                                                                                                                                                                           During publishing of outputs, and especially if you register outputs via 3rd party repos, it of utmost importance that all partners use the correct attribution and links to project homepage:
-                                                                                                                                                                                                             
-                                                                                                                                                                                                             * Correct attribution: “The AI4SoilHealth project project has received funding from the European Union's Horizon Europe research an innovation programme under grant agreement [No. 101086179](https://cordis.europa.eu/project/id/101086179).”; 
+
+For vector geospatial data we recommend the following file formats:
+
+* For data subsets: [GeoJSON](https://geojson.org/) and/or KML.
+* For cloud-data serving: [Geoparquet](https://github.com/opengeospatial/geoparquet) (`*.geoparquet`) and/or [lance](https://github.com/eto-ai/lance).
+* For visualization: [Mapbox Vector Tiles](https://gdal.org/drivers/vector/mvt.html) (`*.mvt`).
+* For GIS analysis: [Geopackage](https://www.geopackage.org/) (`*.gpkg`).
+
+For tabular data, objects as [Simple Features](https://en.wikipedia.org/wiki/Simple_Features) and similar, the following file formats are accepted for delivery:
+
+* Comma Separated Value (`*.csv`) and [GeoCSV](https://giswiki.hsr.ch/GeoCSV) best compressed as `*.csv.gz`. 
+* R RDS (`*.rds`) and/or [QS](https://github.com/traversc/qs) files that can be [red and written in parallel](http://mgimond.github.io/ES218/Week02b.html).
+* [GeoJSON](https://gdal.org/drivers/vector/geojson.html#vector-geojson) (`*.json`).
+
+For geospatial data to be FAIR, it should at least pass the following checks:
+
+* It is decision-ready, or at least analysis-ready (complete consistent optimized);
+* It is available in a professional catalog e.g. [STAC catalog](https://stacspec.org/) and/or [Geonetwork](https://geonetwork-opensource.org/);
+* It comes with technical documentation (ideally a peer-reviewed publication) / links to Github / Gitlab where users can find technical explanation of how was the data produced;
+* It has a version and each version has unique [DOI](https://www.doi.org/);
+* It can be accessed directly i.e. file URL is available for HTTP requests (through S3 or similar).
+
+```
+gdal_translate in.vrt out.tif -co TILED=YES -co COPY_SRC_OVERVIEWS=YES -co COMPRESS=LZW
+```
+
+Each COG will be quality controlled using (1) [COG validator](https://github.com/rouault/cog_validator), (2) by visual inspection, (3) random sampling point overlay to certify that >99% of pixels are available. After the quality control, all produced global mosaics will be registered and uploaded to S3 storage or similar.
+
+## Standard spatial/temporal resolutions and support sizes
+
+For the sake of consistency and compatibility, project participants will use standard spatial resolutions to deliver and exchange data. Recommended standard pixel sizes / resolutions:
+
+_Table: Standard bounding box and spatial resolutions._
+<table>
+<tr>
+<td>Europe COG \
+Bounding box
+</td>
+<td>Continental EU COG based on <a href="https://land.copernicus.eu/portal_vocabularies/geotags/eea39">Copernicus</a>  \
+Spatial resolutions and image size <a href="https://epsg.io/3035">EPSG:3035</a>
+  </td>
+  </tr>
+  <tr>
+  <td>Xmin = 900,000
+<p>
+  Ymin = 899,000
+<p>
+  Xmax = 7,401,000
+<p>
+  Ymax = 5,501,000
+</td>
+  <td>10m | 650,100L x 460,200P
+<p>
+  25m | 260,040L x 184,080P
+<p>
+  30m | 216,700P x 153,400L
+<p>
+  100m | 65,010P x 46,020L
+<p>
+  250m | 26,004P x 18,408L
+<p>
+  1km | 6501P x 4602L
+</td>
+  </tr>
+  </table>
+  
+  
+  ## File Naming convention
+  
+  SHDC will consistently use the standard OpenLandMap file-naming convention to submit new data-sets and similar (compare e.g. with the MODIS file naming convention). This is to ensure consistency and ease of use within the AI4SoilHealth project, but also by the end-users. This applies especially to WP4, WP5 and WP6. 
+
+The OpenLandMap file-naming convention works with 10 fields that basically define the most important properties of the data (this way users can search files, prepare data analysis etc, without even needing to access or open files. The 10 fields include:
+
+1. Generic variable name (needs to be unique and approved by the AI4SoilHealth Coordination team): `lclu`;
+2. Variable procedure combination i.e. method standard (standard abbreviation): `luisa`;
+3. Position in the probability distribution / variable type: `c`;
+4. Spatial support (usually horizontal block) in m or km: `30m`;
+5. Depth reference or depth interval e.g. below ("b"), above ("a") ground or at surface ("s"): `s`;
+6. Time reference begin time (YYYYMMDD): `20210101`;
+7. Time reference end time: `20211231`;
+8. Bounding box (2 letters max): `eu`; 
+9. EPSG code: `epsg.3035`;
+10. Version code i.e. creation date: `v20221015`;
+
+An example of a file-name based on the description above:
+
+```
+lclu_luisa_c_30m_s_20210101_20211231_eu_epsg.3035_v20221015.tif
+```
+
+Note that this file naming convention has the following properties:
+
+* Large quantities of files can be easily sorted and searched (one line queries in [Bash](https://www.gnu.org/software/bash/)).
+* File-naming patterns can be used to seamlessly build virtual mosaics and composites.  
+* Key spatiotemporal properties of the data are available in the file name e.g. variable type, O&M method, spatial resolution, bounding box, projection system, temporal references. Users can program analysis without opening or testing files.
+* Versioning system is ubiquitous.
+* All file-names are unique.
+
+Geonetwork and STAC will be further used to link the unique file names to: (1) WPs, deliverables, themes / keywords, (2) DOI’s, (3) project homepages, (4) contact pages for support and feedback. For keywords we recommend using the [INSPIRE keywords](https://inspire.ec.europa.eu/glossary). To confirm that metadata is complete and consistent, we recommend using the [INSPIRE metadata validator](https://inspire.ec.europa.eu/validator/home/index.html) and/or [https://data.europa.eu/en](https://data.europa.eu/en) validator.
+
+Some simple additional rules for generating the file name include:
+
+1. Codes and abbreviations should be human-readable as much as possible (hence short, but not too short!);
+2. Use only English-US (en-us) language e.g. for months use `jan`, `feb` etc;
+3. Consistently use [UNICODE standard](https://unicode.org/standard/standard.html): small letters only, no blank spaces, no non-ASCII characters;
+4. Limit the total file name size in characters to `256`;
+5. For time reference do not extend beyond hour minute and timezone;
+6. For bounding boxes use as much as possible the 2–letter unique country code; for continents use the Equi7 Grid code i.e. `eu`,
+7. For method codes use as much as possible unique IDs from [ISO - ICS](https://www.iso.org/standards-catalogue/browse-by-ics.html); 
+8. For MODIS products use consistently the MODIS products codes e.g. [MOD11A2 v061](https://lpdaac.usgs.gov/products/mod11a2v061/); 
+For long-term aggregates of seasonal, monthly, weekly values use the period name at the end of the method names (#3) for example the long-term estimate of MODIS LST daytime temperature for month August:
+
+```
+lst.d_mod11a2v061.aug_m_1km_s_20200101_20211231_eu_epsg.3035_v20221015.tif
+```
+
+A list of vocabularies to be used as abbreviated names of variables will be provided by OpenGeoHub. The same file-name convention described above can be also used for vector data (this would only have a different file extension) also. 
+
+## Registering project outputs
+
+All project participants are required to register project outputs and inform other project participants about the progress (via [https://zenodo.org/communities/ai4soilhealth/](https://zenodo.org/communities/ai4soilhealth/)). For internal documents / draft versions of outputs the following submission principles need to be followed:
+  
+  * For internal datasets and documents use project Gitlab and Mattermost to inform parties about the progress and receive feedback;
+* Regularly inform your WP about the progress and planned dates (best via Mattermost channel).
+* To receive internal feedback please use project Gitlab; this way ALL project participants can follow discussion and can possibly help resolve bugs / open issues.
+* For each new version of the output specify in short terms what has been improved, what has changed from last version.
+* Tag people in Mattermost that you would like to request to review the outputs.   
+
+For official releases please refer to the Consortium Agreement for the correct procedure. For every public release of the new official AI4SoilHealth data set, functionality and/or software, the following procedure should be followed closely:
+  
+  * First register the produced data set, library, front-end via project management system (Gitlab) and confirm that the submission follows the **minimum requirements** regarding file formats and file naming, documentation and metadata.
+* Make sure that no parts of the submission have any **copyright issues**. 
+* Make sure that **all contributors are credited in detail**.
+* Make sure you provide appropriate **disclaimer** and **terms of use**; we recommend using “No warranty” as default.
+* Make sure the **license** is compatible to the AI4SoilHealth project following our Consortium Agreement;
+* Make sure **acknowledgement** (see below) is clearly provided.
+* Make sure you provide **contact information** and instructions for users to provide feedback and request support.
+* Make sure all project partners are informed about the date of release (through Gitlab and Mattermost).
+
+Suggested 3rd party platforms for registering outputs (we recommend using multiple of the listed options e.g. a, b, c etc):
+  
+  1. Datasets: 
+  1. [https://zenodo.org/communities/ai4soilhealth/](https://zenodo.org/communities/ai4soilhealth/) and/or [https://onedata.org/](https://onedata.org/),
+2. Metadata entry via: Geonetwork and/or STAC,
+3. Structured summary via: [https://ai4soilhealth.eu](https://ai4soilhealth.eu),
+4. Suggestion: registered on [https://data.europa.eu/en](https://data.europa.eu/en),
+2. Software: 
+  5. Github ([https://github.com/ai4soilhealth](https://github.com/ai4soilhealth)) -> suggestion: always generate DOI and put on Zenodo.org,
+6. [https://archive.softwareheritage.org/](https://archive.softwareheritage.org/), 
+7. Structured summary via: [https://ai4soilhealth.eu](https://ai4soilhealth.eu),
+3. Tutorials / data catalogs:
+  8. Webpages on github / gitlab (Rbookdown, python books) see e.g. [https://opengeohub.github.io/SoilSamples/](https://opengeohub.github.io/SoilSamples/),
+9. MKdocs see e.g. [https://gee-community-catalog.org/](https://gee-community-catalog.org/); 
+4. Data portals / web-GUI’s
+10. Sub-domain under *.ai4soilhealth.eu,
+11. Recommended portal: [https://gkhub.earthobservations.org/](https://gkhub.earthobservations.org/),
+12. Video-tutorial published via: [https://av.tib.eu/](https://av.tib.eu/), 
+
+We are planning to have our own installation of Gitlab, [STAC browser](https://github.com/radiantearth/stac-browser), [Geonetwork](https://geonetwork-opensource.org/) and [Pretalx](https://pretalx.com/). Final workflow for registering outputs will be specified in the final version of the implementation plan.
+
+During publishing of outputs, and especially if you register outputs via 3rd party repos, it of utmost importance that all partners use the correct attribution and links to project homepage:
+  
+  * Correct attribution: “The AI4SoilHealth project project has received funding from the European Union's Horizon Europe research an innovation programme under grant agreement [No. 101086179](https://cordis.europa.eu/project/id/101086179).”; 
 * Project URL: [https://cordis.europa.eu/project/id/101086179](https://cordis.europa.eu/project/id/101086179).
 * Project homepage: [https://ai4soilhealth.eu](https://ai4soilhealth.eu),
 * Correct default disclaimer is below.
@@ -438,7 +434,6 @@ knitr::include_graphics("images/land_mask_paneu.png")
 There are a total of three landmask files available, each of which is aligned with the standard spatial/temporal resolution and sizes of SHDC4EU specifications. Additionally, these files include a corresponding look-up table that provides explanations for the values present in the raster data.
 
 _Table: Technical description of the pan-EU land mask._
-
 
 <table>
   <tr>
