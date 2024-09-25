@@ -1,0 +1,162 @@
+# Welcome {.unnumbered}
+
+```{r, include=FALSE, message=FALSE, results='hide'}
+ls <- c("jsonlite", "RCurl", "emo", "stringi")
+new.packages <- ls[!(ls %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages, repos = "https://cloud.r-project.org")
+#devtools::install_github("hadley/emo")
+lapply(ls, require, character.only = TRUE)
+```
+
+This document provides information about the **Soil Health Data Cube** for pan-EU 
+(SHDC4EU). The main purpose of the SHDC is to be as a platform for more detailed 
+computing i.e. to estimate trends in important soil health indicators (e.g. Bare 
+Soil Fraction, vegetation cover, chemical soil properties and similar). The SHDC is 
+available via S3 (Simple Storage Service) and STAC as open data, which means that 
+any researcher across EU can access data directly using [rstac](https://cran.r-project.org/package=rstac) 
+or similar, and fetch values / aggregate per polygon or farm. list will be continuously 
+updated and extended. **This document is continuously updated and new layers are continuously added**.
+
+<a href="https://a4soilhealth.eu/"><img src="./images/cover.png" alt="AI4SoilHealth logo" width="300"></a>
+
+Soil Health Data Cube for pan-EU (SHDC4EU) is compilation of pan-EU layers 
+organized into a data cube and served through an API as analysis or decision 
+ready data. It will be published via the EcoDataCube.eu infrastructure and served 
+with unrestricted access as a genuine open data project comparable to Copernicus 
+Land Monitoring  services, Zenodo.org, Amazon AWS Open Data and similar. It aims 
+at serving the [EU Soil Observatory](https://joint-research-centre.ec.europa.eu/eu-soil-observatory-euso_en) 
+hosted by the European Commission JRC. We are preparing a complete, consistent 
+Data Cube which will include EU-wide seasonal crop-type maps, primary soil properties, 
+land degradation indices, terrain parameters, and similar EO products, all at 30-m 
+resolution and encompassing the period 2000–2024+, climatic time-series images 
+(rainfall, soil moisture, surface temperature) and projected crop models (typically 
+only at 1-km spatial resolution). These will then be combined into a unified 
+complete consistent data cube that can be used to run machine learning models to 
+detect and examine relationships between the field-estimated and EO-based SHI. 
+The general workflow of using the SHDC4EU, in a nutshell, is: (1) assess the 
+management and eventual degradation history of a piece of land, (2) assess current 
+properties and states, and (3) assess potential of soil + land under different 
+(climate change) scenarios. This is the basic framework which other WPs can use 
+as a computing engine on top of which to build their particular applications. 
+For processing: (1) data is used to assess the history of each pixel in terms of 
+positive and negative trends in GPP, vegetation cover, SOC and other soil properties, 
+(2) the most recent (actual) soil properties and classes will be provided to 
+individual pixels / farms, and (3) the land potential will be estimated by 
+extrapolating process-based and/or ML models to future climate land-use scenarios.
+
+## Download compiled data {.unnumbered}
+
+Compiled data (imported, standardized, quality-controlled) is available 
+through a diversity of standard formats:
+
+- Gridded data as COG files (compressed Cloud Optimized GeoTIFFs);
+- Vector data as GPKG files ([Geopackage file](https://www.geopackage.org/) ready to be opened in QGIS);
+- Tabular data is available either as CSV files or as Google Sheets;
+
+All files can be downloaded using the STAC browser and/or using embedded links 
+provided in this document.
+
+## Add your own data {.unnumbered}
+
+AI4SoilHealth project aims at buidling open development communities where data and 
+code is exchange seamlessly under the Open Data / Open Source licenses (e.g. CC-BY, CC-BY-SA, ODbL, MIT, GPL and simlar).
+We are open to hosting contributed geospatial data produced by 3rd parties assuming 
+that some minimum requirements are met. Currently, the minimum requirements to submit 
+a dataset for inclusion to Soil Health Data Cube are:
+  
+-   **Pan-EU coverage** (or at least aiming at the global coverage) AND,\
+-   License and terms of use clearly specified AND,\
+-   Complete and consistent metadata that can ensure correct
+standardization and harmonization steps AND,\
+-   Predictions of soil properties are Complete Consistent Current and Correct and based on the most significant data AND,\
+-   No broken or invalid URLs,
+
+Data sets that do NOT satisfy the above listed minimum requirements might be
+removed. If you discover an issue with license, data description or
+version number of a dataset, please open a [Github issue](https://github.com/AI4SoilHealth/SHDC4EU_manual/issues).
+
+Recommended settings for all datasets are:
+
+-   Peer-reviewed versions of the datasets (i.e. a dataset accompanied with a peer-reviewed publication) should have the priority,\
+-   Register your dataset (use e.g. <https://zenodo.org/communities/ai4soilhealth/>) and assign a DOI
+to each version,\
+-   Provide enough metadata so that it can be imported and bind with
+other data without errors,\
+-   If your dataset is a compilation of previously published datasets, please 
+indicate in the description,
+
+Information outdated or missing? Please open an issue or best do a
+correction and then a [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+
+## License {.unnumbered}
+
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-Share Alike 4.0 International License</a>.
+
+## Disclaimer {.unnumbered}
+
+Use liability: OpenGeoHub foundations cannot provide any warranty as to the accuracy, 
+reliability, or completeness of furnished data. Users assume responsibility to 
+determine the usability of these data. The user is responsible for the results of 
+any application of this data for other than its intended purpose.
+
+Distribution liability: OpenGeoHub foundations make no warranty, expressed or 
+implied, regarding these data, nor does the fact of distribution constitute such a warranty. OpenGeoHub foundations cannot assume liability for any damages caused 
+by any errors or omissions in these data. If appropriate, OpenGeoHub foundations 
+can only certify that the data it distributes are an authentic copy of the records 
+that were accepted for inclusion in the OpenGeoHub foundations archives.
+
+The code and data described in this tutorial has been submitted for scientific review. 
+Errors and artifacts are still possible. In case you spot an issue or artifact in maps 
+and/or code, please report [here](https://github.com/AI4SoilHealth/SoilHealthDataCube/issues), many thanks in advance!
+
+## How to cite {.unnumbered}
+
+To cite this document please use:
+
+```
+@book{shdc4eu_2024,
+  author       = {Hengl, T., Minarik, R., Tian, X., Parente, L., Ho, Y.-F., Consoli, D., Simoes, R., and contributors},
+  title        = {{Soil Health Data Cube for pan-EU: specifications and data tutorials}},
+  year         = {2024},
+  publisher    = {OpenGeoHub foundation},
+  address      = {Doorwerth},
+  version      = {v0.1},
+  doi          = {10.5281/zenodo.??},
+  url          = {https://shdc.ai4soilhealth.eu/}
+}
+```
+
+## About AI4SoilHealth {.unnumbered}
+
+[<img src="./images/soil_deal_logo.png" alt="Soil Deal Europe" width="650"/>](https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/eu-missions-horizon-europe/soil-deal-europe_en)
+
+[AI4SoilHealth](https://ai4soilhealth.eu/about/) "Accelerating collection and use of soil health information using AI technology to support the Soil Deal for Europe and EU Soil Observatory" is one of a group of Horizon Europe funded projects which fit under 
+the EU’s Soil Health Mission for 2030. The 8 Mission objectives include:
+
+1. Reduce desertification
+2. Conserve soil organic carbon stocks
+3. Stop soil sealing and increase re-use of urban soils
+4. Reduce soil pollution and enhance restoration
+5. Prevent erosion
+6. Improve soil structure to enhance soil biodiversity
+7. Reduce the EU global footprint on soils
+8. Improve soil literacy in society
+
+The EU-funded AI4SoilHealth project will co-design, create and maintain an open 
+access Europe-wide digital infrastructure founded on advanced AI methods combined 
+with new and deep soil health understanding and measures. The AI-based data infrastructure 
+will evolve a Soil Digital Twin. The project will deliver a coherent Soil Health 
+Index methodology, Rapid Soil Health Assessment Toolbox, AI4SoilHealth Data Cube 
+for Europe, Soil-Health-Soil-Degradation-Monitor, and AI4SoilHealth API and mobile 
+phone app. AI4SoilHealth will test the tools, collecting feedback from target users.
+
+## Acknowledgments {.unnumbered}
+
+**[AI4SoilHealth.eu](https://AI4SoilHealth.eu)** project has received funding 
+from the European Union's Horizon Europe research an innovation programme under 
+grant agreement **[No. 101086179](https://cordis.europa.eu/project/id/101086179)**.
+
+Funded by the European Union. Views and opinions expressed are however those of 
+the author(s) only and do not necessarily reflect those of the European Union or 
+European Research Executive Agency. Neither the European Union nor the granting 
+authority can be held responsible for them.

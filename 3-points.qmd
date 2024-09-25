@@ -1,0 +1,11 @@
+# Point data import and quality control
+
+**Under construction**
+
+This section provides detailed steps implemented to import and bind all soil laboratory / soil site data.
+
+## Import and quality control of LUCAS points
+
+## Import and quality control of national data sets
+
+## Final bind
