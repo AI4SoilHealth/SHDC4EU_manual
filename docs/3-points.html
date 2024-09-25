@@ -72,7 +72,6 @@ ul.task-list li input[type="checkbox"] {
 
 <meta property="og:title" content="Soil Health Data Cube for Europe">
 <meta property="og:description" content="Soil Health Data Cube for pan-EU (SHDC4EU) is compilation of pan-EU layers organized into a data cube and served through an API as analysis or decision ready data.">
-<meta property="og:image" content="./images/cover.png">
 <meta property="og:site_name" content="Soil Health Data Cube for Europe">
 <meta name="twitter:title" content="Soil Health Data Cube for Europe">
 <meta name="twitter:description" content="">
@@ -143,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Soil Health Data Cube components</a></li><li class="breadcrumb-item"><a href="./index.html">Welcome</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./3-points.html">Data use tutorials</a></li><li class="breadcrumb-item"><a href="./3-points.html">Point data import and quality control</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -166,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
@@ -201,7 +200,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./3-points.html" class="sidebar-item-text sidebar-link">
+  <a href="./3-points.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Point data import and quality control</span></a>
   </div>
 </li>
@@ -217,18 +216,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
+  <li><a href="#point-data-import-and-quality-control" id="toc-point-data-import-and-quality-control" class="nav-link active" data-scroll-target="#point-data-import-and-quality-control">Point data import and quality control</a>
   <ul class="collapse">
-  <li><a href="#download-compiled-data" id="toc-download-compiled-data" class="nav-link" data-scroll-target="#download-compiled-data">Download compiled data</a></li>
-  <li><a href="#add-your-own-data" id="toc-add-your-own-data" class="nav-link" data-scroll-target="#add-your-own-data">Add your own data</a></li>
-  <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
-  <li><a href="#disclaimer" id="toc-disclaimer" class="nav-link" data-scroll-target="#disclaimer">Disclaimer</a></li>
-  <li><a href="#how-to-cite" id="toc-how-to-cite" class="nav-link" data-scroll-target="#how-to-cite">How to cite</a></li>
-  <li><a href="#about-ai4soilhealth" id="toc-about-ai4soilhealth" class="nav-link" data-scroll-target="#about-ai4soilhealth">About AI4SoilHealth</a></li>
-  <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments">Acknowledgments</a></li>
+  <li><a href="#import-and-quality-control-of-lucas-points" id="toc-import-and-quality-control-of-lucas-points" class="nav-link" data-scroll-target="#import-and-quality-control-of-lucas-points">Import and quality control of LUCAS points</a></li>
+  <li><a href="#import-and-quality-control-of-national-data-sets" id="toc-import-and-quality-control-of-national-data-sets" class="nav-link" data-scroll-target="#import-and-quality-control-of-national-data-sets">Import and quality control of national data sets</a></li>
+  <li><a href="#final-bind" id="toc-final-bind" class="nav-link" data-scroll-target="#final-bind">Final bind</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/edit/main/3-points.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -236,93 +231,18 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="welcome" class="level1 unnumbered">
-<h1 class="unnumbered">Welcome</h1>
-<p><a rel="license" href="https://zenodo.org/doi/10.5281/zenodo.13838797"><img alt="DOI" style="border-width:0" src="https://zenodo.org/badge/DOI/10.5281/zenodo.13838797.svg"></a><br></p>
-<p>This document provides information about the <strong>Soil Health Data Cube</strong> for pan-EU (SHDC4EU). The main purpose of the SHDC is to be as a platform for more detailed computing i.e.&nbsp;to estimate trends in important soil health indicators (e.g.&nbsp;Bare Soil Fraction, vegetation cover, chemical soil properties and similar). The SHDC is available via S3 (Simple Storage Service) and STAC as open data, which means that any researcher across EU can access data directly using <a href="https://cran.r-project.org/package=rstac">rstac</a> or similar, and fetch values / aggregate per polygon or farm. list will be continuously updated and extended. <strong>This document is continuously updated and new layers are continuously added</strong>.</p>
-<p><a href="https://a4soilhealth.eu/"><img src="./images/cover.png" alt="AI4SoilHealth logo" width="300"></a></p>
-<p>Soil Health Data Cube for pan-EU (SHDC4EU) is compilation of pan-EU layers organized into a data cube and served through an API as analysis or decision ready data. It will be published via the EcoDataCube.eu infrastructure and served with unrestricted access as a genuine open data project comparable to Copernicus Land Monitoring services, Zenodo.org, Amazon AWS Open Data and similar. It aims at serving the <a href="https://joint-research-centre.ec.europa.eu/eu-soil-observatory-euso_en">EU Soil Observatory</a> hosted by the European Commission JRC. We are preparing a complete, consistent Data Cube which will include EU-wide seasonal crop-type maps, primary soil properties, land degradation indices, terrain parameters, and similar EO products, all at 30-m resolution and encompassing the period 2000–2024+, climatic time-series images (rainfall, soil moisture, surface temperature) and projected crop models (typically only at 1-km spatial resolution). These will then be combined into a unified complete consistent data cube that can be used to run machine learning models to detect and examine relationships between the field-estimated and EO-based SHI. The general workflow of using the SHDC4EU, in a nutshell, is: (1) assess the management and eventual degradation history of a piece of land, (2) assess current properties and states, and (3) assess potential of soil + land under different (climate change) scenarios. This is the basic framework which other WPs can use as a computing engine on top of which to build their particular applications. For processing: (1) data is used to assess the history of each pixel in terms of positive and negative trends in GPP, vegetation cover, SOC and other soil properties, (2) the most recent (actual) soil properties and classes will be provided to individual pixels / farms, and (3) the land potential will be estimated by extrapolating process-based and/or ML models to future climate land-use scenarios.</p>
-<section id="download-compiled-data" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="download-compiled-data">Download compiled data</h2>
-<p>Compiled data (imported, standardized, quality-controlled) is available through a diversity of standard formats:</p>
-<ul>
-<li>Gridded data as COG files (compressed Cloud Optimized GeoTIFFs);</li>
-<li>Vector data as GPKG files (<a href="https://www.geopackage.org/">Geopackage file</a> ready to be opened in QGIS);</li>
-<li>Tabular data is available either as CSV files or as Google Sheets;</li>
-</ul>
-<p>All files can be downloaded using the STAC browser and/or using embedded links provided in this document.</p>
+<section id="point-data-import-and-quality-control" class="level1">
+<h1>Point data import and quality control</h1>
+<p><strong>Under construction</strong></p>
+<p>This section provides detailed steps implemented to import and bind all soil laboratory / soil site data.</p>
+<section id="import-and-quality-control-of-lucas-points" class="level2">
+<h2 class="anchored" data-anchor-id="import-and-quality-control-of-lucas-points">Import and quality control of LUCAS points</h2>
 </section>
-<section id="add-your-own-data" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="add-your-own-data">Add your own data</h2>
-<p>AI4SoilHealth project aims at buidling open development communities where data and code is exchange seamlessly under the Open Data / Open Source licenses (e.g.&nbsp;CC-BY, CC-BY-SA, ODbL, MIT, GPL and simlar). We are open to hosting contributed geospatial data produced by 3rd parties assuming that some minimum requirements are met. Currently, the minimum requirements to submit a dataset for inclusion to Soil Health Data Cube are:</p>
-<ul>
-<li><strong>Pan-EU coverage</strong> (or at least aiming at the global coverage) AND,<br>
-</li>
-<li>License and terms of use clearly specified AND,<br>
-</li>
-<li>Complete and consistent metadata that can ensure correct standardization and harmonization steps AND,<br>
-</li>
-<li>Predictions of soil properties are Complete Consistent Current and Correct and based on the most significant data AND,<br>
-</li>
-<li>No broken or invalid URLs,</li>
-</ul>
-<p>Data sets that do NOT satisfy the above listed minimum requirements might be removed. If you discover an issue with license, data description or version number of a dataset, please open a <a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/issues">Github issue</a>.</p>
-<p>Recommended settings for all datasets are:</p>
-<ul>
-<li>Peer-reviewed versions of the datasets (i.e.&nbsp;a dataset accompanied with a peer-reviewed publication) should have the priority,<br>
-</li>
-<li>Register your dataset (use e.g.&nbsp;<a href="https://zenodo.org/communities/ai4soilhealth/" class="uri">https://zenodo.org/communities/ai4soilhealth/</a>) and assign a DOI to each version,<br>
-</li>
-<li>Provide enough metadata so that it can be imported and bind with other data without errors,<br>
-</li>
-<li>If your dataset is a compilation of previously published datasets, please indicate in the description,</li>
-</ul>
-<p>Information outdated or missing? Please open an issue or best do a correction and then a <a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request">pull request</a>.</p>
+<section id="import-and-quality-control-of-national-data-sets" class="level2">
+<h2 class="anchored" data-anchor-id="import-and-quality-control-of-national-data-sets">Import and quality control of national data sets</h2>
 </section>
-<section id="license" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="license">License</h2>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-Share Alike 4.0 International License</a>.</p>
-</section>
-<section id="disclaimer" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="disclaimer">Disclaimer</h2>
-<p>Use liability: OpenGeoHub foundations cannot provide any warranty as to the accuracy, reliability, or completeness of furnished data. Users assume responsibility to determine the usability of these data. The user is responsible for the results of any application of this data for other than its intended purpose.</p>
-<p>Distribution liability: OpenGeoHub foundations make no warranty, expressed or implied, regarding these data, nor does the fact of distribution constitute such a warranty. OpenGeoHub foundations cannot assume liability for any damages caused by any errors or omissions in these data. If appropriate, OpenGeoHub foundations can only certify that the data it distributes are an authentic copy of the records that were accepted for inclusion in the OpenGeoHub foundations archives.</p>
-<p>The code and data described in this tutorial has been submitted for scientific review. Errors and artifacts are still possible. In case you spot an issue or artifact in maps and/or code, please report <a href="https://github.com/AI4SoilHealth/SoilHealthDataCube/issues">here</a>, many thanks in advance!</p>
-</section>
-<section id="how-to-cite" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="how-to-cite">How to cite</h2>
-<p>To cite this document please use:</p>
-<pre><code>@book{shdc4eu_2024,
-  author       = {Hengl, T., Minarik, R., Tian, X., Parente, L., Ho, Y.-F., Consoli, D., Simoes, R., and contributors},
-  title        = {{Soil Health Data Cube for pan-EU technical manual}},
-  year         = {2024},
-  publisher    = {OpenGeoHub foundation},
-  address      = {Doorwerth},
-  version      = {v0.1},
-  doi          = {10.5281/zenodo.13838797},
-  url          = {https://shdc.ai4soilhealth.eu/}
-}</code></pre>
-</section>
-<section id="about-ai4soilhealth" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="about-ai4soilhealth">About AI4SoilHealth</h2>
-<p><a href="https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/eu-missions-horizon-europe/soil-deal-europe_en"><img src="./images/soil_deal_logo.png" alt="Soil Deal Europe" width="650"></a></p>
-<p><a href="https://ai4soilhealth.eu/about/">AI4SoilHealth</a> “Accelerating collection and use of soil health information using AI technology to support the Soil Deal for Europe and EU Soil Observatory” is one of a group of Horizon Europe funded projects which fit under the EU’s Soil Health Mission for 2030. The 8 Mission objectives include:</p>
-<ol type="1">
-<li>Reduce desertification</li>
-<li>Conserve soil organic carbon stocks</li>
-<li>Stop soil sealing and increase re-use of urban soils</li>
-<li>Reduce soil pollution and enhance restoration</li>
-<li>Prevent erosion</li>
-<li>Improve soil structure to enhance soil biodiversity</li>
-<li>Reduce the EU global footprint on soils</li>
-<li>Improve soil literacy in society</li>
-</ol>
-<p>The EU-funded AI4SoilHealth project will co-design, create and maintain an open access Europe-wide digital infrastructure founded on advanced AI methods combined with new and deep soil health understanding and measures. The AI-based data infrastructure will evolve a Soil Digital Twin. The project will deliver a coherent Soil Health Index methodology, Rapid Soil Health Assessment Toolbox, AI4SoilHealth Data Cube for Europe, Soil-Health-Soil-Degradation-Monitor, and AI4SoilHealth API and mobile phone app. AI4SoilHealth will test the tools, collecting feedback from target users.</p>
-</section>
-<section id="acknowledgments" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="acknowledgments">Acknowledgments</h2>
-<p><strong><a href="https://AI4SoilHealth.eu">AI4SoilHealth.eu</a></strong> project has received funding from the European Union’s Horizon Europe research an innovation programme under grant agreement <strong><a href="https://cordis.europa.eu/project/id/101086179">No.&nbsp;101086179</a></strong>.</p>
-<p>Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or European Research Executive Agency. Neither the European Union nor the granting authority can be held responsible for them.</p>
+<section id="final-bind" class="level2">
+<h2 class="anchored" data-anchor-id="final-bind">Final bind</h2>
 
 
 </section>
@@ -868,7 +788,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/edit/main/3-points.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
