@@ -1,3 +1,0 @@
-# Point data import and quality control
-
-This section provides detailed steps implemented to import and bind all soil laboratory / soil site data.

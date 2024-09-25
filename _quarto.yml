@@ -6,7 +6,8 @@ project:
     - index.qmd
     - preface.qmd
     - 1-specifications.qmd
-    - 2-points.qmd
+    - 2-layers.qmd
+    - 3-points.qmd
 
 website:
   navbar:
@@ -42,10 +43,11 @@ website:
           - index.qmd
           - preface.qmd
           - 1-specifications.qmd
-          - 2-points.qmd
+          - 2-layers.qmd
       - section: "Data use tutorials"
         contents:
-          - 3-shi.qmd
+          - 3-points.qmd
+          - 4-shi.qmd
   page-footer:
     background: light
     left: "© 2024, OpenGeoHub foundation"
