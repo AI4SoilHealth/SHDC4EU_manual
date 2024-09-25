@@ -340,7 +340,7 @@ div.csl-indent {
 </section>
 <section id="predictive-soil-mapping-based-on-machine-learning-and-hpc" class="level2">
 <h2 class="anchored" data-anchor-id="predictive-soil-mapping-based-on-machine-learning-and-hpc">Predictive soil mapping based on Machine Learning and HPC</h2>
-<p>WP5 — with the tasks T5.2 Development of AI4SoilHealth computing engine and T5.3 Development of AI4SoilHealth Indicators data cube) — aims at implementing fully automated predictive soil mapping at high spatial resolution using large datasets (e.g.&nbsp;whole of Europe at 30-m spatial resolution). Prepared harmonized point datasets will are overlaid against time-series of EO images and/or static terrain-based or similar indices. These are then be used to predict values of target variables in 2D, 3D and 2D+T, 3D+T. The general workflow for predictive soil mapping based on <strong>Spatiotemporal Machine Learning</strong> and <strong>High Performance Computing</strong> (HPC) and assumes that all point data is analysis-ready, representative and correlates with the EO / covariate layers i.e.&nbsp;can be used to produce usable spatial predictions. Automated predictive soil mapping is currently implemented via the Python library <a href="https://github.com/scikit-map/scikit-map">scikit-map</a> using OpenGeoHub’s High Performance Computing infrastructure, and other workflows implemented in C++. The overall soil mapping framework is referred to as the <strong>EO-soilmapper</strong> (see figure below).</p>
+<p>WP5 — with the tasks T5.2 Development of AI4SoilHealth computing engine and T5.3 Development of AI4SoilHealth Indicators data cube) — aims at implementing fully automated predictive soil mapping at high spatial resolution using large datasets (e.g.&nbsp;whole of Europe at 30-m spatial resolution). Prepared harmonized point datasets are overlaid against time-series of EO images and/or static terrain-based or similar indices. These are then be used to predict values of target variables in 2D, 3D and 2D+T, 3D+T. The general workflow for predictive soil mapping based on <strong>Spatiotemporal Machine Learning</strong> and <strong>High Performance Computing</strong> (HPC) and assumes that all point data is analysis-ready, representative and correlates with the EO / covariate layers i.e.&nbsp;can be used to produce usable spatial predictions. Automated predictive soil mapping is currently implemented via the Python library <a href="https://github.com/scikit-map/scikit-map">scikit-map</a> using OpenGeoHub’s High Performance Computing infrastructure, and other workflows implemented in C++. The overall soil mapping framework is referred to as the <strong>EO-soilmapper</strong> (see figure below).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -351,13 +351,13 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>The key interest of WP5 is to produce pan-EU predictions at the highest possible spatial resolution and that can directly serve soil health assessment at continental scale. Some variables are, however, not available for the whole of pan-EU, and some point datasets will be produced experimentally and used for testing purposes only. Hence, within the WP5, all soil variables are modeled / mapped under one the following 3 tiers:</p>
+<p>The key interest of WP5 is to produce pan-EU predictions at the highest possible spatial resolution and that can directly serve soil health assessment at continental scale. Some variables are, however, not available for the whole of pan-EU, and some point datasets might be produced experimentally and used for testing purposes only. Hence, within the WP5, all soil variables are modeled / mapped under one the following 3 tiers:</p>
 <ul>
 <li><strong>Tier 1: Pan-EU, production ready variables</strong>: usually based on <a href="https://esdac.jrc.ec.europa.eu/projects/lucas">LUCAS + national soil datasets</a>;</li>
 <li><strong>Tier 2 (internal, under construction): National / in-situ data</strong>: Tested locally, then upscaled to whole of EU; usually based on collaboration of WP3,4,5,6;</li>
 <li><strong>Tier 3 (internal, under construction): Pan-EU, new experimental variables</strong> (currently not in the LUCAS soil and most likely can not be modeled/mapped across EU, but can only be used to assess soil health <em>at site</em>); based on the collaboration of WP3,4,5;</li>
 </ul>
-<p>We expect that project partners + pilots will feed data for Tier 2 and Tier 3. However, not everything can be mapped across the EU, hence some variables will eventually stay available only locally and a small selection of variables will be available <em>in-situ</em> only i.e.&nbsp;these will not be mapped at all.</p>
+<p>We expect that project partners + pilots feed data for Tier 2 and Tier 3. However, not everything can be mapped across the EU, hence some variables will eventually stay available only locally and a small selection of variables will be available <em>in-situ</em> only i.e.&nbsp;these will not be mapped at all.</p>
 </section>
 <section id="training-points" class="level2">
 <h2 class="anchored" data-anchor-id="training-points">Training points</h2>
@@ -380,11 +380,11 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>To improve usability of predictions produced using LUCAS we have decided, in this project, to combine both LUCAS and the highest quality legacy national soil datasets. These synchronized and analysis ready fusions of soil laboratory points and observations will be generated by T4.6 “Integration and harmonization of in-situ and ancillary observations”. We anticipate that this will be a long process hence, in order to prevent serious delays, we will start producing SHDC4EU predictions, then in each iteration try to improve predictions as new countries join the campaign of contributing their data (under a standard Data Sharing Agreement) for the purpose of data mining i.e.&nbsp;producing open soil information for everyone <span class="citation" data-cites="tian2025socd">(<a href="#ref-tian2025socd" role="doc-biblioref">Tian et al. 2024?</a>)</span>.</p>
+<p>To improve usability of predictions produced using LUCAS we have decided, in this project, to combine both LUCAS and the highest quality legacy national soil datasets. These synchronized and analysis ready fusions of soil laboratory points and observations are generated by T4.6 “Integration and harmonization of in-situ and ancillary observations”. We anticipate that this will be a long process hence, in order to prevent serious delays, we will start producing SHDC4EU predictions, then in each iteration try to improve predictions as new countries join the campaign of contributing their data (under a standard Data Sharing Agreement) for the purpose of data mining i.e.&nbsp;producing open soil information for everyone <span class="citation" data-cites="tian2025socd">(<a href="#ref-tian2025socd" role="doc-biblioref">Tian et al. 2024?</a>)</span>.</p>
 </section>
 <section id="covariate-base-layers" class="level2">
 <h2 class="anchored" data-anchor-id="covariate-base-layers">Covariate (base) layers</h2>
-<p>The second important aspect that will determine the quality of the SHDC4EU outputs is the quality of covariate layers. Quality of the covariate layers is basically determined by three things: (1) spatial and temporal resolution, (2) spectral / thematic content, (3) general quality of data in terms of completeness, consistency, correctness and quality of metadata. For producing SHDC4EU we plan to use an extensive compilation of covariate (base) layers to produce predictions for SHDC4EU. Already available layers for continental Europe include (<a href="https://EcoDataCube.eu">https://EcoDataCube.eu</a>):</p>
+<p>The second important aspect that determines the quality of the SHDC4EU outputs is the quality of covariate layers. Quality of the covariate layers is basically determined by three things: (1) spatial and temporal resolution, (2) spectral / thematic content, (3) general quality of data in terms of completeness, consistency, correctness and quality of metadata. For producing SHDC4EU we use an extensive compilation of covariate (base) layers to produce predictions for SHDC4EU. Already available layers for continental Europe include (<a href="https://EcoDataCube.eu">https://EcoDataCube.eu</a>):</p>
 <ul>
 <li>Land mask (pan-EU: <a href="https://zenodo.org/doi/10.5281/zenodo.8171860">https://zenodo.org/doi/10.5281/zenodo.8171860</a>) + World Settlement Footprint (WSF) i.e.&nbsp;world buildings 2000-2015, 2019 (<a href="https://geoservice.dlr.de/web/maps/eoc:wsfevolution">https://geoservice.dlr.de/web/maps/eoc:wsfevolution</a> and <a href="https://geoservice.dlr.de/web/maps/eoc:wsf2019">https://geoservice.dlr.de/web/maps/eoc:wsf2019</a>);</li>
 <li>Digital Terrain Model variables at 6–scales 30-m, 60, 120, 240, 480 and 960-m:
@@ -419,7 +419,7 @@ div.csl-indent {
 <li><a href="https://zenodo.org/doi/10.5281/zenodo.12527545">Cropland extent</a> at 30-m for 2000 to 2022 based on (<a href="https://glad.umd.edu/dataset/croplands">https://glad.umd.edu/dataset/croplands</a>);</li>
 <li><a href="https://zenodo.org/doi/10.5281/zenodo.11961219">Bare soil percent</a> and photosythetical vegetation percent annual for 2000 to 2022 based on the MODIS MCD43A4 product (500-m spatial resolution);</li>
 </ul>
-<p>In addition to the existing layers above, we will also generate a number of novel layers tailored specifically for the purpose of representing land use practices and potential soil degradation factors. This include:</p>
+<p>In addition to the existing layers above, we are also generating a number of novel layers tailored specifically for the purpose of representing land use practices and potential soil degradation factors. These include:</p>
 <ul>
 <li>BSI, <strong>Bare Soil Index</strong> <span class="citation" data-cites="mzid2021analysis">(<a href="#ref-mzid2021analysis" role="doc-biblioref">Mzid et al. 2021</a>)</span> and annual BEF, <strong>Bare Earth Fraction</strong> (e.g.&nbsp;proportion of pixels with NDVI &lt;0.35 based on 16–day and/or bimonthly data; there are other possible thresholds combination that can be used to optimize the results),</li>
 <li>NDTI, <strong>Normalized Differential Tillage Index</strong> <span class="citation" data-cites="ettehadi2019separating">(<a href="#ref-ettehadi2019separating" role="doc-biblioref">Ettehadi Osgouei et al. 2019</a>)</span>,</li>
@@ -427,11 +427,11 @@ div.csl-indent {
 <li>LOS, <strong>Length of Seasons</strong> / CDR, <strong>Crop Duration Ratio</strong> <span class="citation" data-cites="estel2016mapping">(<a href="#ref-estel2016mapping" role="doc-biblioref">Estel et al. 2016</a>)</span>,</li>
 <li>Crop-type based on <a href="https://www.eurocrops.tum.de/">EuroCrops dataset</a>,</li>
 </ul>
-<p>Note that from all covariate layers listed above, 16-day / bimonthly / quarterly GLAD Landsat composites (all bands + all indices, 2000–2022) are the largest part of the data to be used taking almost 20TB of storage (in compressed format).</p>
+<p>Note that from all covariate layers listed above, 16-day / bimonthly / quarterly GLAD Landsat composites (all bands + all indices, 2000–2022) are the largest part of the data to be used taking almost 20TB of storage in compressed format <span class="citation" data-cites="tian2024time">(<a href="#ref-tian2024time" role="doc-biblioref">Tian et al. 2024</a>)</span>.</p>
 </section>
 <section id="predictive-mapping-and-derivation-methods" class="level2">
 <h2 class="anchored" data-anchor-id="predictive-mapping-and-derivation-methods">Predictive mapping and derivation methods</h2>
-<p>Based on the availability of the training points and nature of the target variable in the SHDC4EU, we will either predict or derive soil variables from primary variables. The output soil health indicators can, thus, be considered of type either:</p>
+<p>Based on the availability of the training points and nature of the target variable in the SHDC4EU, we either directly predict soil properties or derive soil variables from primary variables. The output soil health indicators can, thus, be considered of type either:</p>
 <ol type="1">
 <li><strong>Predicted dynamic pan-EU variables</strong> (2000–2022+) available at standard depth intervals (0–20, 20–50, 50–100, 100–200 cm).</li>
 <li><strong>Predicted static pan-EU variables</strong>.</li>
@@ -473,7 +473,7 @@ div.csl-indent {
 <li>GPP, <strong>Gross Primary Productivity</strong> (bimonthly and/or annual; based on the last 2–5yrs),</li>
 <li>Land cover and land use / <strong>cropping systems and applications</strong> (categories e.g.&nbsp;based on the <a href="https://www.eurocrops.tum.de/">EuroCrops</a> and similar), producing cropping system maps for the EU;</li>
 </ul>
-<p>However, producing <a href="https://joint-research-centre.ec.europa.eu/jrc-news-and-updates/eu-crop-map-2021-10-18_en">cropping system maps</a> for the EU, even only for the recent year is not trivial and producing such data should is at the moment optional.</p>
+<p>However, producing <a href="https://joint-research-centre.ec.europa.eu/jrc-news-and-updates/eu-crop-map-2021-10-18_en">cropping system maps</a> for the EU, even only for the recent year is not trivial and producing such data is at the moment optional.</p>
 <p>List of target soil variables that will be delivered in the SHDC4EU includes dynamic soil properties covering period 2000–2025+:</p>
 <ul>
 <li><strong>Soil organic carbon density</strong> (kg/m3) ISO 10694. 1995 for 0–20, 20–50, 50–100 cm depth intervals, 5–year estimates;</li>
@@ -494,7 +494,7 @@ div.csl-indent {
 </section>
 <section id="variable-registry" class="level2">
 <h2 class="anchored" data-anchor-id="variable-registry">Variable registry</h2>
-<p>For each variable we will organize a soil variable registry system, so that each variable should have unique (short-as-possible) code. As simple coding system for SHDC4EU is suggested where the variable name is a combination of the three components:</p>
+<p>For each variable we provide a soil variable registry system, so that each variable should have unique (short-as-possible) code. As simple coding system for SHDC4EU is suggested where the variable name is a combination of the three components:</p>
 <ul>
 <li>generic variable name,</li>
 <li>specific laboratory / field / O&amp;M method (ISO standard or similar),</li>
@@ -505,7 +505,7 @@ div.csl-indent {
 </section>
 <section id="spatio-temporal-reference" class="level2">
 <h2 class="anchored" data-anchor-id="spatio-temporal-reference">Spatio-temporal reference</h2>
-<p>The general interest of this project is to produce a time-series of predictions of key soil/vegetation/land use variables with either annual or monthly support and covering the period 1997–2022+ and at highest spatial resolution e.g.&nbsp;30-m. For variables that vary by depth, we will predict at 5 standard depths (0, 20, 50, 100 and 200 cm), then aggregate values to standard depth intervals:</p>
+<p>The general interest of this project is to produce a time-series of predictions of key soil/vegetation/land use variables with either annual or monthly support and covering the period 1997–2022+ and at highest spatial resolution e.g.&nbsp;30-m. For variables that vary by depth, we predict at 5 standard depths (0, 20, 50, 100 and 200 cm), then aggregate values to standard depth intervals:</p>
 <ul>
 <li>0–20 cm (<strong>topsoil</strong>) LUCAS standard;</li>
 <li>20–50 cm (<strong>subsoil1</strong>);</li>
@@ -515,12 +515,12 @@ div.csl-indent {
 <p>Temporal support of predictions / simulations can be one of the following:</p>
 <ul>
 <li>Long-term primary soil properties and classes: e.g.&nbsp;soil types, soil water holding capacity;</li>
-<li>Annual to 5–year values of primary soil and vegetation variables: e.g.&nbsp;annual bare soil fraction (index);</li>
+<li>Annual to 4/5–year values of primary soil and vegetation variables: e.g.&nbsp;annual bare soil fraction (index);</li>
 <li>Bimonthly, monthly or seasonal values of soil and vegetation variables: e.g.&nbsp;bimonthly GPP.</li>
 <li>Weekly, 16–day values (original Landsat GLAD),</li>
 <li>Daily or hourly values (probably not of interest in this project).</li>
 </ul>
-<p>Aggregated values of target soil and vegetation variables can also refer to some part of the distribution e.g.&nbsp;quantile e.g.&nbsp;P25, P50 (median / mean value) and P75.</p>
+<p>Aggregated values of target soil and vegetation variables can also refer to some part of the distribution e.g.&nbsp;quantile e.g.&nbsp;P25, P50 (median / mean value) and P75; or P025 and P975 or the 95% probability range (corresponds to 2 standard deviations).</p>
 </section>
 <section id="uncertainty-of-predictions" class="level2">
 <h2 class="anchored" data-anchor-id="uncertainty-of-predictions">Uncertainty of predictions</h2>
@@ -533,16 +533,16 @@ div.csl-indent {
 </section>
 <section id="back-end-front-end-components" class="level2">
 <h2 class="anchored" data-anchor-id="back-end-front-end-components">Back-end / front-end components</h2>
-<p>The back-end of the SHDC4EU is based on using open source software such as <a href="https://postgis.net/">PostGIS/PostGreSQL</a> <a href="https://cogeotiff.github.io/rio-tiler/">Rio-tiler</a>, <a href="https://fastapi.tiangolo.com/">FastAPI</a> and S3 in the back-end; <a href="https://vuejs.org/">Vue.js</a>, OpenLayers and Geoserver in front end. We are aiming at prioritizing / building upon simple scalable solutions built on top of existing open source solutions. Note that the most important about this back-end design is that the system will be (A) <strong>cloud-native</strong> i.e.&nbsp;building upon cloud-optimized solutions, (B) easy to extend, (C) focused on usability of data i.e.&nbsp;serving seamless layers (complete, consistent, documented, version-controlled with a live support channels).</p>
-<p>All pan-European layers (COGs) produced in this project, including majority of covariate layers, will be distributed through an existing infrastructure <a href="http://EcoDataCube.eu">http://EcoDataCube.eu</a> (maintained by OpenGeoHub foundation). This means that all layers will be made available:</p>
+<p>The back-end of the SHDC4EU is based on using open source software such as <a href="https://postgis.net/">PostGIS/PostGreSQL</a> <a href="https://cogeotiff.github.io/rio-tiler/">Rio-tiler</a>, <a href="https://fastapi.tiangolo.com/">FastAPI</a> and S3 in the back-end; <a href="https://vuejs.org/">Vue.js</a>, OpenLayers and Geoserver in front end. We are aiming at prioritizing / building upon simple scalable solutions built on top of existing open source solutions. Note that the most important about this back-end design is that the system is: (A) <strong>cloud-native</strong> i.e.&nbsp;building upon cloud-optimized solutions, (B) easy to extend, (C) focused on usability of data i.e.&nbsp;serving seamless layers (complete, consistent, documented, version-controlled with a live support channels).</p>
+<p>All pan-European layers (COGs) produced in this project, including majority of covariate layers, are distributed through an existing infrastructure <a href="http://EcoDataCube.eu">http://EcoDataCube.eu</a> (maintained by OpenGeoHub foundation). This means that all layers are made available:</p>
 <ul>
 <li>For viewing i.e.&nbsp;as <strong>Web Mapping Service</strong> (WMS) so it can be displayed using OpenLayers or similar;</li>
 <li>For direct data access via <strong>Simple Storage Service</strong> (S3) / files registered via the <strong>SpatioTemporal Asset Catalog</strong> (STAC) via <a href="https://stac.ecodatacube.eu">https://stac.ecodatacube.eu</a>;</li>
 <li>Back-up copy available via <strong><a href="https://zenodo.org/communities/ai4soilhealth">Zenodo</a></strong> and the project <strong>NextCloud</strong> including via <a href="https://kwb-r.github.io/kwb.nextcloud/">WebDAV</a>.</li>
 </ul>
 <p>OpenGeoHub is responsible that the data is available openly in-real-time (i.e.&nbsp;through S3 service) up to 5 years after the end of project, and that a copy of the data is archived on <a href="https://zenodo.org/communities/ai4soilhealth">Zenodo</a> or similar.</p>
-<p>WP5 will focus exclusively on pan-EU modeling, however, we might also use national / pilot data to test methods and develop experimental solutions that potentially could have much higher impact. For this purpose it is crucial that all project partners have access to the NextCloud and can freely collaborate on data without a need to have multiple copies and installations.</p>
-<p>All tabular vector data will be stored in a <strong>single PostGIS DB</strong> and where possible made available to project participants (a GeoPKG copy of the point / polygon data will also be made available via the project Nextcloud). For land mask / geospatial standards we will rely on the <a href="https://land.copernicus.eu/pan-european">Copernicus Land monitoring infrastructure</a> so we will also include Turkey / Western Balkans and Ukraine i.e.&nbsp;also all candidate countries. For data exchange and sharing we use Nextcloud or similar. This data is however not publicly available.</p>
+<p>WP5 focuses exclusively on pan-EU modeling, however, we might also use national / pilot data to test methods and develop experimental solutions that potentially could have much higher impact. For this purpose it is crucial that all project partners have access to the NextCloud and can freely collaborate on data without a need to have multiple copies and installations.</p>
+<p>All tabular vector data will be stored in a <strong>single PostGIS DB</strong> and where possible made available to project participants (a GeoPKG copy of the point / polygon data will also be made available via the project Nextcloud). For land mask / geospatial standards we rely on the <a href="https://land.copernicus.eu/pan-european">Copernicus Land monitoring infrastructure</a> so we also include Turkey / Western Balkans and Ukraine i.e.&nbsp;also all candidate countries. For data exchange and sharing we use Nextcloud or similar. This data is however not publicly available.</p>
 </section>
 <section id="data-exchange-formats" class="level2">
 <h2 class="anchored" data-anchor-id="data-exchange-formats">Data exchange formats</h2>
@@ -573,7 +573,7 @@ div.csl-indent {
 <li>It can be accessed directly i.e.&nbsp;file URL is available for HTTP requests (through S3 or similar).</li>
 </ul>
 <pre><code>gdal_translate in.vrt out.tif -of COG -co TILED=YES -co COPY_SRC_OVERVIEWS=YES -co COMPRESS=LZW</code></pre>
-<p>Each COG will be quality controlled using (1) <a href="https://github.com/rouault/cog_validator">COG validator</a>, (2) by visual inspection, (3) random sampling point overlay to certify that &gt;99% of pixels are available. After the quality control, all produced global mosaics can be registered and uploaded to S3 storage or similar.</p>
+<p>Each COG are quality controlled using (1) <a href="https://github.com/rouault/cog_validator">COG validator</a>, (2) by visual inspection, (3) random sampling point overlay to certify that &gt;99% of pixels are available. After the quality control, all produced global mosaics can be registered and uploaded to S3 storage or similar.</p>
 </section>
 <section id="standard-spatialtemporal-resolutions-and-support-sizes" class="level2">
 <h2 class="anchored" data-anchor-id="standard-spatialtemporal-resolutions-and-support-sizes">Standard spatial/temporal resolutions and support sizes</h2>
@@ -619,7 +619,7 @@ Ymax = 5,501,000
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/ai4soilhealth_tiling_system.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/ai4soilhealth_tiling_system.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption>Tiling system (100-km blocks) used in the EO-soilmapper to run processing</figcaption>
 </figure>
 </div>
@@ -628,7 +628,7 @@ Ymax = 5,501,000
 </section>
 <section id="file-naming-convention" class="level2">
 <h2 class="anchored" data-anchor-id="file-naming-convention">File Naming convention</h2>
-<p>SHDC will consistently use the standard OpenLandMap file-naming convention to submit new data-sets and similar (compare e.g.&nbsp;with the MODIS file naming convention). This is to ensure consistency and ease of use within the AI4SoilHealth project, but also by the end-users. This applies especially to WP4, WP5 and WP6.</p>
+<p>SHDC consistently uses the standard OpenLandMap file-naming convention to submit new data-sets and similar (compare e.g.&nbsp;with the MODIS file naming convention). This is to ensure consistency and ease of use within the AI4SoilHealth project, but also by the end-users. This applies especially to WP4, WP5 and WP6.</p>
 <p>The OpenLandMap file-naming convention works with 10 fields that basically define the most important properties of the data (this way users can search files, prepare data analysis etc, without even needing to access or open files. The 10 fields include:</p>
 <ol type="1">
 <li>Generic variable name (needs to be unique and approved by the AI4SoilHealth Coordination team): <code>lclu</code>;</li>
@@ -714,12 +714,12 @@ Ymax = 5,501,000
 </section>
 <section id="land-mask" class="level2">
 <h2 class="anchored" data-anchor-id="land-mask">Land mask</h2>
-<p>Considering the land mask for pan-EU (see figure), we will closely match the data coverage of <a href="https://land.copernicus.eu/pan-european">Copernicus pan-european</a> i.e.&nbsp; the official selection of countries listed <a href="https://lanEEA39d.copernicus.eu/portal_vocabularies/geotags/eea39">here</a>. Note the mask covers also all EU integration candidate countries, but can eventually also be subset to only European Union countries.</p>
+<p>Considering the land mask for pan-EU (see figure), we try to closely match the data coverage of <a href="https://land.copernicus.eu/pan-european">Copernicus pan-european</a> i.e.&nbsp; the official selection of countries listed <a href="https://lanEEA39d.copernicus.eu/portal_vocabularies/geotags/eea39">here</a>. Note the mask covers also all EU integration candidate countries, but can eventually also be subset to only European Union countries.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/land_mask_paneu.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="images/land_mask_paneu.png" class="img-fluid figure-img" style="width:60.0%"></p>
 <figcaption>Landmask for the SHDC for pan-EU.</figcaption>
 </figure>
 </div>
@@ -884,11 +884,11 @@ Can be found in the corresponding look-up table.
 </tr>
 </tbody></table>
 <p>An important point to consider is that the ISO-code country mask provides a wider geographical coverage compared to the NUTS3 mask. This extended coverage includes countries such as Ukraine and others that lie beyond the NUTS3 administrative boundaries. Both the land mask and administrative code mask are in an Equal-area projection, allowing for accurate area estimation and facilitating aggregation per political/administrative unit.</p>
-<p>These masks will be published and shared in a publicly available way on Zenodo. The working version (v0.1) is available from: <a href="https://doi.org/10.5281/zenodo.8171860">https://doi.org/10.5281/zenodo.8171860</a>. The layers can be opened directly in QGIS by copying links from Zenodo. The scripts used to generate these masks can be found in our <a href="https://gitlab.opengeohub.org/ai4soilhealth/internal-implementation/-/issues">project Gitlab</a> or via the <a href="https://github.com/AI4SoilHealth/SoilHealthDataCube/">public Github</a>. If any issue / problem is noticed, please report.</p>
+<p>These masks are published and shared in a publicly available way on Zenodo. The working version (v0.1) is available from: <a href="https://doi.org/10.5281/zenodo.8171860">https://doi.org/10.5281/zenodo.8171860</a>. The layers can be opened directly in QGIS by copying links from Zenodo. The scripts used to generate these masks can be found in our <a href="https://gitlab.opengeohub.org/ai4soilhealth/internal-implementation/-/issues">project Gitlab</a> or via the <a href="https://github.com/AI4SoilHealth/SoilHealthDataCube/">public Github</a>. If any issue / problem is noticed, please report.</p>
 </section>
 <section id="layer-submission-process-and-quality-control" class="level2">
 <h2 class="anchored" data-anchor-id="layer-submission-process-and-quality-control">Layer submission process and quality control</h2>
-<p>Partners on consortium are invited to submit working versions of data and services / share preliminary outputs internally via NextCloud or similar. Folder structure and more detailed instructions will be provided by the WP lead OpenGeoHub. It is important however to distinguish between (1) internal releases, (2) public releases (partners responsible) and (3) public releases approved by the consortium.</p>
+<p>Partners on consortium are invited to submit working versions of data and services / share preliminary outputs internally via NextCloud or similar. Folder structure and more detailed instructions are provided by the WP lead OpenGeoHub. It is important however to distinguish between (1) internal releases, (2) public releases (partners responsible) and (3) public releases approved by the consortium.</p>
 <p>All WP5 participants are required to register project outputs and inform other project participants about the progress. For internal documents / draft versions of outputs the following submission principles need to be followed:</p>
 <ul>
 <li>For internal datasets and documents use project repositories, Gitlab, NextCloud and Mattermost to inform parties about the progress and receive feedback;</li>
@@ -919,13 +919,13 @@ Can be found in the corresponding look-up table.
 </section>
 <section id="reproducible-research" class="level2">
 <h2 class="anchored" data-anchor-id="reproducible-research">Reproducible research</h2>
-<p>In order to ensure FAIR outputs, it is highly recommended that all production steps used to generate maps are documented in code, best as <strong>Rmarkdown / Python Jupyter computational notebooks</strong>. As agreed also in the project proposal, All empirical data obtained will follow strict and validated processes of monitoring and evaluation to avoid any potential error. The data produced in AI4SoilHealth will be made available as open data, following the <strong>FAIR </strong>principle. The project <strong>Data Management Plan (DMP)</strong> is available and has even more instructions.</p>
-<p>AI4SoilHealth has agreed to provide <strong>open access (OA)</strong> to research outputs (<em>e.g.</em>, publications, data, software) through deposition in trusted repositories. Partners will provide OA for peer-reviewed scientific publications relating to their results. Authors of all peer-reviewed scientific publications will store them in an OA trusted repository, during and after the project’s life following Article 17 and Annex 5 of the General Assembly. The consortium members will be encouraged to publish in the Open Research Europe data platform, specifically via the Zenodo community for AI4SoilHealth (<a href="https://zenodo.org/communities/ai4soilhealth/">https://zenodo.org/communities/ai4soilhealth/</a>).</p>
+<p>In order to ensure FAIR outputs, it is highly recommended that all production steps used to generate maps are documented in code, best as <strong>Rmarkdown / Python Jupyter computational notebooks</strong>. As agreed also in the project proposal, All empirical data obtained follows strict and validated processes of monitoring and evaluation to avoid any potential error. The data produced in AI4SoilHealth will be made available as open data, following the <strong>FAIR </strong>principle. The project <strong>Data Management Plan (DMP)</strong> is available and has even more instructions.</p>
+<p>AI4SoilHealth has agreed to provide <strong>open access (OA)</strong> to research outputs (<em>e.g.</em>, publications, data, software) through deposition in trusted repositories. Partners provide OA for peer-reviewed scientific publications relating to their results. Authors of all peer-reviewed scientific publications stores them in an OA trusted repository, during and after the project’s life following Article 17 and Annex 5 of the General Assembly. The consortium members are encouraged to publish in the Open Research Europe data platform, specifically via the Zenodo community for AI4SoilHealth (<a href="https://zenodo.org/communities/ai4soilhealth/">https://zenodo.org/communities/ai4soilhealth/</a>).</p>
 <p>Besides OA publication, the project aims for <strong>early and open sharing of the soil health data, and the research and technological developments </strong> including open data, open standards, open source software, and open communication:</p>
 <ul>
-<li><strong>Open data</strong>: The AI4SoilHealth consortium will build solutions upon open datasets published using genuinely <a href="https://opendefinition.org/licenses/">open data licenses</a>.<br>
+<li><strong>Open data</strong>: The AI4SoilHealth consortium builds solutions upon open datasets published using genuinely <a href="https://opendefinition.org/licenses/">open data licenses</a>.<br>
 </li>
-<li><strong>Open standards (interoperability)</strong>: The use of open standards prevents lock-in by, or dependency on any single data, software or service supplier. AI4SoilHealth will fully adopt the principles of FAIR data management and open standards to enable interoperability of methods and services, both within the project and beyond.</li>
+<li><strong>Open standards (interoperability)</strong>: The use of open standards prevents lock-in by, or dependency on any single data, software or service supplier. AI4SoilHealth fully adopts the principles of FAIR data management and open standards to enable interoperability of methods and services, both within the project and beyond.</li>
 <li><strong>Open source software</strong>: AI4SoilHealth plans to release the mobile phone application on Github under the MIT license. All major outputs of the project should be made available via the project github (<a href="https://github.com/ai4soilhealth">https://github.com/ai4soilhealth</a>).</li>
 <li><strong>Open communication:</strong> The consortium has experience with organizing live, open, and free discussion forums and workshops.</li>
 </ul>
