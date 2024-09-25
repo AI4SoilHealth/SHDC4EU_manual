@@ -8,14 +8,9 @@ if(length(new.packages)) install.packages(new.packages, repos = "https://cloud.r
 lapply(ls, require, character.only = TRUE)
 ```
 
-This document provides information about the **Soil Health Data Cube** for pan-EU 
-(SHDC4EU). The main purpose of the SHDC is to be as a platform for more detailed 
-computing i.e. to estimate trends in important soil health indicators (e.g. Bare 
-Soil Fraction, vegetation cover, chemical soil properties and similar). The SHDC is 
-available via S3 (Simple Storage Service) and STAC as open data, which means that 
-any researcher across EU can access data directly using [rstac](https://cran.r-project.org/package=rstac) 
-or similar, and fetch values / aggregate per polygon or farm. list will be continuously 
-updated and extended. **This document is continuously updated and new layers are continuously added**.
+<a rel="license" href="https://zenodo.org/doi/10.5281/zenodo.13838797"><img alt="DOI" style="border-width:0" src="https://zenodo.org/badge/DOI/10.5281/zenodo.13838797.svg" /></a><br />
+
+This document provides information about the **Soil Health Data Cube** for pan-EU (SHDC4EU). The main purpose of the SHDC is to be as a platform for more detailed computing i.e. to estimate trends in important soil health indicators (e.g. Bare Soil Fraction, vegetation cover, chemical soil properties and similar). The SHDC is available via S3 (Simple Storage Service) and STAC as open data, which means that any researcher across EU can access data directly using [rstac](https://cran.r-project.org/package=rstac) or similar, and fetch values / aggregate per polygon or farm. list will be continuously updated and extended. **This document is continuously updated and new layers are continuously added**.
 
 <a href="https://a4soilhealth.eu/"><img src="./images/cover.png" alt="AI4SoilHealth logo" width="300"></a>
 
@@ -116,12 +111,12 @@ To cite this document please use:
 ```
 @book{shdc4eu_2024,
   author       = {Hengl, T., Minarik, R., Tian, X., Parente, L., Ho, Y.-F., Consoli, D., Simoes, R., and contributors},
-  title        = {{Soil Health Data Cube for pan-EU: specifications and data tutorials}},
+  title        = {{Soil Health Data Cube for pan-EU technical manual}},
   year         = {2024},
   publisher    = {OpenGeoHub foundation},
   address      = {Doorwerth},
   version      = {v0.1},
-  doi          = {10.5281/zenodo.??},
+  doi          = {10.5281/zenodo.13838797},
   url          = {https://shdc.ai4soilhealth.eu/}
 }
 ```
