@@ -5,7 +5,7 @@ Soil Health Data Cube for Europe. Note, the list if constantly updated. Some lay
 are available on Zenodo and on S3, but most layers are only available on S3. The 
 total size of all data is at the order of 20 to 30TB.
 
-In principle, the data in SHDC is licensed under CC-BY, and the code is licensed 
+In principle, the data in SHDC is licensed under [CC-BY](https://creativecommons.org/licenses/by/4.0/), and the code is licensed 
 under the MIT License. Training points are used under various terms and conditions.
 
 ## Pan-EU Landmask
@@ -17,9 +17,9 @@ under the MIT License. Training points are used under various terms and conditio
    - **Land mask**: with values differentiating land, ocean, and inland water
    - **NUT-3 code map**: with values differentiating administrative area at nut-3 level
    - **ISO-3166 country code map**: with values differentiating countries according to ISO-3166 standard
-The jupyter notebooks and bash files that are used to produce masks, merge tiles, reproject crs, and resample to another resolution.
+The jupyter notebooks and bash files that are used to produce masks, merge tiles, reproject coordinate systems, and resample to another resolution.
 
-All the landmasks are aligned with the standard spatial/temporal resolution and sizes indicated/recomended by AI4SoilHealth project, Work Package - 5. The coverage of these maps closely match the data coverage of https://land.copernicus.eu/pan-european i.e. the official selection of countries listed here: https://lanEEA39d.copernicus.eu/portal_vocabularies/geotags/eea39. 
+All the landmasks are aligned with the standard spatial/temporal resolution and sizes indicated/recommended by AI4SoilHealth project, WP5. The coverage of these maps closely match the data coverage of https://land.copernicus.eu/pan-european i.e. the official selection of countries listed here: https://lanEEA39d.copernicus.eu/portal_vocabularies/geotags/eea39. 
 
 These masks are created by [Xuemeng](xuemeng.tian@opengeohub.org), [Yu-Feng](yu-feng.ho@opengeohub.org), and [Martijn](martijn.witjes@opengeohub.org) from [OpenGeoHub](https://opengeohub.org/). If you spot any problems in the land masks, or see any possible improvements in them, or have any questions, or etc..., just raise an issue [here](https://github.com/AI4SoilHealth/SoilHealthDataCube/issues) or send us emails! We appreciate any feedbacks that could refine these masks.
 
@@ -53,11 +53,14 @@ DOI = {10.5194/essd-2024-266}
 ```
 
 ### Summary
+
 The [corresponding folder](https://github.com/AI4SoilHealth/SoilHealthDataCube/tree/main/landsat_based_spectral_indices) provides:
+
 1. Essential code & data used to generate/analyze/visualize/upload the landsat-based spectral indices data cube,
 2. Visualization for selected indices.
 
 The indices include:
+
 - **Vegetation index**: Normalized Difference Vegetation Index (NDVI), Soil Adjusted Vegetation Index (SAVI), and Fraction of Absorbed Photosynthetically Active Radiation (FAPAR).
 - **Soil exposure**: Bare Soil Fraction (BSF).
 - **Tillage and soil sealing**: Normalized Difference Tillage Index (NDTI) and minimum Normalized Difference Tillage Index (minNDTI).
@@ -81,12 +84,13 @@ knitr::include_graphics("images/landsat_example_bsf_ndvi_ndwi.jpg")
 
 To ensure accessibility and proper usage of the dataset, we have distributed the 
 data across multiple platforms for different purposes:
+
 1. **Zenodo** <https://zenodo.org/communities/ai4soilhealth>
-   - This dataset is registered on Zenodo with preview visualization and a valid DOI: https://doi.org/10.5281/zenodo.10776891.
+   - This dataset is registered on Zenodo with preview visualization and a valid DOI: <https://doi.org/10.5281/zenodo.10776891>.
    - Due to the storage limit of Zenodo in each bucket, uploading all data layers to Zenodo is impractical and not beneficial for users as it would be too distributed. Therefore, for bimonthly predictors, only data layers for the years 2000 and 2022 are uploaded. All the annual and long-term predictors are available, though.
-3. **Wasabi cloud**
+3. **Wasabi.com cloud**
    - The complete dataset is hosted on Wasabi's cloud in COG format, enabling efficient storage, retrieval, and secure data management.
-   - A comprehensive index of all the data layers stored and maintained on Wasabi is available through a [navigation catalog in a Google Sheet](https://docs.google.com/spreadsheets/d/1QTA6OkkYlZljfHst_inCrkC7DJcMAyHnM9k0iHulwpg/edit?usp=sharing), facilitating the indexing, finding, and downloading of all the predictor layers. 
+   - A comprehensive index of all the data layers stored and maintained on Wasabi.com is available through a [navigation catalog in a Google Sheet](https://docs.google.com/spreadsheets/d/1QTA6OkkYlZljfHst_inCrkC7DJcMAyHnM9k0iHulwpg/edit?usp=sharing), facilitating the indexing, finding, and downloading of all the predictor layers. 
 
 
 ### Contacts and issues
@@ -118,6 +122,7 @@ models for 10 key soil properties:
 10. Extractable Potassium (K)
 
 The [notebooks and their content](https://github.com/AI4SoilHealth/SoilHealthDataCube/tree/main/SOCD_map):
+
 - **Notebooks (001 -- 009)**
   - Designed to test various steps in the predictive model building process
   - Explore and validate different methodologies and approaches for model construction
@@ -193,7 +198,7 @@ outputs are [@tian2025socd]:
 - **Final Model**
   - Selection: Model with the best overall performance across metrics for both CV and individual validation.
   - Training: Trained on the complete dataset of soil points using optimized features and parameters.
-  - Quantile Regression Model: A quantile model will be trained with same parameters on the complete dataset to estimate prediction intervals.
+  - [Quantile Regression Model](https://scikit-garden.github.io/examples/QuantileRegressionForests/): A quantile model will be trained with same parameters on the complete data set to estimate prediction intervals.
   - Map Production: Fully trained model used for soil property prediction and uncertainty map production.
 
 ### Contacts
@@ -228,12 +233,13 @@ DOI = {10.21203/rs.3.rs-5128244/v1}
 ## 30-m resolution maps of soil types (WRB)
 
 ### Summary
+
 The folder **WRB_map** contains scripts used to test, train, evaluate predictive 
 models to map soil types based on the IUSS World Reference Base classification system. 
 For this we used [@minarik2025wrb]:
 
--  cca 19,000 training points with ground observation of soil types.
--  a wide range of environmental covariates, especially the time series of 30-m Landsat-based spectral indices.
+-  cca 19,000 training points with ground observation of soil types;
+-  a wide range of environmental covariates, especially the time series of 30-m Landsat-based spectral indices;
   
 The scripts used to generate the figures in the paper are also included.
 
@@ -252,6 +258,7 @@ DOI = {xx}
 ```
 
 ## Disclaimer
+
 The production of these data layers are parts of [AI4SoilHealth](https://cordis.europa.eu/project/id/101086179) project. 
 The AI4SoilHealth project project has received funding from the European Union's 
 Horizon Europe research an innovation programme under grant agreement No. 101086179. 
