@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Soil Health Data Cube for Europe</title>
+<title>Point Data Import and Quality Control – Soil Health Data Cube for Europe</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,10 +20,44 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -68,12 +102,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<meta property="og:title" content="Soil Health Data Cube for Europe">
+<meta property="og:title" content="Point Data Import and Quality Control – Soil Health Data Cube for Europe">
 <meta property="og:description" content="Soil Health Data Cube for pan-EU (SHDC4EU) is compilation of pan-EU layers organized into a data cube and served through an API as analysis or decision ready data.">
 <meta property="og:site_name" content="Soil Health Data Cube for Europe">
-<meta name="twitter:title" content="Soil Health Data Cube for Europe">
+<meta name="twitter:title" content="Point Data Import and Quality Control – Soil Health Data Cube for Europe">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="images/cover.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -94,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -109,13 +146,13 @@ ul.task-list li input[type="checkbox"] {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools tools-wide">
+            <div class="quarto-navbar-tools tools-wide">
     <a href="https://fosstodon.org/@opengeohub" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-mastodon"></i></a>
     <a href="https://opengeohub.medium.com/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-medium"></i></a>
     <a href="https://twitter.com/AI4SoilHealth" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
     <div class="dropdown">
-      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-github"></i></a>
-      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
             <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/AI4SoilHealth/SHDC4EU_manual">
             Source Code
@@ -139,11 +176,11 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./3-points.html">Data use tutorials</a></li><li class="breadcrumb-item"><a href="./3-points.html">Point data import and quality control</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./3-points.html">Data use tutorials</a></li><li class="breadcrumb-item"><a href="./3-points.html">Point Data Import and Quality Control</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -156,9 +193,9 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Soil Health Data Cube components</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -191,9 +228,9 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Data use tutorials</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -201,7 +238,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./3-points.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Point data import and quality control</span></a>
+ <span class="menu-text">Point Data Import and Quality Control</span></a>
   </div>
 </li>
       </ul>
@@ -216,36 +253,1064 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#point-data-import-and-quality-control" id="toc-point-data-import-and-quality-control" class="nav-link active" data-scroll-target="#point-data-import-and-quality-control">Point data import and quality control</a>
+  <li><a href="#raw-soil-data" id="toc-raw-soil-data" class="nav-link active" data-scroll-target="#raw-soil-data">Raw Soil Data</a></li>
+  <li><a href="#harmonization-sheet" id="toc-harmonization-sheet" class="nav-link" data-scroll-target="#harmonization-sheet">Harmonization Sheet</a></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a>
   <ul class="collapse">
-  <li><a href="#import-and-quality-control-of-lucas-points" id="toc-import-and-quality-control-of-lucas-points" class="nav-link" data-scroll-target="#import-and-quality-control-of-lucas-points">Import and quality control of LUCAS points</a></li>
-  <li><a href="#import-and-quality-control-of-national-data-sets" id="toc-import-and-quality-control-of-national-data-sets" class="nav-link" data-scroll-target="#import-and-quality-control-of-national-data-sets">Import and quality control of national data sets</a></li>
-  <li><a href="#final-bind" id="toc-final-bind" class="nav-link" data-scroll-target="#final-bind">Final bind</a></li>
+  <li><a href="#format-standardization-gemas-example" id="toc-format-standardization-gemas-example" class="nav-link" data-scroll-target="#format-standardization-gemas-example">Format Standardization: GEMAS Example</a></li>
+  <li><a href="#merge-datasets." id="toc-merge-datasets." class="nav-link" data-scroll-target="#merge-datasets.">Merge datasets.</a></li>
+  <li><a href="#quality-control-soc-example" id="toc-quality-control-soc-example" class="nav-link" data-scroll-target="#quality-control-soc-example">Quality control: SOC example</a></li>
   </ul></li>
+  <li><a href="#harmonized-soil-dataset" id="toc-harmonized-soil-dataset" class="nav-link" data-scroll-target="#harmonized-soil-dataset">Harmonized soil dataset</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/edit/main/3-points.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./3-points.html">Data use tutorials</a></li><li class="breadcrumb-item"><a href="./3-points.html">Point Data Import and Quality Control</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Point Data Import and Quality Control</h1>
+</div>
 
 
 
-<section id="point-data-import-and-quality-control" class="level1">
-<h1>Point data import and quality control</h1>
-<p><strong>Under construction</strong></p>
-<p>This section provides detailed steps implemented to import and bind all soil laboratory / soil site data.</p>
-<section id="import-and-quality-control-of-lucas-points" class="level2">
-<h2 class="anchored" data-anchor-id="import-and-quality-control-of-lucas-points">Import and quality control of LUCAS points</h2>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Last update 19 November 2024</strong></p>
+<p>This section outlines the detailed procedures used to import and bind all soil laboratory and site data. The major components of the process are shown in Figure <a href="#fig-general-workflow" class="quarto-xref">Figure&nbsp;1</a>, and are further explained in the corresponding subsections.</p>
+<div id="fig-general-workflow" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-general-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/Soil data harmonization flow.drawio.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-general-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Key components and workflow for harmonizing point soil data.
+</figcaption>
+</figure>
+</div>
+<section id="raw-soil-data" class="level2">
+<h2 class="anchored" data-anchor-id="raw-soil-data">Raw Soil Data</h2>
+<p>Point soil datasets are organized systematically to facilitate easy access and management. All raw data files are stored in a main folder named “raw data”. Within this folder, there are sub-folders for each country or region, named using the NUTS0 code (e.g., <code>DE</code> for Germany, <code>UK</code> for the United Kingdom, etc.).</p>
 </section>
-<section id="import-and-quality-control-of-national-data-sets" class="level2">
-<h2 class="anchored" data-anchor-id="import-and-quality-control-of-national-data-sets">Import and quality control of national data sets</h2>
+<section id="harmonization-sheet" class="level2">
+<h2 class="anchored" data-anchor-id="harmonization-sheet">Harmonization Sheet</h2>
+<p>The <a href="https://docs.google.com/spreadsheets/d/1J652XU_VWmbm1uLmeywlF6kfe7fUD5aJrfAIK97th1E/edit?gid=293050413#gid=293050413">Google Sheet</a> serves as the central platform for managing and documenting all soil data. It consists of multiple sheets, each serving specific functions:</p>
+<ol type="1">
+<li><p><strong>Overview Sheet</strong>: High-level information including data sources, data availability across sources and properties, and the spatio-temporal distribution of the entire dataset.</p></li>
+<li><p><strong>Property Sheets</strong>: Each sheet is named after a soil property involved in the harmonization process, see the example of <code>soc</code> in Figure <a href="#fig-soc-harmonization" class="quarto-xref">Figure&nbsp;2</a> sheet.</p>
+<ul>
+<li>src: Indicates the origin or source from which the data is obtained.</li>
+<li>method description: Provides the original description of the measurement method as documented, detailing how the data was measured.</li>
+<li>data count: The number of data entries available for this measurement method from the specified source.</li>
+<li>quality note: A summarized interpretation of the method description, prepared to assist in assigning an appropriate quality flag.</li>
+<li>quality score: A designated score indicating the reliability of the data, helping determine whether it is suitable for use.</li>
+<li>conversion formula: Specifies any necessary conversion formula to standardize the data.</li>
+<li>conversion reference: Cites the literature or source that supports the choice of the conversion formula.</li>
+<li>notes: Any supplementary information or remarks relevant to the data or its context.</li>
+</ul></li>
+</ol>
+<div id="fig-soc-harmonization" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-soc-harmonization-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/soc_harmonization_sheet.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-soc-harmonization-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: soc harmonization sheet
+</figcaption>
+</figure>
+</div>
 </section>
-<section id="final-bind" class="level2">
-<h2 class="anchored" data-anchor-id="final-bind">Final bind</h2>
+<section id="code" class="level2">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<p>The code section includes Jupyter notebooks used for importing, quality control, harmonizing, and binding datasets into a single harmonized soil dataset. For the complete code, visit the <a href="link">GitHub repository</a>.</p>
+<section id="format-standardization-gemas-example" class="level3">
+<h3 class="anchored" data-anchor-id="format-standardization-gemas-example">Format Standardization: GEMAS Example</h3>
+<p>The standardization of format (e.g., arrangement of rows/columns, naming conventions) is done individually for each dataset. Here’s an example using the GEMAS dataset.</p>
+<p>First import necessary libraries and define input and output paths.</p>
+<div id="fe45fd55" class="cell" data-results="as-is" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialization Cell: Import libraries and set paths</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">'USE_PYGEOS'</span>] <span class="op">=</span> <span class="st">'0'</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> eumap.misc <span class="im">import</span> find_files, nan_percentile, GoogleSheet, ttprint</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>module_path <span class="op">=</span> <span class="st">'/home/xuemeng/work_xuemeng/ai4sh_data.harmo/soil-data/code/'</span> <span class="co"># Add the folder containing harmonization_tool_kit.py to the system path</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> module_path <span class="kw">not</span> <span class="kw">in</span> sys.path:</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    sys.path.append(module_path)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> harmonization_tool_kit <span class="im">import</span> plot_subplots_histogram, conversion_and_score, plot_spatial_distribution</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>input_path <span class="op">=</span> <span class="st">'/home/xuemeng/work_xuemeng/ai4sh_data.harmo/raw_data'</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>output_path <span class="op">=</span> <span class="st">'/home/xuemeng/work_xuemeng/ai4sh_data.harmo/data_v2'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Then load GEMAS data, check its format and content.</p>
+<div id="720b8b74" class="cell" data-results="as-is" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>gema <span class="op">=</span> gpd.read_file(<span class="ss">f'</span><span class="sc">{</span>input_path<span class="sc">}</span><span class="ss">/EU/GEMAS/GEMAS.csv'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gema.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<div>
 
 
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">COUNTRY</th>
+<th data-quarto-table-cell-role="th">UHDICM</th>
+<th data-quarto-table-cell-role="th">LHDICM</th>
+<th data-quarto-table-cell-role="th">C_ID</th>
+<th data-quarto-table-cell-role="th">TYPE</th>
+<th data-quarto-table-cell-role="th">XCOO</th>
+<th data-quarto-table-cell-role="th">YCOO</th>
+<th data-quarto-table-cell-role="th">XLAEA</th>
+<th data-quarto-table-cell-role="th">YLAEA</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Cd</th>
+<th data-quarto-table-cell-role="th">Cu</th>
+<th data-quarto-table-cell-role="th">Pb</th>
+<th data-quarto-table-cell-role="th">Zn</th>
+<th data-quarto-table-cell-role="th">C_tot</th>
+<th data-quarto-table-cell-role="th">TOC</th>
+<th data-quarto-table-cell-role="th">CEC</th>
+<th data-quarto-table-cell-role="th">pH_CaCl2</th>
+<th data-quarto-table-cell-role="th">LOI</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>3001</td>
+<td>GER</td>
+<td>0</td>
+<td>20</td>
+<td>39</td>
+<td>Ap</td>
+<td>10.6667</td>
+<td>52.4167</td>
+<td>4366358.988</td>
+<td>3256570.511</td>
+<td>...</td>
+<td>0.212</td>
+<td>3.47</td>
+<td>14.91</td>
+<td>19.2</td>
+<td>1.36</td>
+<td>1.3</td>
+<td>9.3</td>
+<td>6.05</td>
+<td>3.67</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>3002</td>
+<td>SKA</td>
+<td>0</td>
+<td>20</td>
+<td>20</td>
+<td>Ap</td>
+<td>19.608</td>
+<td>48.5683</td>
+<td>5028057.752</td>
+<td>2874475.41</td>
+<td>...</td>
+<td>0.1599</td>
+<td>4.94</td>
+<td>20.38</td>
+<td>50</td>
+<td>2.09</td>
+<td>2</td>
+<td>11.1</td>
+<td>4.9</td>
+<td>8.12</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3003</td>
+<td>EST</td>
+<td>0</td>
+<td>20</td>
+<td>9</td>
+<td>Ap</td>
+<td>22.5333</td>
+<td>58.58</td>
+<td>5046996.613</td>
+<td>4006167.894</td>
+<td>...</td>
+<td>0.1781</td>
+<td>6.49</td>
+<td>10.59</td>
+<td>44.1</td>
+<td>2.86</td>
+<td>2.8</td>
+<td>13.9</td>
+<td>6.2</td>
+<td>7.33</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3004</td>
+<td>LIT</td>
+<td>0</td>
+<td>20</td>
+<td>9</td>
+<td>Ap</td>
+<td>24.9375</td>
+<td>55.4631</td>
+<td>5258480.127</td>
+<td>3693116.32</td>
+<td>...</td>
+<td>0.1404</td>
+<td>5.22</td>
+<td>7.67</td>
+<td>19.4</td>
+<td>1.79</td>
+<td>1.8</td>
+<td>15.6</td>
+<td>6.81</td>
+<td>5.66</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>3005</td>
+<td>NOR</td>
+<td>0</td>
+<td>20</td>
+<td>9</td>
+<td>Ap</td>
+<td>25.0675</td>
+<td>70.5008</td>
+<td>4884643.708</td>
+<td>5324544.679</td>
+<td>...</td>
+<td>0.358</td>
+<td>6.81</td>
+<td>6.99</td>
+<td>32.4</td>
+<td>10.4</td>
+<td>11</td>
+<td>24.7</td>
+<td>4.48</td>
+<td>22.82</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 24 columns</p>
+</div>
+</div>
+</div>
+<p>When converting GEMAS dataset to standard format, a temporary DataFrame is created to store the harmonized version of the GEMAS dataset. The soil property data is systematically organized into three components for each property available in the GEMAS dataset: 1. measured values; 2. measurement methods; 3. units.</p>
+<div id="8100fb3a" class="cell" data-results="as-is" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>temp <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'ph.cacl2'</span>] <span class="op">=</span> gema[<span class="st">'pH_CaCl2'</span>] <span class="co"># unit info is not necessary for pH, therefore not recorded</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'ph.cacl2_method'</span>] <span class="op">=</span> <span class="st">'0.01 M CaCl2'</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'clay'</span>] <span class="op">=</span> gema[<span class="st">'clay'</span>]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'silt'</span>] <span class="op">=</span> gema[<span class="st">'silt'</span>]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>temp <span class="op">=</span> temp[[<span class="st">'clay'</span>,<span class="st">'silt'</span>]].<span class="bu">apply</span>(pd.to_numeric)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'sand'</span>] <span class="op">=</span> <span class="dv">100</span><span class="op">-</span>temp[<span class="st">'clay'</span>]<span class="op">-</span>temp[<span class="st">'silt'</span>]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'clay_unit'</span>] <span class="op">=</span> <span class="st">'%'</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'sand_unit'</span>] <span class="op">=</span> <span class="st">'%'</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'silt_unit'</span>] <span class="op">=</span> <span class="st">'%'</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'clay_method'</span>] <span class="op">=</span> <span class="st">'&lt;2 μm, DIN-EN 725-5 (04/2007) / ISO 13320 (10/2009) bylaser diffractometry.'</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'sand_method'</span>] <span class="op">=</span> <span class="st">'20-2000 μm, DIN-EN 725-5 (04/2007) / ISO 13320 (10/2009) bylaser diffractometry.'</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'silt_method'</span>] <span class="op">=</span> <span class="st">'2-20 μm, DIN-EN 725-5 (04/2007) / ISO 13320 (10/2009) bylaser diffractometry.'</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'soc'</span>] <span class="op">=</span> gema[<span class="st">'TOC'</span>] </span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'soc_unit'</span>] <span class="op">=</span> <span class="st">'%'</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'soc_method'</span>] <span class="op">=</span> <span class="st">'ISO standard 10694, Soilquality – determination of organic and total carbon after dry combustion'</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'cec'</span>] <span class="op">=</span> gema[<span class="st">'CEC'</span>] <span class="co"># meq/100g = cmol/kg</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'cec_unit'</span>] <span class="op">=</span> <span class="st">'meq+/100 g'</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'cec_method'</span>] <span class="op">=</span> <span class="st">'silver-thiourea method'</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'lc_survey'</span>] <span class="op">=</span> gema[<span class="st">'TYPE'</span>]</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>temp.loc[temp[<span class="st">'lc_survey'</span>]<span class="op">==</span><span class="st">'Gr'</span>,<span class="st">'lc_survey'</span>] <span class="op">=</span> <span class="st">'permanent grassland'</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>temp.loc[temp[<span class="st">'lc_survey'</span>]<span class="op">==</span><span class="st">'Ap'</span>,<span class="st">'lc_survey'</span>] <span class="op">=</span> <span class="st">'arable land'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Another key component is meta information, which contains key details such as the sampling location, time, depth, NUTS0 region, reference information (to identify the data source), and unique identifiers (used within each data source to distinguish individual measurements).</p>
+<div id="d59274bc" class="cell" data-results="as-is" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'lat'</span>] <span class="op">=</span> gema[<span class="st">'YCOO'</span>]  <span class="co"># coordinates</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'lon'</span>] <span class="op">=</span> gema[<span class="st">'XCOO'</span>]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'time'</span>] <span class="op">=</span> <span class="dv">2008</span>   <span class="co"># time, GEMAS soil survey is conducted in 2008</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'hzn_top'</span>] <span class="op">=</span> gema[<span class="st">'UHDICM'</span>]   <span class="co"># top and bottom depth of the surveyed soil layers</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'hzn_btm'</span>] <span class="op">=</span> gema[<span class="st">'LHDICM'</span>]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'ref'</span>] <span class="op">=</span> <span class="st">'gemas'</span>   <span class="co"># reference column</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'id'</span>] <span class="op">=</span> gema[<span class="st">'ID'</span>]   <span class="co"># id used for each "ref"</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Map country codes to NUTS0</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>country_to_nuts0 <span class="op">=</span> {</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'GER'</span>: <span class="st">'DE'</span>, <span class="st">'SKA'</span>: <span class="st">'SK'</span>, <span class="st">'EST'</span>: <span class="st">'EE'</span>, <span class="st">'LIT'</span>: <span class="st">'LT'</span>, <span class="st">'NOR'</span>: <span class="st">'NO'</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'PTG'</span>: <span class="st">'PT'</span>, <span class="st">'POL'</span>: <span class="st">'PL'</span>, <span class="st">'SWE'</span>: <span class="st">'SE'</span>, <span class="st">'DEN'</span>: <span class="st">'DK'</span>, <span class="st">'ITA'</span>: <span class="st">'IT'</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'FRA'</span>: <span class="st">'FR'</span>, <span class="st">'FIN'</span>: <span class="st">'FI'</span>, <span class="st">'UKR'</span>: <span class="st">'UA'</span>, <span class="st">'CRO'</span>: <span class="st">'HR'</span>, <span class="st">'HEL'</span>: <span class="st">'EL'</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'HUN'</span>: <span class="st">'HU'</span>, <span class="st">'SPA'</span>: <span class="st">'ES'</span>, <span class="st">'CYP'</span>: <span class="st">'CY'</span>, <span class="st">'BEL'</span>: <span class="st">'BE'</span>, <span class="st">'UNK'</span>: <span class="st">'UK'</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'LAV'</span>: <span class="st">'LV'</span>, <span class="st">'SIL'</span>: <span class="st">'SI'</span>, <span class="st">'BUL'</span>: <span class="st">'BG'</span>, <span class="st">'SRB'</span>: <span class="st">'RS'</span>, <span class="st">'CZR'</span>: <span class="st">'CZ'</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">'BOS'</span>: <span class="st">'BA'</span>, <span class="st">'FOM'</span>: <span class="st">'MK'</span>, <span class="st">'AUS'</span>: <span class="st">'AT'</span>, <span class="st">'NEL'</span>: <span class="st">'NL'</span>, <span class="st">'SLO'</span>: <span class="st">'SK'</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'IRL'</span>: <span class="st">'IE'</span>, <span class="st">'MON'</span>: <span class="st">'ME'</span>, <span class="st">'LUX'</span>: <span class="st">'LU'</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'nuts0'</span>] <span class="op">=</span> gema[<span class="st">'COUNTRY'</span>] </span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'nuts0'</span>] <span class="op">=</span> gema[<span class="st">'COUNTRY'</span>].<span class="bu">map</span>(country_to_nuts0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Before saving, the data is preliminarily cleaned and filtered using metadata to ensure all measurements have valid location, time, and depth information. Additionally, only measurements taken after the year 2000 are retained, aligning with the temporal scope of our modeling and mapping efforts.</p>
+<div id="c844a44d" class="cell" data-results="as-is" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span><span class="bu">len</span>(temp)<span class="sc">}</span><span class="ss"> data in total'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>na <span class="op">=</span> temp[<span class="st">'time'</span>].isna().<span class="bu">sum</span>()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>na<span class="sc">}</span><span class="ss"> data with no time info'</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>na <span class="op">=</span> temp.loc[temp[<span class="st">'time'</span>]<span class="op">&lt;</span><span class="dv">2000</span>]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span><span class="bu">len</span>(na)<span class="sc">}</span><span class="ss"> data sampled before year 2000'</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'hzn_dep'</span> <span class="kw">in</span> temp.columns:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    na <span class="op">=</span> temp[<span class="st">'hzn_dep'</span>].isna().<span class="bu">sum</span>()</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    na <span class="op">=</span> <span class="bu">len</span>(temp[temp[<span class="st">'hzn_btm'</span>].isna() <span class="op">|</span> temp[<span class="st">'hzn_top'</span>].isna()])</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>na<span class="sc">}</span><span class="ss"> data with no depth info'</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>na <span class="op">=</span> <span class="bu">len</span>(temp[temp[<span class="st">'lat'</span>].isna() <span class="op">|</span> temp[<span class="st">'lon'</span>].isna()])</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>na<span class="sc">}</span><span class="ss"> data with no coordinate info'</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'hzn_dep'</span> <span class="kw">in</span> temp.columns:</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    temp <span class="op">=</span> temp.dropna(subset<span class="op">=</span>[<span class="st">'time'</span>,<span class="st">'hzn_dep'</span>,<span class="st">'lat'</span>,<span class="st">'lon'</span>])</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    temp <span class="op">=</span> temp.dropna(subset<span class="op">=</span>[<span class="st">'time'</span>,<span class="st">'hzn_btm'</span>,<span class="st">'hzn_top'</span>,<span class="st">'lat'</span>,<span class="st">'lon'</span>])</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>temp <span class="op">=</span> temp.loc[temp[<span class="st">'time'</span>]<span class="op">&gt;=</span><span class="dv">2000</span>]</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span><span class="bu">len</span>(temp)<span class="sc">}</span><span class="ss"> data left in total after filtering'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>4132 data in total
+0 data with no time info
+0 data sampled before year 2000
+0 data with no depth info
+0 data with no coordinate info
+4132 data left in total after filtering</code></pre>
+</div>
+</div>
+<p>Finally, ensure that the data is saved securely in the correct folder.</p>
+<div id="498ccbe9" class="cell" data-results="as-is" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>temp.to_parquet(<span class="ss">f'</span><span class="sc">{</span>output_path<span class="sc">}</span><span class="ss">/gemas.showcase_harmonized_l1.pq'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(temp.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>(4132, 24)</code></pre>
+</div>
+</div>
 </section>
+<section id="merge-datasets." class="level3">
+<h3 class="anchored" data-anchor-id="merge-datasets.">Merge datasets.</h3>
+<p>Once all raw datasets are harmonized into a standard format, they will be merged into a single, unified dataset for further checks and harmonization.</p>
+<p>The standardized datasets are saved using the naming pattern {raw dataset name}_harmonized_l1.pq, with which we could easily parse all the standardized datasets and then merge them together.</p>
+<div id="d75369d5" class="cell" data-results="as-is" data-execution_count="7">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data_path <span class="op">=</span> <span class="st">'/home/xuemeng/work_xuemeng/ai4sh_data.harmo/data_v2'</span>  <span class="co"># define path of operation</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># parse the paths to all standarized datasets</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_soil_dataset(directory):</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    listt <span class="op">=</span> []</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> dirpath,_,filenames <span class="kw">in</span> os.walk(directory):</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> f <span class="kw">in</span> filenames:</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="st">'harmonized_l1.pq'</span> <span class="kw">in</span> f:</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                listt.append(os.path.abspath(os.path.join(dirpath, f)))</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> listt</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>path_list <span class="op">=</span> find_soil_dataset(data_path)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>data_list <span class="op">=</span> []</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># read in all standarized datasets and merge</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ip <span class="kw">in</span> path_list:</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    temp <span class="op">=</span> pd.read_parquet(ip) <span class="co">#, dtype=dtype_dict</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Dataset: '</span>, ip.split(<span class="st">'/'</span>)[<span class="op">-</span><span class="dv">1</span>].split(<span class="st">'_'</span>)[<span class="dv">0</span>], <span class="st">'with '</span>, <span class="bu">len</span>(temp.columns), <span class="st">' data records.'</span>)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    data_list.append(temp)</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()    </span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.concat(data_list)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co"># unify the data format in each column</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>meta_cols <span class="op">=</span> [<span class="st">'id'</span>, <span class="st">'lat'</span>, <span class="st">'lon'</span>, <span class="st">'time'</span>, <span class="st">'hzn_top'</span>, <span class="st">'hzn_btm'</span>, <span class="st">'ref'</span>, <span class="st">'nuts0'</span>]  <span class="co"># columns to indicate meta information</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>prop_cols <span class="op">=</span> [<span class="st">'soc'</span>, <span class="st">'carbonates'</span>, <span class="st">'total.n'</span>, <span class="st">'ph.h2o'</span>, <span class="st">'ph.cacl2'</span>, <span class="st">'bulk.density.tot'</span>, <span class="st">'bulk.density.fe'</span>,</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>             <span class="st">'clay'</span>, <span class="st">'silt'</span>, <span class="st">'sand'</span>, <span class="st">'extractable.p'</span>, <span class="st">'extractable.k'</span>,<span class="st">'cec'</span>,<span class="st">'ec'</span>,<span class="st">'coarse.mass'</span>,<span class="st">'coarse.vol'</span>]  <span class="co"># columns to indicate property values</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>unit_cols <span class="op">=</span> [i<span class="op">+</span><span class="st">'_unit'</span> <span class="cf">for</span> i <span class="kw">in</span> prop_cols]  <span class="co"># columns to indicate the unit information for each property</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>mtod_cols <span class="op">=</span> [i<span class="op">+</span><span class="st">'_method'</span> <span class="cf">for</span> i <span class="kw">in</span> prop_cols]  <span class="co"># columns to indicate the method used for each measurements</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>num_cols <span class="op">=</span> [<span class="st">'lat'</span>, <span class="st">'lon'</span>, <span class="st">'time'</span>, <span class="st">'hzn_top'</span>, <span class="st">'hzn_btm'</span>] <span class="op">+</span> prop_cols</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> num_cols:</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    data[col] <span class="op">=</span> pd.to_numeric(data[col], errors<span class="op">=</span><span class="st">'coerce'</span>)    </span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>str_cols <span class="op">=</span> [<span class="st">'id'</span>] <span class="op">+</span> unit_cols <span class="op">+</span> mtod_cols</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> str_cols:</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>    data[col] <span class="op">=</span> data[col].astype(<span class="bu">str</span>)</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a><span class="co"># show some example rows </span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>sampled_rows <span class="op">=</span> (</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>    data[[<span class="st">'ref'</span>,<span class="st">'id'</span>]<span class="op">+</span>prop_cols<span class="op">+</span>unit_cols<span class="op">+</span>mtod_cols].groupby(<span class="st">'ref'</span>)</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.sample(n<span class="op">=</span><span class="dv">1</span>))  <span class="co"># Sample one row per 'ref' group</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>    .sample(n<span class="op">=</span><span class="dv">5</span>, random_state<span class="op">=</span><span class="dv">42</span>)   <span class="co"># Randomly choose 5 rows from the sampled groups</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>    .reset_index(drop<span class="op">=</span><span class="va">True</span>)         <span class="co"># Reset index for a clean DataFrame</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>sampled_rows</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Dataset:  spain.ParcelasINES with  20  data records.
+Dataset:  ukceh with  22  data records.
+Dataset:  slovenia with  36  data records.
+Dataset:  croatia with  45  data records.
+Dataset:  gemas.showcase with  24  data records.
+Dataset:  swiss.nabo with  50  data records.
+Dataset:  geocradle with  21  data records.
+Dataset:  estonia.kese with  25  data records.
+Dataset:  foregs with  14  data records.
+Dataset:  lucas with  57  data records.
+Dataset:  germany with  39  data records.
+Dataset:  portugal with  43  data records.
+Dataset:  wales with  26  data records.
+Dataset:  marsoc with  20  data records.
+Dataset:  czech with  19  data records.
+Dataset:  basque with  46  data records.
+Dataset:  castilla.y.leon with  26  data records.
+Dataset:  hunssd with  34  data records.
+Dataset:  spain.ParcelasCOS with  17  data records.
+Dataset:  bro.bhrp.nl with  23  data records.
+Dataset:  gemas with  24  data records.
+Dataset:  nl.bis with  32  data records.
+Dataset:  sodah with  38  data records.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ref</th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">soc</th>
+<th data-quarto-table-cell-role="th">carbonates</th>
+<th data-quarto-table-cell-role="th">total.n</th>
+<th data-quarto-table-cell-role="th">ph.h2o</th>
+<th data-quarto-table-cell-role="th">ph.cacl2</th>
+<th data-quarto-table-cell-role="th">bulk.density.tot</th>
+<th data-quarto-table-cell-role="th">bulk.density.fe</th>
+<th data-quarto-table-cell-role="th">clay</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">bulk.density.fe_method</th>
+<th data-quarto-table-cell-role="th">clay_method</th>
+<th data-quarto-table-cell-role="th">silt_method</th>
+<th data-quarto-table-cell-role="th">sand_method</th>
+<th data-quarto-table-cell-role="th">extractable.p_method</th>
+<th data-quarto-table-cell-role="th">extractable.k_method</th>
+<th data-quarto-table-cell-role="th">cec_method</th>
+<th data-quarto-table-cell-role="th">ec_method</th>
+<th data-quarto-table-cell-role="th">coarse.mass_method</th>
+<th data-quarto-table-cell-role="th">coarse.vol_method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>BRO BHR-P</td>
+<td>bro_id: BHR000000346040, interval id: 12439</td>
+<td>3.300000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>1.421</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>...</td>
+<td>nan</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>None</td>
+<td>nan</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>bis.anatol</td>
+<td>BPK - 334958</td>
+<td>4.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>1.00</td>
+<td>...</td>
+<td>None</td>
+<td>field estimation - pipette method - &lt;2 μm, mas...</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>nan</td>
+<td>None</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>ParcelasINES</td>
+<td>16311</td>
+<td>0.590000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>1.310</td>
+<td>NaN</td>
+<td>24.26</td>
+<td>...</td>
+<td>nan</td>
+<td>Contenido en Arcilla (&lt;0,002 mm)</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>Laboratory-analyzed percentage by weight of co...</td>
+<td>nan</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Castilla.y.Leon</td>
+<td>Acor - ACOR201608425</td>
+<td>1.850476</td>
+<td>5.384615</td>
+<td>-9999.0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>-9999.000</td>
+<td>NaN</td>
+<td>6.00</td>
+<td>...</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>Olsen</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>foregs</td>
+<td>N25E13T2</td>
+<td>3.500000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>...</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 50 columns</p>
+</div>
+</div>
+</div>
+<p>Check once again on the validity of meta columns, if not, drop the corresponding rows.</p>
+<div id="20fa1308" class="cell" data-results="as-is" data-execution_count="8">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># time info</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Check time info'</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>old_time <span class="op">=</span> data.loc[data[<span class="st">'time'</span>]<span class="op">&lt;</span><span class="dv">2000</span>]</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span><span class="bu">len</span>(old_time)<span class="sc">}</span><span class="ss"> data sampled before year 2000'</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>na_time <span class="op">=</span> data.loc[data[<span class="st">'time'</span>].isna()]</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span><span class="bu">len</span>(na_time)<span class="sc">}</span><span class="ss"> data with invalid temporal information'</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># coordinate</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Check coordinates info'</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>len_ori <span class="op">=</span> <span class="bu">len</span>(data)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>inf_condition <span class="op">=</span> data[<span class="st">'lat'</span>] <span class="op">&gt;</span> <span class="dv">75</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>zero_condition <span class="op">=</span> data[<span class="st">'lat'</span>] <span class="op">&lt;=</span> <span class="dv">0</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>nan_condition <span class="op">=</span> (data[<span class="st">'lat'</span>].isna() <span class="op">|</span> data[<span class="st">'lon'</span>].isna())</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>combined_condition <span class="op">=</span> nan_condition <span class="op">|</span> inf_condition <span class="op">|</span> zero_condition</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>nan_condition<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss"> rows with nan coordinates, from </span><span class="sc">{</span>data<span class="sc">.</span>loc[nan_condition, <span class="st">'ref'</span>]<span class="sc">.</span>unique()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>inf_condition<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss"> rows with inf coordinates, from </span><span class="sc">{</span>data<span class="sc">.</span>loc[inf_condition, <span class="st">'ref'</span>]<span class="sc">.</span>unique()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>zero_condition<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss"> rows with zero coordinates, from </span><span class="ch">\n</span><span class="sc">{</span>data<span class="sc">.</span>loc[zero_condition, <span class="st">'ref'</span>]<span class="sc">.</span>unique()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.loc[<span class="op">~</span>combined_condition].reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Original length was </span><span class="sc">{</span>len_ori<span class="sc">}</span><span class="ss">, cleaned length is </span><span class="sc">{</span><span class="bu">len</span>(data)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="co"># depth</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Check depth info'</span>)</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>data.loc[data[<span class="st">'hzn_dep'</span>].isna(),<span class="st">'hzn_dep'</span>] <span class="op">=</span> (data.loc[data[<span class="st">'hzn_dep'</span>].isna(),<span class="st">'hzn_top'</span>]<span class="op">+</span>data.loc[data[<span class="st">'hzn_dep'</span>].isna(),<span class="st">'hzn_btm'</span>])<span class="op">/</span><span class="dv">2</span> <span class="co"># derive mean depth info from bottom and top depth of layers</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.drop(columns <span class="op">=</span> [<span class="st">'hzn_top'</span>,<span class="st">'hzn_btm'</span>])</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>na_depth <span class="op">=</span> data.loc[data[<span class="st">'hzn_dep'</span>].isna()]</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span><span class="bu">len</span>(na_depth)<span class="sc">}</span><span class="ss"> data with invalid depth information'</span>)</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Check time info
+0 data sampled before year 2000
+0 data with invalid temporal information
+
+Check coordinates info
+2 rows with nan coordinates, from ['gemas']
+1246 rows with inf coordinates, from ['ParcelasINES' 'ukceh' 'thuenen.bze.lw']
+3 rows with zero coordinates, from 
+['LUCAS']
+Original length was 413960, cleaned length is 412709
+
+Check depth info
+0 data with invalid depth information
+</code></pre>
+</div>
+</div>
+<p>Drop duplicates and save the data.</p>
+<div id="bd4b3a64" class="cell" data-results="as-is" data-execution_count="9">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data_cleaned <span class="op">=</span> data.drop_duplicates()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>duplicates <span class="op">=</span> data.duplicated(keep<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>duplicated_df <span class="op">=</span> data[duplicates]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>dup_src <span class="op">=</span> duplicated_df[<span class="st">'ref'</span>].unique()</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span><span class="bu">len</span>(duplicated_df)<span class="sc">}</span><span class="ss"> duplicated rows, from </span><span class="sc">{</span>dup_src<span class="sc">}</span><span class="ss"> datasets'</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'left </span><span class="sc">{</span><span class="bu">len</span>(data_cleaned)<span class="sc">}</span><span class="ss"> rows from origianl </span><span class="sc">{</span><span class="bu">len</span>(data)<span class="sc">}</span><span class="ss"> rows'</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>data.to_parquet(<span class="ss">f'</span><span class="sc">{</span>data_path<span class="sc">}</span><span class="ss">/soil.showcase_meta.cleaned_l2.pq'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>10664 duplicated rows, from ['ParcelasINES' 'ukceh' 'multione' 'gemas' 'MarSOC' 'BRO BHR-P' 'SoDaH'] datasets
+left 406300 rows from origianl 412709 rows</code></pre>
+</div>
+</div>
+</section>
+<section id="quality-control-soc-example" class="level3">
+<h3 class="anchored" data-anchor-id="quality-control-soc-example">Quality control: SOC example</h3>
+<p>Quality control refers to the harmonization of measured values, involving the cleaning of erroneous and imcomplete data, conversion of data to a consistent unit, removing measurements that are neither comparable nor convertible to benchmark, and applying conversion formulas to transform convertible soil data to align with the bemchmark. The harmonization is performed property by property, using LUCAS as the benchmark. Below is an example of harmonizing SOC data.</p>
+<div id="80e552bd" class="cell" data-results="as-is" data-execution_count="10">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the paths, variables and read in the merged dataset</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>prop <span class="op">=</span> <span class="st">'soc'</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>unit <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>prop<span class="sc">}</span><span class="ss">_unit'</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>mtod <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>prop<span class="sc">}</span><span class="ss">_method'</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>data_path <span class="op">=</span> <span class="st">'/home/xuemeng/work_xuemeng/ai4sh_data.harmo/data_v2'</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_parquet(<span class="ss">f'</span><span class="sc">{</span>data_path<span class="sc">}</span><span class="ss">/soil.showcase_meta.cleaned_l2.pq'</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>data.loc[:, :] <span class="op">=</span> data.replace(<span class="st">'None'</span>,<span class="st">'nan'</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>none_exists <span class="op">=</span> (data <span class="op">==</span> <span class="st">'None'</span>).<span class="bu">any</span>().<span class="bu">any</span>()  <span class="co"># make sure all the invalid values are represented by 'nan'</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>sampled_rows <span class="op">=</span> (</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    data[[<span class="st">'ref'</span>, <span class="st">'id'</span>, <span class="st">'nuts0'</span>, prop, unit, mtod]].groupby(<span class="st">'ref'</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.sample(n<span class="op">=</span><span class="dv">1</span>))  <span class="co"># Sample one row per 'ref' group</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    .sample(n<span class="op">=</span><span class="dv">5</span>, random_state<span class="op">=</span><span class="dv">42</span>)   <span class="co"># Randomly choose 5 rows from the sampled groups</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    .reset_index(drop<span class="op">=</span><span class="va">True</span>)         <span class="co"># Reset index for a clean DataFrame</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>sampled_rows</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ref</th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">nuts0</th>
+<th data-quarto-table-cell-role="th">soc</th>
+<th data-quarto-table-cell-role="th">soc_unit</th>
+<th data-quarto-table-cell-role="th">soc_method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>BRO BHR-P</td>
+<td>bro_id: BHR000000346063, interval id: 12551</td>
+<td>NL</td>
+<td>1.900000</td>
+<td>%</td>
+<td>organic matter, NEN5754v2014plusWENR - verhitt...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>bis.anatol</td>
+<td>BPK - 20702</td>
+<td>NL</td>
+<td>NaN</td>
+<td>nan</td>
+<td>nan</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>ParcelasINES</td>
+<td>2565</td>
+<td>ES</td>
+<td>0.880000</td>
+<td>%</td>
+<td>Walkley-Black, OM in fine soil (&lt; 2 mm) is div...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Castilla.y.Leon</td>
+<td>Inea - INEA20200355</td>
+<td>ES</td>
+<td>2.015815</td>
+<td>%</td>
+<td>SOM, Materia Orgánica Porcentaje</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>foregs</td>
+<td>N27E12T1</td>
+<td>EL</td>
+<td>1.610000</td>
+<td>%</td>
+<td>total combustion in a 99.99 % oxygen flow at 1...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Firstly, we standardize all measurements to <code>g/kg</code> for <code>soc</code> values.</p>
+<div id="cce4a779" class="cell" data-results="as-is" data-execution_count="11">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check all the possible units of soc measurements we have</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>prop<span class="sc">}</span><span class="ss"> units: </span><span class="sc">{</span>data[unit]<span class="sc">.</span>unique()<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># convert % to g/kg</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>data.loc[data[unit].isin([<span class="st">'%'</span>, <span class="st">'% KA'</span>]),prop] <span class="op">=</span> data.loc[data[unit].isin([<span class="st">'%'</span>, <span class="st">'% KA'</span>]),prop]<span class="op">*</span><span class="dv">10</span> <span class="co"># % -&gt; g/kg</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># now check which data source has unit = 'nan' </span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>mask_unit <span class="op">=</span> (data[unit]<span class="op">==</span><span class="st">'nan'</span>) <span class="op">&amp;</span> (data[prop].notna())</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>nan_ref <span class="op">=</span> data.loc[mask_unit,<span class="st">'ref'</span>].unique().tolist()</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'nan unit data from </span><span class="sc">{</span>nan_ref<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># let's check the distribution of the nan unit data, compare them with LUCAS, to see what's the unit of them</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>plot_subplots_histogram(data, prop, <span class="st">'ref'</span>, filt <span class="op">=</span> nan_ref<span class="op">+</span>[<span class="st">'LUCAS'</span>], value_range<span class="op">=</span><span class="va">None</span>, bins<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Based on the range of values, it appears that the unit for the nan unit data is %.'</span>)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>mask_unit <span class="op">=</span> (data[unit]<span class="op">==</span><span class="st">'nan'</span>) <span class="op">&amp;</span> (data[prop].notna())</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>data.loc[mask_unit,prop] <span class="op">=</span> data.loc[mask_unit,prop]<span class="op">*</span><span class="dv">10</span> <span class="co"># transform to g/kg</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>soc units: ['%' 'g/kg' 'nan' '% KA']
+nan unit data from ['geocradle', 'Czech']</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3-points_files/figure-html/cell-12-output-2.png" width="1428" height="381" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Based on the range of values, it appears that the unit for the nan unit data is %.</code></pre>
+</div>
+</div>
+<p>Then we use the property harmonization information from <a href="https://docs.google.com/spreadsheets/d/1J652XU_VWmbm1uLmeywlF6kfe7fUD5aJrfAIK97th1E/edit?gid=293050413#gid=293050413">Harmonization sheet</a> to assign quality score and convert the convertable/comparable values to be comparable to LUCAS <code>soc</code> values.</p>
+<div id="2f6f717f" class="cell" data-results="as-is" data-execution_count="12">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in the soc harmonization sheet</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>key_file <span class="op">=</span> <span class="st">'/home/xuemeng/work_xuemeng/ai4sh_data.harmo/gaia-319808-913d36b5fca4.json'</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://docs.google.com/spreadsheets/d/1J652XU_VWmbm1uLmeywlF6kfe7fUD5aJrfAIK97th1E/edit#gid=1254448729'</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>gsheet <span class="op">=</span> GoogleSheet(key_file, url)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>mdf <span class="op">=</span> gsheet.soc</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use this function to convert all convertible measurements and assign quality scores to each measurement. </span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># After the conversion, a new quality score column 'soc_qa' is added.</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>dff <span class="op">=</span> conversion_and_score(data, mdf, prop) </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>sampled_rows <span class="op">=</span> (</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    dff[[<span class="st">'ref'</span>, <span class="st">'id'</span>, <span class="st">'time'</span>,<span class="st">'hzn_dep'</span>, <span class="ss">f'</span><span class="sc">{</span>prop<span class="sc">}</span><span class="ss">_original'</span>, prop, <span class="ss">f'</span><span class="sc">{</span>prop<span class="sc">}</span><span class="ss">_qa'</span>,mtod,<span class="st">'conversion formula'</span>, <span class="st">'conversion ref'</span>,unit]].groupby(<span class="st">'ref'</span>)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.sample(n<span class="op">=</span><span class="dv">1</span>))  <span class="co"># Sample one row per 'ref' group</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    .sample(n<span class="op">=</span><span class="dv">5</span>, random_state<span class="op">=</span><span class="dv">42</span>)   <span class="co"># Randomly choose 5 rows from the sampled groups</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    .reset_index(drop<span class="op">=</span><span class="va">True</span>)         <span class="co"># Reset index for a clean DataFrame</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>sampled_rows</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Method in GSheet for soc updated!
+['y = 1.3*x' 'y=x' 'y = 1.3*x/2' '' 'y=x/2' 'y = 1.15*x/2' nan
+ 'y = 1.05*x' 'y = 0.965*x' 'y = 1.15*x']</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ref</th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">time</th>
+<th data-quarto-table-cell-role="th">hzn_dep</th>
+<th data-quarto-table-cell-role="th">soc_original</th>
+<th data-quarto-table-cell-role="th">soc</th>
+<th data-quarto-table-cell-role="th">soc_qa</th>
+<th data-quarto-table-cell-role="th">soc_method</th>
+<th data-quarto-table-cell-role="th">conversion formula</th>
+<th data-quarto-table-cell-role="th">conversion ref</th>
+<th data-quarto-table-cell-role="th">soc_unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>BRO BHR-P</td>
+<td>bro_id: BHR000000346025, interval id: 12362</td>
+<td>2014.0</td>
+<td>15.0</td>
+<td>39.0</td>
+<td>39.00</td>
+<td>2.0</td>
+<td>organic matter, NEN5754v2014plusWENR - verhitt...</td>
+<td></td>
+<td></td>
+<td>%</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>bis.anatol</td>
+<td>BPK - 329987</td>
+<td>2016.0</td>
+<td>12.5</td>
+<td>60.0</td>
+<td>60.00</td>
+<td>2.0</td>
+<td>field estimation - SOM measured by LOI at 550°...</td>
+<td></td>
+<td></td>
+<td>%</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>ParcelasINES</td>
+<td>22162</td>
+<td>2015.0</td>
+<td>5.0</td>
+<td>23.8</td>
+<td>30.94</td>
+<td>4.0</td>
+<td>Walkley-Black, OM in fine soil (&lt; 2 mm) is div...</td>
+<td>y = 1.3*x</td>
+<td></td>
+<td>%</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Castilla.y.Leon</td>
+<td>Asaja-SO - 2014_0320</td>
+<td>2014.0</td>
+<td>12.5</td>
+<td>14.3</td>
+<td>14.30</td>
+<td>1.0</td>
+<td>SOM, Materia Orgánica Porcentaje</td>
+<td></td>
+<td></td>
+<td>%</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>foregs</td>
+<td>N34E06T1</td>
+<td>2001.0</td>
+<td>12.5</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>5.0</td>
+<td>total combustion in a 99.99 % oxygen flow at 1...</td>
+<td>y=x</td>
+<td></td>
+<td>%</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Once the conversion is complete, the data is cleaned based on its possible range. For soc, values must be positive and less than 1000.</p>
+<div id="5a174e32" class="cell" data-results="as-is" data-execution_count="13">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the property column, assuming it's in a variable `prop`</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>lower_limit, upper_limit <span class="op">=</span> <span class="dv">0</span>, <span class="dv">1000</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove negative values (below lower limit) and print summary</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>nan_counts_lower <span class="op">=</span> dff[dff[prop]<span class="op">&lt;</span> lower_limit].groupby(<span class="st">'ref'</span>).size()</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">NaN dff count per 'ref' from negative values:"</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ref, count <span class="kw">in</span> nan_counts_lower.items():</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(ref, count)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove values above the upper limit and print summary</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>nan_counts_upper <span class="op">=</span> dff[dff[prop]<span class="op">&gt;</span> upper_limit].groupby(<span class="st">'ref'</span>).size()</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">NaN dff count per 'ref' from values exceeding upper limit:"</span>)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ref, count <span class="kw">in</span> nan_counts_upper.items():</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(ref, count)</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>dff.loc[dff[prop] <span class="op">&lt;</span> lower_limit, prop] <span class="op">=</span> np.nan</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>dff.loc[dff[prop] <span class="op">&gt;</span> upper_limit, prop] <span class="op">=</span> np.nan</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>plot_subplots_histogram(dff, prop, <span class="st">'ref'</span>, filt<span class="op">=</span><span class="va">None</span>, value_range<span class="op">=</span>[lower_limit, upper_limit], bins<span class="op">=</span><span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+NaN dff count per 'ref' from negative values:
+Castilla.y.Leon 24
+Czech 956
+LUCAS 15
+
+NaN dff count per 'ref' from values exceeding upper limit:
+MarSOC 1
+estonia.kese 25</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3-points_files/figure-html/cell-14-output-2.png" width="1428" height="3015" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Measurements with a quality score below 2 (indicating they are not comparable to LUCAS) are set to NaN. Finally, all unnecessary columns are dropped, keeping only the quality score column.</p>
+<div id="29640cc1" class="cell" data-results="as-is" data-execution_count="14">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dff.loc[dff[<span class="ss">f'</span><span class="sc">{</span>prop<span class="sc">}</span><span class="ss">_qa'</span>]<span class="op">&lt;=</span><span class="dv">2</span>,prop] <span class="op">=</span> np.nan</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>dff <span class="op">=</span> dff.drop(columns<span class="op">=</span>[<span class="st">'src'</span>,<span class="st">'conversion formula'</span>, <span class="st">'conversion ref'</span>,<span class="ss">f'</span><span class="sc">{</span>prop<span class="sc">}</span><span class="ss">_original'</span>,unit,mtod])</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>dff.to_parquet(<span class="ss">f'</span><span class="sc">{</span>data_path<span class="sc">}</span><span class="ss">/soil.showcase_soc.cleaned.o1_l2.pq'</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>plot_spatial_distribution(dff, title <span class="op">=</span> <span class="st">'harmonized soc'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3-points_files/figure-html/cell-15-output-1.png" width="851" height="681" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="harmonized-soil-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="harmonized-soil-dataset">Harmonized soil dataset</h2>
+<p>The harmonized soil point dataset is presented in a tabular format. Each row in the table represents a sample collected from a specific depth and location in a given year. The table is organized into columns that store two main types of information about each sample:</p>
+<ol type="1">
+<li><strong>Meta Information</strong>
+<ul>
+<li><strong>lat and lon</strong>: Latitude and longitude of the sample location.</li>
+<li><strong>time</strong>: Sampling year (finest granularity available).</li>
+<li><strong>hzn_dep</strong>: Derived from the mean of top and bottom of the sampled soil horizon layer.</li>
+<li><strong>ref</strong>: Name of the data source.</li>
+<li><strong>id</strong>: Unique sample identifier; cross-reference with <strong>ref</strong>.</li>
+<li><strong>nuts0</strong>: Country where the data originates.</li>
+</ul></li>
+<li><strong>Soil Property Information</strong>
+<ul>
+<li><strong>soc</strong> (<code>oc_iso.10694.1995.wpct</code>): Soil organic carbon.</li>
+<li><strong>sand</strong> (<code>sand.tot_iso.11277.2020.wpct</code>): Sand content.</li>
+<li><strong>silt</strong> (<code>silt.tot_iso.11277.2020.wpct</code>): Silt content.</li>
+<li><strong>clay</strong> (<code>clay.tot_iso.11277.2020.wpct</code>): Clay content.</li>
+<li><strong>coarse.mass</strong>: coarse fraction in mass.</li>
+<li><strong>coarse.vol</strong>: coarse fraction in volume.</li>
+<li><strong>bulk.density.tot</strong> (<code>bd.core_iso.11272.2017.g.cm3</code>): Bulk density of total bulk sample.</li>
+<li><strong>bulk.density.fe</strong>: Bulk density of fine earth (size &lt; 2mm).</li>
+<li><strong>ocd</strong> (<code>oc_iso.10694.1995.mg.cm3</code>): Organic carbon density.</li>
+<li><strong>ph.h2o</strong> (<code>ph.h2o_iso.10390.2021.index</code>): pH in H2O.</li>
+<li><strong>total.n</strong> (<code>n.tot_iso.13878.1998.wpct</code>): Total nitrogen.</li>
+<li><strong>carbonates</strong> (<code>caco3_iso.10693.1995.wpct</code>): Carbonate content.</li>
+<li><strong>ph.cacl2</strong> (<code>ph.cacl2_iso.10390.2021.index</code>): pH in CaCl2.</li>
+<li><strong>extractable.p</strong> (<code>p.ext_iso.11263.1994.mg.kg</code>): Extractable phosphorus.</li>
+<li><strong>extractable.k</strong> (<code>k.ext_usda.nrcs.mg.kg</code>): Extractable potassium.</li>
+<li><strong>cec</strong> (<code>cec.ext_iso.11260.1994.cmol.kg</code>): Cation exchange capacity.</li>
+<li><strong>ec</strong> (<code>ec_iso.11265.1994.ms.m</code>): Electrical conductivity.</li>
+</ul></li>
+<li>Measurement Quality Score
+<ul>
+<li>Each measurement is assigned a quality score ranging from 0 to 5, where 5 represents the highest quality. This score reflects the comparability of the measurement to corresponding LUCAS data. Details of quality score see in <a href="https://docs.google.com/spreadsheets/d/1J652XU_VWmbm1uLmeywlF6kfe7fUD5aJrfAIK97th1E/edit?gid=293050413#gid=293050413">Harmonization sheet - ReadMe</a>.</li>
+</ul></li>
+</ol>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -428,18 +1493,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -471,7 +1525,47 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -506,7 +1600,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
