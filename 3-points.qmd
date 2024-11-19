@@ -13,7 +13,7 @@ execute:
 
 **Last update 19 November 2024**
 
-This section outlines the detailed procedures used to import and bind all soil laboratory and site data. The major components of the process are shown in Figure @fig-general-workflow, and are further explained in the corresponding subsections.
+This section outlines the detailed procedures used to import and bind all soil laboratory and site data. The major components of the process are shown in @fig-general-workflow, and are further explained in the corresponding subsections.
 
 ![Key components and workflow for harmonizing point soil data.](./images/Soil data harmonization flow.drawio.png){#fig-general-workflow}
 
@@ -25,7 +25,7 @@ The [Google Sheet](https://docs.google.com/spreadsheets/d/1J652XU_VWmbm1uLmeywlF
 
 1. **Overview Sheet**: High-level information including data sources, data availability across sources and properties, and the spatio-temporal distribution of the entire dataset.
 
-2. **Property Sheets**: Each sheet is named after a soil property involved in the harmonization process, see the example of `soc` in Figure @fig-soc-harmonization sheet.
+2. **Property Sheets**: Each sheet is named after a soil property involved in the harmonization process, see the example of `soc` in @fig-soc-harmonization sheet.
    - src: Indicates the origin or source from which the data is obtained.
    - method description: Provides the original description of the measurement method as documented, detailing how the data was measured.
    - data count: The number of data entries available for this measurement method from the specified source.
@@ -40,7 +40,7 @@ The [Google Sheet](https://docs.google.com/spreadsheets/d/1J652XU_VWmbm1uLmeywlF
 ## Code
 The code section includes Jupyter notebooks used for importing, quality control, harmonizing, and binding datasets into a single harmonized soil dataset. For the complete code, visit the [GitHub repository](https://github.com/AI4SoilHealth/SoilHealthDataCube).
 
-### Format Standardization: GEMAS Example
+### Format Standardization
 
 The standardization of format (e.g., arrangement of rows/columns, naming conventions) is done individually for each dataset. Here’s an example using the GEMAS dataset.
 
@@ -57,13 +57,15 @@ import numpy as np
 os.environ['USE_PYGEOS'] = '0'
 import geopandas as gpd
 from eumap.misc import find_files, nan_percentile, GoogleSheet, ttprint
-module_path = '/home/xuemeng/work_xuemeng/ai4sh_data.harmo/soil-data/code/' # Add the folder containing harmonization_tool_kit.py to the system path
+module_path = '/mnt/lacus/ai4sh_data.harmo/soil-data/code/' # Add the folder containing harmonization_tool_kit.py to the system path
 if module_path not in sys.path:
     sys.path.append(module_path)
+    
+print(os.listdir(module_path))
 from harmonization_tool_kit import plot_subplots_histogram, conversion_and_score, plot_spatial_distribution
 
-input_path = '/home/xuemeng/work_xuemeng/ai4sh_data.harmo/raw_data'
-output_path = '/home/xuemeng/work_xuemeng/ai4sh_data.harmo/data_v2'
+input_path = '/mnt/lacus/ai4sh_data.harmo/raw_data'
+output_path = '/mnt/lacus/ai4sh_data.harmo/data_v2'
 ```
 
 Then load GEMAS data, check its format and content.
@@ -172,7 +174,7 @@ temp.to_parquet(f'{output_path}/gemas.showcase_harmonized_l1.pq')
 print(temp.shape)
 ```
 
-### Merge datasets.
+### Merge datasets
 Once all raw datasets are harmonized into a standard format, they will be merged into a single, unified dataset for further checks and harmonization. 
 
 The standardized datasets are saved using the naming pattern {raw dataset name}_harmonized_l1.pq, with which we could easily parse all the standardized datasets and then merge them together.
@@ -181,7 +183,7 @@ The standardized datasets are saved using the naming pattern {raw dataset name}_
 #| echo: true
 #| results: as-is
 
-data_path = '/home/xuemeng/work_xuemeng/ai4sh_data.harmo/data_v2'  # define path of operation
+data_path = '/mnt/lacus/ai4sh_data.harmo/data_v2'  # define path of operation
 
 # parse the paths to all standarized datasets
 def find_soil_dataset(directory):
@@ -287,9 +289,9 @@ print(f'left {len(data_cleaned)} rows from origianl {len(data)} rows')
 data.to_parquet(f'{data_path}/soil.showcase_meta.cleaned_l2.pq')
 ```
 
-### Quality control: SOC example
+### Quality control
 
-Quality control refers to the harmonization of measured values, involving the cleaning of erroneous and imcomplete data, conversion of data to a consistent unit, removing measurements that are neither comparable nor convertible to benchmark, and applying conversion formulas to transform convertible soil data to align with the bemchmark. The harmonization is performed property by property, using LUCAS as the benchmark. Below is an example of harmonizing SOC data.
+Quality control refers to the harmonization of measured values, involving the cleaning of erroneous and imcomplete data, conversion of data to a consistent unit, removing measurements that are neither comparable nor convertible to benchmark, and applying conversion formulas to transform convertible soil data to align with the bemchmark. The harmonization is performed property by property, using LUCAS as the benchmark. Below is an example of harmonizing `soc` data.
 
 ```{python}
 #| echo: true
@@ -299,7 +301,7 @@ prop = 'soc'
 unit = f'{prop}_unit'
 mtod = f'{prop}_method'
 
-data_path = '/home/xuemeng/work_xuemeng/ai4sh_data.harmo/data_v2'
+data_path = '/mnt/lacus/ai4sh_data.harmo/data_v2'
 data = pd.read_parquet(f'{data_path}/soil.showcase_meta.cleaned_l2.pq')
 data.loc[:, :] = data.replace('None','nan')
 none_exists = (data == 'None').any().any()  # make sure all the invalid values are represented by 'nan'
@@ -342,7 +344,7 @@ Then we use the property harmonization information from [Harmonization sheet](ht
 #| echo: true
 #| results: as-is
 # read in the soc harmonization sheet
-key_file = '/home/xuemeng/work_xuemeng/ai4sh_data.harmo/gaia-319808-913d36b5fca4.json'
+key_file = '/mnt/lacus/ai4sh_data.harmo/gaia-319808-913d36b5fca4.json'
 url = 'https://docs.google.com/spreadsheets/d/1J652XU_VWmbm1uLmeywlF6kfe7fUD5aJrfAIK97th1E/edit#gid=1254448729'
 gsheet = GoogleSheet(key_file, url)
 mdf = gsheet.soc
@@ -361,7 +363,7 @@ sampled_rows = (
 sampled_rows
 ```
 
-Once the conversion is complete, the data is cleaned based on its possible range. For soc, values must be positive and less than 1000.
+Once the conversion is complete, the data is cleaned based on its possible range. For `soc`, values must be positive and less than 1000.
 ```{python}
 #| echo: true
 #| results: as-is
