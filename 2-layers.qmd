@@ -19,9 +19,17 @@ under the MIT License. Training points are used under various terms and conditio
    - **ISO-3166 country code map**: with values differentiating countries according to ISO-3166 standard
 The jupyter notebooks and bash files that are used to produce masks, merge tiles, reproject coordinate systems, and resample to another resolution.
 
-All the landmasks are aligned with the standard spatial/temporal resolution and sizes indicated/recommended by AI4SoilHealth project, WP5. The coverage of these maps closely match the data coverage of https://land.copernicus.eu/pan-european i.e. the official selection of countries listed here: https://lanEEA39d.copernicus.eu/portal_vocabularies/geotags/eea39. 
+All the landmasks are aligned with the standard spatial/temporal resolution and sizes indicated/recommended by AI4SoilHealth project, WP5. The coverage of these maps closely match the data coverage of https://land.copernicus.eu/pan-european i.e. the official selection of countries listed here: https://lanEEA39d.copernicus.eu/portal_vocabularies/geotags/eea39:
 
-These masks are created by [Xuemeng](xuemeng.tian@opengeohub.org), [Yu-Feng](yu-feng.ho@opengeohub.org), and [Martijn](martijn.witjes@opengeohub.org) from [OpenGeoHub](https://opengeohub.org/). If you spot any problems in the land masks, or see any possible improvements in them, or have any questions, or etc..., just raise an issue [here](https://github.com/AI4SoilHealth/SoilHealthDataCube/issues) or send us emails! We appreciate any feedbacks that could refine these masks.
+   - **Land mask**: with values differentiating land, ocean, and inland water;
+   - **NUT-3 code map**: with values differentiating administrative area at nut-3 level;
+   - **ISO-3166 country code map**: with values differentiating countries according to ISO-3166 standard;
+
+The jupyter notebooks and bash files that are used to produce masks, merge tiles, reproject crs, and resample to another resolution.
+
+All the landmasks are aligned with the standard spatial/temporal resolution and sizes indicated/recomended by AI4SoilHealth project, WP5. The coverage of these maps closely match the data coverage of <https://land.copernicus.eu/pan-european> i.e. the official selection of countries listed here: <https://lanEEA39d.copernicus.eu/portal_vocabularies/geotags/eea39>. 
+
+These masks are created by [Xuemeng](xuemeng.tian@opengeohub.org), [Yu-Feng](yu-feng.ho@opengeohub.org), and [Martijn](martijn.witjes@opengeohub.org) from [OpenGeoHub](https://opengeohub.org/). If you spot any problems in the land masks, or see any possible improvements in them, or have any questions, just raise an issue [here](https://github.com/AI4SoilHealth/SoilHealthDataCube/issues) or send us emails! We appreciate any feedback that could refine these masks.
 
 ## Landsat-based Spectral Indices Data Cube
 
@@ -88,7 +96,8 @@ data across multiple platforms for different purposes:
 1. **Zenodo** <https://zenodo.org/communities/ai4soilhealth>
    - This dataset is registered on Zenodo with preview visualization and a valid DOI: <https://doi.org/10.5281/zenodo.10776891>.
    - Due to the storage limit of Zenodo in each bucket, uploading all data layers to Zenodo is impractical and not beneficial for users as it would be too distributed. Therefore, for bimonthly predictors, only data layers for the years 2000 and 2022 are uploaded. All the annual and long-term predictors are available, though.
-3. **Wasabi.com cloud**
+
+2. **Wasabi cloud**
    - The complete dataset is hosted on Wasabi's cloud in COG format, enabling efficient storage, retrieval, and secure data management.
    - A comprehensive index of all the data layers stored and maintained on Wasabi.com is available through a [navigation catalog in a Google Sheet](https://docs.google.com/spreadsheets/d/1QTA6OkkYlZljfHst_inCrkC7DJcMAyHnM9k0iHulwpg/edit?usp=sharing), facilitating the indexing, finding, and downloading of all the predictor layers. 
 
@@ -207,6 +216,7 @@ These maps are created by [Xuemeng](xuemeng.tian@opengeohub.org), [Rolf](rolf.si
 ## 30-m resolution maps of SOCD and prediction uncertainty for Europe (2000–2022) in 3D+T
 
 ### Summary
+
 The folder **[SOCD_map](https://github.com/AI4SoilHealth/SoilHealthDataCube/tree/main/SOCD_map)** 
 contains scripts used to test, train, evaluate predictive models for soil organic 
 carbon density (SOCD, kg/m3) based on:
@@ -253,7 +263,7 @@ JOURNAL = {PeerJ},
 VOLUME = {in review},
 YEAR = {2024?},
 PAGES = {1--32},
-DOI = {xx}
+DOI = {https://doi.org/10.21203/rs.3.rs-5244083/v1}
 }
 ```
 

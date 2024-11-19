@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -135,7 +135,7 @@ div.csl-indent {
     <a href="https://twitter.com/AI4SoilHealth" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
     <div class="dropdown">
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-github"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
             <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/AI4SoilHealth/SHDC4EU_manual">
             Source Code
@@ -221,7 +221,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./3-points.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Point data import and quality control</span></a>
+ <span class="menu-text">Point Data Import and Quality Control</span></a>
   </div>
 </li>
       </ul>
@@ -284,8 +284,15 @@ div.csl-indent {
 <li><strong>NUT-3 code map</strong>: with values differentiating administrative area at nut-3 level</li>
 <li><strong>ISO-3166 country code map</strong>: with values differentiating countries according to ISO-3166 standard The jupyter notebooks and bash files that are used to produce masks, merge tiles, reproject coordinate systems, and resample to another resolution.</li>
 </ul>
-<p>All the landmasks are aligned with the standard spatial/temporal resolution and sizes indicated/recommended by AI4SoilHealth project, WP5. The coverage of these maps closely match the data coverage of https://land.copernicus.eu/pan-european i.e.&nbsp;the official selection of countries listed here: https://lanEEA39d.copernicus.eu/portal_vocabularies/geotags/eea39.</p>
-<p>These masks are created by <a href="xuemeng.tian@opengeohub.org">Xuemeng</a>, <a href="yu-feng.ho@opengeohub.org">Yu-Feng</a>, and <a href="martijn.witjes@opengeohub.org">Martijn</a> from <a href="https://opengeohub.org/">OpenGeoHub</a>. If you spot any problems in the land masks, or see any possible improvements in them, or have any questions, or etc…, just raise an issue <a href="https://github.com/AI4SoilHealth/SoilHealthDataCube/issues">here</a> or send us emails! We appreciate any feedbacks that could refine these masks.</p>
+<p>All the landmasks are aligned with the standard spatial/temporal resolution and sizes indicated/recommended by AI4SoilHealth project, WP5. The coverage of these maps closely match the data coverage of https://land.copernicus.eu/pan-european i.e.&nbsp;the official selection of countries listed here: https://lanEEA39d.copernicus.eu/portal_vocabularies/geotags/eea39:</p>
+<ul>
+<li><strong>Land mask</strong>: with values differentiating land, ocean, and inland water;</li>
+<li><strong>NUT-3 code map</strong>: with values differentiating administrative area at nut-3 level;</li>
+<li><strong>ISO-3166 country code map</strong>: with values differentiating countries according to ISO-3166 standard;</li>
+</ul>
+<p>The jupyter notebooks and bash files that are used to produce masks, merge tiles, reproject crs, and resample to another resolution.</p>
+<p>All the landmasks are aligned with the standard spatial/temporal resolution and sizes indicated/recomended by AI4SoilHealth project, WP5. The coverage of these maps closely match the data coverage of <a href="https://land.copernicus.eu/pan-european" class="uri">https://land.copernicus.eu/pan-european</a> i.e.&nbsp;the official selection of countries listed here: <a href="https://lanEEA39d.copernicus.eu/portal_vocabularies/geotags/eea39" class="uri">https://lanEEA39d.copernicus.eu/portal_vocabularies/geotags/eea39</a>.</p>
+<p>These masks are created by <a href="xuemeng.tian@opengeohub.org">Xuemeng</a>, <a href="yu-feng.ho@opengeohub.org">Yu-Feng</a>, and <a href="martijn.witjes@opengeohub.org">Martijn</a> from <a href="https://opengeohub.org/">OpenGeoHub</a>. If you spot any problems in the land masks, or see any possible improvements in them, or have any questions, just raise an issue <a href="https://github.com/AI4SoilHealth/SoilHealthDataCube/issues">here</a> or send us emails! We appreciate any feedback that could refine these masks.</p>
 </section>
 <section id="landsat-based-spectral-indices-data-cube" class="level2">
 <h2 class="anchored" data-anchor-id="landsat-based-spectral-indices-data-cube">Landsat-based Spectral Indices Data Cube</h2>
@@ -349,7 +356,7 @@ DOI = {10.5194/essd-2024-266}
 <li>This dataset is registered on Zenodo with preview visualization and a valid DOI: <a href="https://doi.org/10.5281/zenodo.10776891" class="uri">https://doi.org/10.5281/zenodo.10776891</a>.</li>
 <li>Due to the storage limit of Zenodo in each bucket, uploading all data layers to Zenodo is impractical and not beneficial for users as it would be too distributed. Therefore, for bimonthly predictors, only data layers for the years 2000 and 2022 are uploaded. All the annual and long-term predictors are available, though.</li>
 </ul></li>
-<li><strong>Wasabi.com cloud</strong>
+<li><strong>Wasabi cloud</strong>
 <ul>
 <li>The complete dataset is hosted on Wasabi’s cloud in COG format, enabling efficient storage, retrieval, and secure data management.</li>
 <li>A comprehensive index of all the data layers stored and maintained on Wasabi.com is available through a <a href="https://docs.google.com/spreadsheets/d/1QTA6OkkYlZljfHst_inCrkC7DJcMAyHnM9k0iHulwpg/edit?usp=sharing">navigation catalog in a Google Sheet</a>, facilitating the indexing, finding, and downloading of all the predictor layers.</li>
@@ -521,7 +528,7 @@ JOURNAL = {PeerJ},
 VOLUME = {in review},
 YEAR = {2024?},
 PAGES = {1--32},
-DOI = {xx}
+DOI = {https://doi.org/10.21203/rs.3.rs-5244083/v1}
 }</code></pre>
 </section>
 </section>
@@ -536,7 +543,7 @@ DOI = {xx}
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-minarik2025wrb" class="csl-entry" role="listitem">
-Minařı́k, R., T. Hengl, R. Simoes, M. S. Isik, Y.-F. Ho, and X. Tian. 2024? <span>“Soil Type (World Reference Base) Map of Europe Based on Ensemble Machine Learning and Multiscale EO Data.”</span> <em>PeerJ</em> in review (2024?): 1–32. <a href="https://doi.org/xx">https://doi.org/xx</a>.
+Minařı́k, R., T. Hengl, R. Simoes, M. S. Isik, Y.-F. Ho, and X. Tian. 2024? <span>“Soil Type (World Reference Base) Map of Europe Based on Ensemble Machine Learning and Multiscale EO Data.”</span> <em>PeerJ</em> in review (2024?): 1–32. https://doi.org/<a href="https://doi.org/10.21203/rs.3.rs-5244083/v1">https://doi.org/10.21203/rs.3.rs-5244083/v1</a>.
 </div>
 <div id="ref-tian2024time" class="csl-entry" role="listitem">
 Tian, X., D. Consoli, M. Witjes, F. Schneider, L. Parente, M. Şahin, Y.-F. Ho, R. Minařı́k, and T. Hengl. 2024. <span>“Time-Series of Landsat-Based Bi-Monthly and Annual Spectral Indices for Continental Europe for 2000–2022.”</span> <em>Earth System Science Data Discussions</em> 2024: 1–49. <a href="https://doi.org/10.5194/essd-2024-266">https://doi.org/10.5194/essd-2024-266</a>.
@@ -768,24 +775,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -820,11 +809,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

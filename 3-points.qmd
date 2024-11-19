@@ -38,13 +38,14 @@ The [Google Sheet](https://docs.google.com/spreadsheets/d/1J652XU_VWmbm1uLmeywlF
 ![soc harmonization sheet](./images/soc_harmonization_sheet.png){#fig-soc-harmonization}
 
 ## Code
-The code section includes Jupyter notebooks used for importing, quality control, harmonizing, and binding datasets into a single harmonized soil dataset. For the complete code, visit the [GitHub repository](link).
+The code section includes Jupyter notebooks used for importing, quality control, harmonizing, and binding datasets into a single harmonized soil dataset. For the complete code, visit the [GitHub repository](https://github.com/AI4SoilHealth/SoilHealthDataCube).
 
 ### Format Standardization: GEMAS Example
 
 The standardization of format (e.g., arrangement of rows/columns, naming conventions) is done individually for each dataset. Here’s an example using the GEMAS dataset.
 
 First import necessary libraries and define input and output paths.
+
 ```{python}
 #| echo: true
 #| results: as-is
