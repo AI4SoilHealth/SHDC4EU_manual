@@ -1,12 +1,5 @@
 # Welcome {.unnumbered}
 
-```{r, include=FALSE, message=FALSE, results='hide'}
-ls <- c("jsonlite", "RCurl", "emo", "stringi")
-new.packages <- ls[!(ls %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages, repos = "https://cloud.r-project.org")
-#devtools::install_github("hadley/emo")
-lapply(ls, require, character.only = TRUE)
-```
 
 <a rel="license" href="https://zenodo.org/doi/10.5281/zenodo.13838797"><img alt="DOI" style="border-width:0" src="https://zenodo.org/badge/DOI/10.5281/zenodo.13838797.svg" /></a><br />
 
