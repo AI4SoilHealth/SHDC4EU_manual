@@ -45,9 +45,8 @@ The code section includes Jupyter notebooks used for importing, quality control,
 The standardization of format (e.g., arrangement of rows/columns, naming conventions) is done individually for each dataset. Here’s an example using the GEMAS dataset.
 
 First import necessary libraries and define input and output paths.
-
 ```{python}
-#| echo: true
+#| echo: false
 #| results: as-is
 # Initialization Cell: Import libraries and set paths
 import pandas as pd
@@ -56,16 +55,15 @@ import sys
 import numpy as np
 os.environ['USE_PYGEOS'] = '0'
 import geopandas as gpd
-from eumap.misc import find_files, nan_percentile, GoogleSheet, ttprint
-module_path = '/mnt/lacus/ai4sh_data.harmo/soil-data/code/' # Add the folder containing harmonization_tool_kit.py to the system path
-if module_path not in sys.path:
-    sys.path.append(module_path)
-    
-print(os.listdir(module_path))
-from harmonization_tool_kit import plot_subplots_histogram, conversion_and_score, plot_spatial_distribution
+from misc import find_files, nan_percentile, GoogleSheet, ttprint
+from harmonization_helper import plot_subplots_histogram, conversion, plot_spatial_distribution
+```
+```{python}
+#| echo: true
+#| results: as-is
 
 input_path = '/mnt/lacus/ai4sh_data.harmo/raw_data'
-output_path = '/mnt/lacus/ai4sh_data.harmo/data_v2'
+output_path = 'data_v2'
 ```
 
 Then load GEMAS data, check its format and content.
@@ -170,6 +168,9 @@ Finally, ensure that the data is saved securely in the correct folder.
 ```{python}
 #| echo: true
 #| results: as-is
+# Create folder if it does not exist
+if not os.path.exists(output_path):
+    os.makedirs(output_path)
 temp.to_parquet(f'{output_path}/gemas.showcase_harmonized_l1.pq')
 print(temp.shape)
 ```
@@ -351,16 +352,16 @@ mdf = gsheet.soc
 
 # Use this function to convert all convertible measurements and assign quality scores to each measurement. 
 # After the conversion, a new quality score column 'soc_qa' is added.
-dff = conversion_and_score(data, mdf, prop) 
+dff = conversion(data, mdf, prop,dataset_colum_name="ref") 
+print(dff)
+# sampled_rows = (
+#     dff[['ref', 'id', 'time','hzn_dep', f'{prop}_original', prop, f'{prop}_qa',mtod,'conversion formula', 'conversion ref',unit]].groupby('ref')
+#     .apply(lambda x: x.sample(n=1))  # Sample one row per 'ref' group
+#     .sample(n=5, random_state=42)   # Randomly choose 5 rows from the sampled groups
+#     .reset_index(drop=True)         # Reset index for a clean DataFrame
+# )
 
-sampled_rows = (
-    dff[['ref', 'id', 'time','hzn_dep', f'{prop}_original', prop, f'{prop}_qa',mtod,'conversion formula', 'conversion ref',unit]].groupby('ref')
-    .apply(lambda x: x.sample(n=1))  # Sample one row per 'ref' group
-    .sample(n=5, random_state=42)   # Randomly choose 5 rows from the sampled groups
-    .reset_index(drop=True)         # Reset index for a clean DataFrame
-)
-
-sampled_rows
+# sampled_rows
 ```
 
 Once the conversion is complete, the data is cleaned based on its possible range. For `soc`, values must be positive and less than 1000.
