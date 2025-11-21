@@ -508,7 +508,7 @@ Figure&nbsp;2: soc harmonization sheet
 <h3 class="anchored" data-anchor-id="format-standardization">Format Standardization</h3>
 <p>The standardization of format (e.g., arrangement of rows/columns, naming conventions) is done individually for each dataset. Here’s an example using the GEMAS dataset.</p>
 <p>First import necessary libraries and define input and output paths.</p>
-<div id="51a66716" class="cell" data-results="as-is" data-execution_count="2">
+<div id="9e762bc0" class="cell" data-results="as-is" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>input_path <span class="op">=</span> <span class="st">'/mnt/lacus/ai4sh_data.harmo/raw_data'</span></span>
@@ -516,7 +516,7 @@ Figure&nbsp;2: soc harmonization sheet
 </details>
 </div>
 <p>Then load GEMAS data, check its format and content.</p>
-<div id="217776ff" class="cell" data-results="as-is" data-execution_count="3">
+<div id="b2cba546" class="cell" data-results="as-is" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>gema <span class="op">=</span> gpd.read_file(<span class="ss">f'</span><span class="sc">{</span>input_path<span class="sc">}</span><span class="ss">/EU/GEMAS/GEMAS.csv'</span>)</span>
@@ -682,7 +682,7 @@ Figure&nbsp;2: soc harmonization sheet
 </div>
 </div>
 <p>When converting GEMAS dataset to standard format, a temporary DataFrame is created to store the harmonized version of the GEMAS dataset. The soil property data is systematically organized into three components for each property available in the GEMAS dataset: 1. measured values; 2. measurement methods; 3. units.</p>
-<div id="7ec9ea1e" class="cell" data-results="as-is" data-execution_count="4">
+<div id="64827ed7" class="cell" data-results="as-is" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>temp <span class="op">=</span> pd.DataFrame()</span>
@@ -716,7 +716,7 @@ Figure&nbsp;2: soc harmonization sheet
 </details>
 </div>
 <p>Another key component is meta information, which contains key details such as the sampling location, time, depth, NUTS0 region, reference information (to identify the data source), and unique identifiers (used within each data source to distinguish individual measurements).</p>
-<div id="4dc2c2ca" class="cell" data-results="as-is" data-execution_count="5">
+<div id="05ad351b" class="cell" data-results="as-is" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>temp[<span class="st">'lat'</span>] <span class="op">=</span> gema[<span class="st">'YCOO'</span>]  <span class="co"># coordinates</span></span>
@@ -742,7 +742,7 @@ Figure&nbsp;2: soc harmonization sheet
 </details>
 </div>
 <p>Before saving, the data is preliminarily cleaned and filtered using metadata to ensure all measurements have valid location, time, and depth information. Additionally, only measurements taken after the year 2000 are retained, aligning with the temporal scope of our modeling and mapping efforts.</p>
-<div id="da2956d9" class="cell" data-results="as-is" data-execution_count="6">
+<div id="674dac88" class="cell" data-results="as-is" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span><span class="bu">len</span>(temp)<span class="sc">}</span><span class="ss"> data in total'</span>)</span>
@@ -780,7 +780,7 @@ Figure&nbsp;2: soc harmonization sheet
 </div>
 </div>
 <p>Finally, ensure that the data is saved securely in the correct folder.</p>
-<div id="c4ea7ed1" class="cell" data-results="as-is" data-execution_count="7">
+<div id="850de3a6" class="cell" data-results="as-is" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create folder if it does not exist</span></span>
@@ -798,10 +798,10 @@ Figure&nbsp;2: soc harmonization sheet
 <h3 class="anchored" data-anchor-id="merge-datasets">Merge datasets</h3>
 <p>Once all raw datasets are harmonized into a standard format, they will be merged into a single, unified dataset for further checks and harmonization.</p>
 <p>The standardized datasets are saved using the naming pattern {raw dataset name}_harmonized_l1.pq, with which we could easily parse all the standardized datasets and then merge them together.</p>
-<div id="a310a90d" class="cell" data-results="as-is" data-execution_count="8">
+<div id="392a97bc" class="cell" data-results="as-is" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data_path <span class="op">=</span> <span class="st">'/mnt/lacus/ai4sh_data.harmo/data_v2'</span>  <span class="co"># define path of operation</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data_path <span class="op">=</span> <span class="st">'data_v2'</span>  <span class="co"># define path of operation</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># parse the paths to all standarized datasets</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_soil_dataset(directory):</span>
@@ -850,192 +850,64 @@ Figure&nbsp;2: soc harmonization sheet
 <span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>sampled_rows</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Dataset:  croatia with  45  data records.
-Dataset:  spain.ParcelasINES with  20  data records.
-Dataset:  basque with  46  data records.
-Dataset:  bro.bhrp.nl with  23  data records.
-Dataset:  ukceh with  22  data records.
-Dataset:  hunssd with  34  data records.
-Dataset:  geocradle with  21  data records.
-Dataset:  germany with  39  data records.
-Dataset:  foregs with  14  data records.
-Dataset:  portugal with  43  data records.
-Dataset:  swiss.nabo with  50  data records.
-Dataset:  estonia.kese with  25  data records.
-Dataset:  nl.bis with  32  data records.
-Dataset:  wales with  26  data records.
-Dataset:  gemas with  24  data records.
-Dataset:  lucas with  57  data records.
-Dataset:  slovenia with  36  data records.
-Dataset:  spain.ParcelasCOS with  17  data records.
-Dataset:  marsoc with  20  data records.
-Dataset:  czech with  19  data records.
-Dataset:  castilla.y.leon with  26  data records.
-Dataset:  sodah with  38  data records.
-Dataset:  gemas.showcase with  24  data records.
+<pre><code>Dataset:  gemas.showcase with  24  data records.
 </code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/micromamba/envs/geoenv/lib/python3.13/site-packages/pandas/core/indexes/base.py:3812</span>, in <span class="ansi-cyan-fg">Index.get_loc</span><span class="ansi-blue-fg">(self, key)</span>
+<span class="ansi-green-fg">   3811</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">3812</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_engine</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get_loc</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">casted_key</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">   3813</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">KeyError</span> <span style="font-weight:bold;color:rgb(0,135,0)">as</span> err:
 
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">pandas/_libs/index.pyx:167</span>, in <span class="ansi-cyan-fg">pandas._libs.index.IndexEngine.get_loc</span><span class="ansi-blue-fg">()</span>
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">ref</th>
-<th data-quarto-table-cell-role="th">id</th>
-<th data-quarto-table-cell-role="th">soc</th>
-<th data-quarto-table-cell-role="th">carbonates</th>
-<th data-quarto-table-cell-role="th">total.n</th>
-<th data-quarto-table-cell-role="th">ph.h2o</th>
-<th data-quarto-table-cell-role="th">ph.cacl2</th>
-<th data-quarto-table-cell-role="th">bulk.density.tot</th>
-<th data-quarto-table-cell-role="th">bulk.density.fe</th>
-<th data-quarto-table-cell-role="th">clay</th>
-<th data-quarto-table-cell-role="th">...</th>
-<th data-quarto-table-cell-role="th">bulk.density.fe_method</th>
-<th data-quarto-table-cell-role="th">clay_method</th>
-<th data-quarto-table-cell-role="th">silt_method</th>
-<th data-quarto-table-cell-role="th">sand_method</th>
-<th data-quarto-table-cell-role="th">extractable.p_method</th>
-<th data-quarto-table-cell-role="th">extractable.k_method</th>
-<th data-quarto-table-cell-role="th">cec_method</th>
-<th data-quarto-table-cell-role="th">ec_method</th>
-<th data-quarto-table-cell-role="th">coarse.mass_method</th>
-<th data-quarto-table-cell-role="th">coarse.vol_method</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
-<td>BRO BHR-P</td>
-<td>bro_id: BHR000000346034, interval id: 12410</td>
-<td>0.5000</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>1.476</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>...</td>
-<td>nan</td>
-<td>None</td>
-<td>None</td>
-<td>None</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-<td>gravel_content + shell_matter_content, out of ...</td>
-<td>nan</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
-<td>bis.anatol</td>
-<td>BPK - 249683</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>45.0</td>
-<td>...</td>
-<td>None</td>
-<td>field estimation - pipette method - &lt;2 μm, mas...</td>
-<td>None</td>
-<td>None</td>
-<td>None</td>
-<td>nan</td>
-<td>None</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
-<td>ParcelasINES</td>
-<td>30935</td>
-<td>1.5200</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>1.120</td>
-<td>NaN</td>
-<td>38.0</td>
-<td>...</td>
-<td>nan</td>
-<td>Contenido en Arcilla (&lt;0,002 mm)</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-<td>Laboratory-analyzed percentage by weight of co...</td>
-<td>nan</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
-<td>Castilla.y.Leon</td>
-<td>Aimcra - 0829_8.6_1.06_0.09</td>
-<td>1.0600</td>
-<td>1.4</td>
-<td>-9999.0</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>-9999.000</td>
-<td>NaN</td>
-<td>20.0</td>
-<td>...</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-<td>Olsen</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
-<td>foregs</td>
-<td>N37E06C1</td>
-<td>0.2859</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>6.87</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>...</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-<td>nan</td>
-</tr>
-</tbody>
-</table>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">pandas/_libs/index.pyx:196</span>, in <span class="ansi-cyan-fg">pandas._libs.index.IndexEngine.get_loc</span><span class="ansi-blue-fg">()</span>
 
-<p>5 rows × 50 columns</p>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">pandas/_libs/hashtable_class_helper.pxi:7088</span>, in <span class="ansi-cyan-fg">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">pandas/_libs/hashtable_class_helper.pxi:7096</span>, in <span class="ansi-cyan-fg">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-red-fg">KeyError</span>: 'carbonates'
+
+The above exception was the direct cause of the following exception:
+
+<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[8]</span><span class="ansi-green-fg">, line 33</span>
+<span class="ansi-green-fg">     31</span> num_cols = [<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">lat</span><span class="ansi-yellow-fg">'</span>, <span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">lon</span><span class="ansi-yellow-fg">'</span>, <span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">time</span><span class="ansi-yellow-fg">'</span>, <span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">hzn_top</span><span class="ansi-yellow-fg">'</span>, <span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">hzn_btm</span><span class="ansi-yellow-fg">'</span>] + prop_cols
+<span class="ansi-green-fg">     32</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> col <span style="font-weight:bold;color:rgb(175,0,255)">in</span> num_cols:
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">33</span>     data[col] = pd.to_numeric(<span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">col</span><span class="ansi-yellow-bg">]</span>, errors=<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">coerce</span><span class="ansi-yellow-fg">'</span>)    
+<span class="ansi-green-fg">     35</span> str_cols = [<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">id</span><span class="ansi-yellow-fg">'</span>] + unit_cols + mtod_cols
+<span class="ansi-green-fg">     36</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> col <span style="font-weight:bold;color:rgb(175,0,255)">in</span> str_cols:
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/micromamba/envs/geoenv/lib/python3.13/site-packages/pandas/core/frame.py:4107</span>, in <span class="ansi-cyan-fg">DataFrame.__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
+<span class="ansi-green-fg">   4105</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">self</span>.columns.nlevels &gt; <span class="ansi-green-fg">1</span>:
+<span class="ansi-green-fg">   4106</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">self</span>._getitem_multilevel(key)
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">4107</span> indexer = <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">columns</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get_loc</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">key</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">   4108</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> is_integer(indexer):
+<span class="ansi-green-fg">   4109</span>     indexer = [indexer]
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/micromamba/envs/geoenv/lib/python3.13/site-packages/pandas/core/indexes/base.py:3819</span>, in <span class="ansi-cyan-fg">Index.get_loc</span><span class="ansi-blue-fg">(self, key)</span>
+<span class="ansi-green-fg">   3814</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">isinstance</span>(casted_key, <span style="color:rgb(0,135,0)">slice</span>) <span style="font-weight:bold;color:rgb(175,0,255)">or</span> (
+<span class="ansi-green-fg">   3815</span>         <span style="color:rgb(0,135,0)">isinstance</span>(casted_key, abc.Iterable)
+<span class="ansi-green-fg">   3816</span>         <span style="font-weight:bold;color:rgb(175,0,255)">and</span> <span style="color:rgb(0,135,0)">any</span>(<span style="color:rgb(0,135,0)">isinstance</span>(x, <span style="color:rgb(0,135,0)">slice</span>) <span style="font-weight:bold;color:rgb(0,135,0)">for</span> x <span style="font-weight:bold;color:rgb(175,0,255)">in</span> casted_key)
+<span class="ansi-green-fg">   3817</span>     ):
+<span class="ansi-green-fg">   3818</span>         <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> InvalidIndexError(key)
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">3819</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">KeyError</span>(key) <span style="font-weight:bold;color:rgb(0,135,0)">from</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">err</span>
+<span class="ansi-green-fg">   3820</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">TypeError</span>:
+<span class="ansi-green-fg">   3821</span>     <span style="font-style:italic;color:rgb(95,135,135)"># If we have a listlike key, _check_indexing_error will raise</span>
+<span class="ansi-green-fg">   3822</span>     <span style="font-style:italic;color:rgb(95,135,135)">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
+<span class="ansi-green-fg">   3823</span>     <span style="font-style:italic;color:rgb(95,135,135)">#  the TypeError.</span>
+<span class="ansi-green-fg">   3824</span>     <span style="color:rgb(0,135,0)">self</span>._check_indexing_error(key)
+
+<span class="ansi-red-fg">KeyError</span>: 'carbonates'</pre>
 </div>
 </div>
 </div>
 <p>Check once again on the validity of meta columns, if not, drop the corresponding rows.</p>
-<div id="342faa5c" class="cell" data-results="as-is" data-execution_count="9">
+<div id="d99a7d9b" class="cell" data-results="as-is" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># time info</span></span>
@@ -1080,19 +952,69 @@ Dataset:  gemas.showcase with  24  data records.
 0 data with invalid temporal information
 
 Check coordinates info
-2 rows with nan coordinates, from ['gemas']
-1246 rows with inf coordinates, from ['ParcelasINES' 'ukceh' 'thuenen.bze.lw']
-3 rows with zero coordinates, from 
-['LUCAS']
-Original length was 413960, cleaned length is 412709
+1 rows with nan coordinates, from ['gemas']
+0 rows with inf coordinates, from []
+0 rows with zero coordinates, from 
+[]
+Original length was 4132, cleaned length is 4131
 
-Check depth info
-0 data with invalid depth information
-</code></pre>
+Check depth info</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/micromamba/envs/geoenv/lib/python3.13/site-packages/pandas/core/indexes/base.py:3812</span>, in <span class="ansi-cyan-fg">Index.get_loc</span><span class="ansi-blue-fg">(self, key)</span>
+<span class="ansi-green-fg">   3811</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">3812</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_engine</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get_loc</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">casted_key</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">   3813</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">KeyError</span> <span style="font-weight:bold;color:rgb(0,135,0)">as</span> err:
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">pandas/_libs/index.pyx:167</span>, in <span class="ansi-cyan-fg">pandas._libs.index.IndexEngine.get_loc</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">pandas/_libs/index.pyx:196</span>, in <span class="ansi-cyan-fg">pandas._libs.index.IndexEngine.get_loc</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">pandas/_libs/hashtable_class_helper.pxi:7088</span>, in <span class="ansi-cyan-fg">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">pandas/_libs/hashtable_class_helper.pxi:7096</span>, in <span class="ansi-cyan-fg">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-red-fg">KeyError</span>: 'hzn_dep'
+
+The above exception was the direct cause of the following exception:
+
+<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[9]</span><span class="ansi-green-fg">, line 31</span>
+<span class="ansi-green-fg">     29</span> <span style="font-style:italic;color:rgb(95,135,135)"># depth</span>
+<span class="ansi-green-fg">     30</span> <span style="color:rgb(0,135,0)">print</span>(<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">Check depth info</span><span class="ansi-yellow-fg">'</span>)
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">31</span> data.loc[data[<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">hzn_dep</span><span class="ansi-yellow-fg">'</span>].isna(),<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">hzn_dep</span><span class="ansi-yellow-fg">'</span>] = (data.loc[<span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-fg ansi-yellow-bg">hzn_dep</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-bg">]</span>.isna(),<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">hzn_top</span><span class="ansi-yellow-fg">'</span>]+data.loc[data[<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">hzn_dep</span><span class="ansi-yellow-fg">'</span>].isna(),<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">hzn_btm</span><span class="ansi-yellow-fg">'</span>])/<span class="ansi-green-fg">2</span> <span style="font-style:italic;color:rgb(95,135,135)"># derive mean depth info from bottom and top depth of layers</span>
+<span class="ansi-green-fg">     32</span> data = data.drop(columns = [<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">hzn_top</span><span class="ansi-yellow-fg">'</span>,<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">hzn_btm</span><span class="ansi-yellow-fg">'</span>])
+<span class="ansi-green-fg">     33</span> na_depth = data.loc[data[<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">hzn_dep</span><span class="ansi-yellow-fg">'</span>].isna()]
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/micromamba/envs/geoenv/lib/python3.13/site-packages/pandas/core/frame.py:4107</span>, in <span class="ansi-cyan-fg">DataFrame.__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
+<span class="ansi-green-fg">   4105</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">self</span>.columns.nlevels &gt; <span class="ansi-green-fg">1</span>:
+<span class="ansi-green-fg">   4106</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">self</span>._getitem_multilevel(key)
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">4107</span> indexer = <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">columns</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get_loc</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">key</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">   4108</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> is_integer(indexer):
+<span class="ansi-green-fg">   4109</span>     indexer = [indexer]
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/micromamba/envs/geoenv/lib/python3.13/site-packages/pandas/core/indexes/base.py:3819</span>, in <span class="ansi-cyan-fg">Index.get_loc</span><span class="ansi-blue-fg">(self, key)</span>
+<span class="ansi-green-fg">   3814</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">isinstance</span>(casted_key, <span style="color:rgb(0,135,0)">slice</span>) <span style="font-weight:bold;color:rgb(175,0,255)">or</span> (
+<span class="ansi-green-fg">   3815</span>         <span style="color:rgb(0,135,0)">isinstance</span>(casted_key, abc.Iterable)
+<span class="ansi-green-fg">   3816</span>         <span style="font-weight:bold;color:rgb(175,0,255)">and</span> <span style="color:rgb(0,135,0)">any</span>(<span style="color:rgb(0,135,0)">isinstance</span>(x, <span style="color:rgb(0,135,0)">slice</span>) <span style="font-weight:bold;color:rgb(0,135,0)">for</span> x <span style="font-weight:bold;color:rgb(175,0,255)">in</span> casted_key)
+<span class="ansi-green-fg">   3817</span>     ):
+<span class="ansi-green-fg">   3818</span>         <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> InvalidIndexError(key)
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">3819</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">KeyError</span>(key) <span style="font-weight:bold;color:rgb(0,135,0)">from</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">err</span>
+<span class="ansi-green-fg">   3820</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">TypeError</span>:
+<span class="ansi-green-fg">   3821</span>     <span style="font-style:italic;color:rgb(95,135,135)"># If we have a listlike key, _check_indexing_error will raise</span>
+<span class="ansi-green-fg">   3822</span>     <span style="font-style:italic;color:rgb(95,135,135)">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
+<span class="ansi-green-fg">   3823</span>     <span style="font-style:italic;color:rgb(95,135,135)">#  the TypeError.</span>
+<span class="ansi-green-fg">   3824</span>     <span style="color:rgb(0,135,0)">self</span>._check_indexing_error(key)
+
+<span class="ansi-red-fg">KeyError</span>: 'hzn_dep'</pre>
+</div>
 </div>
 </div>
 <p>Drop duplicates and save the data.</p>
-<div id="5fc972cf" class="cell" data-results="as-is" data-execution_count="10">
+<div id="feb6c4e0" class="cell" data-results="as-is" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data_cleaned <span class="op">=</span> data.drop_duplicates()</span>
@@ -1107,15 +1029,15 @@ Check depth info
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>data.to_parquet(<span class="ss">f'</span><span class="sc">{</span>data_path<span class="sc">}</span><span class="ss">/soil.showcase_meta.cleaned_l2.pq'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>10664 duplicated rows, from ['multione' 'ParcelasINES' 'BRO BHR-P' 'ukceh' 'gemas' 'MarSOC' 'SoDaH'] datasets
-left 406300 rows from origianl 412709 rows</code></pre>
+<pre><code>0 duplicated rows, from [] datasets
+left 4131 rows from origianl 4131 rows</code></pre>
 </div>
 </div>
 </section>
 <section id="quality-control" class="level3">
 <h3 class="anchored" data-anchor-id="quality-control">Quality control</h3>
 <p>Quality control refers to the harmonization of measured values, involving the cleaning of erroneous and imcomplete data, conversion of data to a consistent unit, removing measurements that are neither comparable nor convertible to benchmark, and applying conversion formulas to transform convertible soil data to align with the bemchmark. The harmonization is performed property by property, using LUCAS as the benchmark. Below is an example of harmonizing <code>soc</code> data.</p>
-<div id="32c4ec41" class="cell" data-results="as-is" data-execution_count="11">
+<div id="fd4a4071" class="cell" data-results="as-is" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the paths, variables and read in the merged dataset</span></span>
@@ -1123,7 +1045,7 @@ left 406300 rows from origianl 412709 rows</code></pre>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>unit <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>prop<span class="sc">}</span><span class="ss">_unit'</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>mtod <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>prop<span class="sc">}</span><span class="ss">_method'</span></span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>data_path <span class="op">=</span> <span class="st">'/mnt/lacus/ai4sh_data.harmo/data_v2'</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>data_path <span class="op">=</span> <span class="st">'data_v2'</span></span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_parquet(<span class="ss">f'</span><span class="sc">{</span>data_path<span class="sc">}</span><span class="ss">/soil.showcase_meta.cleaned_l2.pq'</span>)</span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>data.loc[:, :] <span class="op">=</span> data.replace(<span class="st">'None'</span>,<span class="st">'nan'</span>)</span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>none_exists <span class="op">=</span> (data <span class="op">==</span> <span class="st">'None'</span>).<span class="bu">any</span>().<span class="bu">any</span>()  <span class="co"># make sure all the invalid values are represented by 'nan'</span></span>
@@ -1137,76 +1059,43 @@ left 406300 rows from origianl 412709 rows</code></pre>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>sampled_rows</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[11]</span><span class="ansi-green-fg">, line 14</span>
+<span class="ansi-green-fg">      8</span> data.loc[:, :] = data.replace(<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">None</span><span class="ansi-yellow-fg">'</span>,<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">nan</span><span class="ansi-yellow-fg">'</span>)
+<span class="ansi-green-fg">      9</span> none_exists = (data == <span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">None</span><span class="ansi-yellow-fg">'</span>).any().any()  <span style="font-style:italic;color:rgb(95,135,135)"># make sure all the invalid values are represented by 'nan'</span>
+<span class="ansi-green-fg">     11</span> sampled_rows = (
+<span class="ansi-green-fg">     12</span>     <span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-fg ansi-yellow-bg">ref</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-fg ansi-yellow-bg">id</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-fg ansi-yellow-bg">nuts0</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">prop</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">unit</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mtod</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">groupby</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-fg ansi-yellow-bg">ref</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">     13</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">apply</span><span class="ansi-yellow-bg">(</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">lambda</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">sample</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">n</span><span class="ansi-yellow-bg">=</span><span class="ansi-green-fg ansi-yellow-bg">1</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">  </span><span style="font-style:italic;color:rgb(95,135,135)" class="ansi-yellow-bg"># Sample one row per 'ref' group</span>
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">14</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">sample</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">n</span><span class="ansi-yellow-bg">=</span><span class="ansi-green-fg ansi-yellow-bg">5</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">random_state</span><span class="ansi-yellow-bg">=</span><span class="ansi-green-fg ansi-yellow-bg">42</span><span class="ansi-yellow-bg">)</span>   <span style="font-style:italic;color:rgb(95,135,135)"># Randomly choose 5 rows from the sampled groups</span>
+<span class="ansi-green-fg">     15</span>     .reset_index(drop=<span style="font-weight:bold;color:rgb(0,135,0)">True</span>)         <span style="font-style:italic;color:rgb(95,135,135)"># Reset index for a clean DataFrame</span>
+<span class="ansi-green-fg">     16</span> )
+<span class="ansi-green-fg">     18</span> sampled_rows
 
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/micromamba/envs/geoenv/lib/python3.13/site-packages/pandas/core/generic.py:6137</span>, in <span class="ansi-cyan-fg">NDFrame.sample</span><span class="ansi-blue-fg">(self, n, frac, replace, weights, random_state, axis, ignore_index)</span>
+<span class="ansi-green-fg">   6134</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> weights <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">   6135</span>     weights = sample.preprocess_weights(<span style="color:rgb(0,135,0)">self</span>, weights, axis)
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">6137</span> sampled_indices = <span class="ansi-yellow-bg">sample</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">sample</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">obj_len</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">size</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">replace</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">weights</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">rs</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">   6138</span> result = <span style="color:rgb(0,135,0)">self</span>.take(sampled_indices, axis=axis)
+<span class="ansi-green-fg">   6140</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> ignore_index:
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">ref</th>
-<th data-quarto-table-cell-role="th">id</th>
-<th data-quarto-table-cell-role="th">nuts0</th>
-<th data-quarto-table-cell-role="th">soc</th>
-<th data-quarto-table-cell-role="th">soc_unit</th>
-<th data-quarto-table-cell-role="th">soc_method</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
-<td>BRO BHR-P</td>
-<td>bro_id: BHR000000346057, interval id: 12528</td>
-<td>NL</td>
-<td>0.900000</td>
-<td>%</td>
-<td>organic matter, NEN5754v2014plusWENR - verhitt...</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
-<td>bis.anatol</td>
-<td>BPK - 328062</td>
-<td>NL</td>
-<td>1.500000</td>
-<td>%</td>
-<td>field estimation - SOM measured by LOI at 550°...</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
-<td>ParcelasINES</td>
-<td>15311</td>
-<td>ES</td>
-<td>0.490000</td>
-<td>%</td>
-<td>Walkley-Black, OM in fine soil (&lt; 2 mm) is div...</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
-<td>Castilla.y.Leon</td>
-<td>Acor - ACOR201913340</td>
-<td>ES</td>
-<td>1.611792</td>
-<td>%</td>
-<td>SOM, Materia Orgánica Porcentaje</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
-<td>foregs</td>
-<td>N34E05C3</td>
-<td>DE</td>
-<td>0.765460</td>
-<td>%</td>
-<td>total combustion in a 99.99 % oxygen flow at 1...</td>
-</tr>
-</tbody>
-</table>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/micromamba/envs/geoenv/lib/python3.13/site-packages/pandas/core/sample.py:152</span>, in <span class="ansi-cyan-fg">sample</span><span class="ansi-blue-fg">(obj_len, size, replace, weights, random_state)</span>
+<span class="ansi-green-fg">    149</span>     <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">    150</span>         <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Invalid weights: weights sum to zero</span><span class="ansi-yellow-fg">"</span>)
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">152</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">random_state</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">choice</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">obj_len</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">size</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">size</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">replace</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">replace</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">p</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">weights</span><span class="ansi-yellow-bg">)</span>.astype(
+<span class="ansi-green-fg">    153</span>     np.intp, copy=<span style="font-weight:bold;color:rgb(0,135,0)">False</span>
+<span class="ansi-green-fg">    154</span> )
 
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">numpy/random/mtrand.pyx:1020</span>, in <span class="ansi-cyan-fg">numpy.random.mtrand.RandomState.choice</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-red-fg">ValueError</span>: Cannot take a larger sample than population when 'replace=False'</pre>
 </div>
 </div>
 </div>
 <p>Firstly, we standardize all measurements to <code>g/kg</code> for <code>soc</code> values.</p>
-<div id="b7c14f77" class="cell" data-results="as-is" data-execution_count="12">
+<div id="22feabe4" class="cell" data-results="as-is" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check all the possible units of soc measurements we have</span></span>
@@ -1228,13 +1117,13 @@ left 406300 rows from origianl 412709 rows</code></pre>
 <span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>data.loc[mask_unit,prop] <span class="op">=</span> data.loc[mask_unit,prop]<span class="op">*</span><span class="dv">10</span> <span class="co"># transform to g/kg</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>soc units: ['%' 'nan' 'g/kg' '% KA']
-nan unit data from ['geocradle', 'Czech']</code></pre>
+<pre><code>soc units: ['%']
+nan unit data from []</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="3-points_files/figure-html/cell-13-output-2.png" width="1428" height="380" class="figure-img"></p>
+<p><img src="3-points_files/figure-html/cell-13-output-2.png" width="855" height="380" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1243,7 +1132,7 @@ nan unit data from ['geocradle', 'Czech']</code></pre>
 </div>
 </div>
 <p>Then we use the property harmonization information from <a href="https://docs.google.com/spreadsheets/d/1J652XU_VWmbm1uLmeywlF6kfe7fUD5aJrfAIK97th1E/edit?gid=293050413#gid=293050413">Harmonization sheet</a> to assign quality score and convert the convertable/comparable values to be comparable to LUCAS <code>soc</code> values.</p>
-<div id="60ee4d16" class="cell" data-results="as-is" data-execution_count="13">
+<div id="dab53c09" class="cell" data-results="as-is" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in the soc harmonization sheet</span></span>
@@ -1266,12 +1155,12 @@ nan unit data from ['geocradle', 'Czech']</code></pre>
 <span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="co"># sampled_rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Missing in registry for soc: {('MarSOC', 'nan'), ('BRO BHR-P', 'organic matter, NEN5754v2014plusWENR - verhitten550'), ('foregs', 'total combustion in a 99.99 % oxygen flow at 1350°C of the samples after removal of the carbonate phase by hydrochloric acid'), ('bis.anatol', 'field estimation - SOM measured by LOI at 550°C as a mass percentage of mineral soil fraction'), ('infosolo', 'Springer &amp; Klee. Wet combustion'), ('bis.anatol', 'SOM measured by LOI at 550°C as a mass percentage of mineral soil fraction'), ('geocradle', 'SOM'), ('infosolo', 'Colorimetric. Perkin-Elmer'), ('ParcelasCOS', 'Walkley-Black, OM in fine soil (&lt; 2 mm) is divided by 1.72 (the Waksman coefficient)'), ('Wales.GMEP', 'chemical core, fine earth, LOI'), ('geocradle', 'nan'), ('BRO BHR-P', 'organic matter, onbekend - onbekend'), ('estonia.kese', 'nan'), ('infosolo', 'Walkley-Black'), ('Czech', 'oxidovatelny_uhlik_Cox_titrace, Tjurin method (ISO, 14235:1998)'), ('bis.anatol', 'nan'), ('basque', 'Walkley-Black, NELSON D.W. and SOMMERS L.E. (1996). -- SOM'), ('ukceh', 'Carbon concentration calculated from loss on ignition (g/kg). Using bespoke CS conversion value for %C calculation of 0.55xLOI.'), ('infosolo', 'Near-infrared spectroscopy. Dry combustion'), ('gemas', 'ISO standard 10694, Soilquality – determination of organic and total carbon after dry combustion'), ('NatbodDS', 'nan'), ('infosolo', 'Unkown'), ('thuenen.bze.lw', 'Organic carbon [g kg-1]  (DIN ISO 10694:1995)'), ('multione', 'CMS_analyte'), ('infosolo', 'Dry combustion'), ('Czech', 'celkovy_organicky_uhlik'), ('ParcelasINES', 'Walkley-Black, OM in fine soil (&lt; 2 mm) is divided by 1.72 (the Waksman coefficient)'), ('infosolo', 'Not determined'), ('infosolo', 'Tinsley'), ('Pedološka', 'Organska snov (organic matter), Walkely-Black: K2Cr2O7/H2SO4'), ('LUCAS', 'ISO 10694:1995, Dry combustion (elementary analysis)'), ('BRO BHR-P', 'nan')}
+<pre><code>Missing in registry for soc: {('gemas', 'ISO standard 10694, Soilquality – determination of organic and total carbon after dry combustion')}
 None</code></pre>
 </div>
 </div>
 <p>Once the conversion is complete, the data is cleaned based on its possible range. For <code>soc</code>, values must be positive and less than 1000.</p>
-<div id="400b54bb" class="cell" data-results="as-is" data-execution_count="14">
+<div id="fa928618" class="cell" data-results="as-is" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the property column, assuming it's in a variable `prop`</span></span>
@@ -1310,7 +1199,7 @@ None</code></pre>
 </div>
 </div>
 <p>Measurements with a quality score below 2 (indicating they are not comparable to LUCAS) are set to NaN. Finally, all unnecessary columns are dropped, keeping only the quality score column.</p>
-<div id="0f66e799" class="cell" data-results="as-is" data-execution_count="15">
+<div id="14d7aa6b" class="cell" data-results="as-is" data-execution_count="15">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dff.loc[dff[<span class="ss">f'</span><span class="sc">{</span>prop<span class="sc">}</span><span class="ss">_qa'</span>]<span class="op">&lt;=</span><span class="dv">2</span>,prop] <span class="op">=</span> np.nan</span>

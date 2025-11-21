@@ -50,12 +50,14 @@ First import necessary libraries and define input and output paths.
 #| results: as-is
 # Initialization Cell: Import libraries and set paths
 import pandas as pd
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 import os
 import sys
 import numpy as np
 os.environ['USE_PYGEOS'] = '0'
 import geopandas as gpd
-from misc import find_files, nan_percentile, GoogleSheet, ttprint
+#from misc import find_files, nan_percentile, GoogleSheet, ttprint
 from harmonization_helper import plot_subplots_histogram, conversion, plot_spatial_distribution
 ```
 ```{python}
@@ -191,7 +193,7 @@ def find_soil_dataset(directory):
     listt = []
     for dirpath,_,filenames in os.walk(directory):
         for f in filenames:
-            if 'harmonized_l1.pq' in f:
+            if 'all_harmonized_v20250723.pq' in f:
                 listt.append(os.path.abspath(os.path.join(dirpath, f)))
     return listt
 
@@ -206,15 +208,16 @@ for ip in path_list:
     
 print()    
 data = pd.concat(data_list)
-
+```
+```{python}
 # unify the data format in each column
-meta_cols = ['id', 'lat', 'lon', 'time', 'hzn_top', 'hzn_btm', 'ref', 'nuts0']  # columns to indicate meta information
+meta_cols = ['id', 'lat', 'lon', 'year', 'hzn_top', 'hzn_btm', 'ref', 'nuts0']  # columns to indicate meta information
 prop_cols = ['soc', 'carbonates', 'total.n', 'ph.h2o', 'ph.cacl2', 'bulk.density.tot', 'bulk.density.fe',
              'clay', 'silt', 'sand', 'extractable.p', 'extractable.k','cec','ec','coarse.mass','coarse.vol']  # columns to indicate property values
 unit_cols = [i+'_unit' for i in prop_cols]  # columns to indicate the unit information for each property
 mtod_cols = [i+'_method' for i in prop_cols]  # columns to indicate the method used for each measurements
 
-num_cols = ['lat', 'lon', 'time', 'hzn_top', 'hzn_btm'] + prop_cols
+num_cols = ['lat', 'lon', 'year', 'hzn_top', 'hzn_btm'] + prop_cols
 for col in num_cols:
     data[col] = pd.to_numeric(data[col], errors='coerce')    
     
@@ -302,7 +305,7 @@ prop = 'soc'
 unit = f'{prop}_unit'
 mtod = f'{prop}_method'
 
-data_path = '/mnt/lacus/ai4sh_data.harmo/data_v2'
+data_path = 'data_v2'
 data = pd.read_parquet(f'{data_path}/soil.showcase_meta.cleaned_l2.pq')
 data.loc[:, :] = data.replace('None','nan')
 none_exists = (data == 'None').any().any()  # make sure all the invalid values are represented by 'nan'
@@ -341,6 +344,25 @@ data.loc[mask_unit,prop] = data.loc[mask_unit,prop]*10 # transform to g/kg
 ```
 
 Then we use the property harmonization information from [Harmonization sheet](https://docs.google.com/spreadsheets/d/1J652XU_VWmbm1uLmeywlF6kfe7fUD5aJrfAIK97th1E/edit?gid=293050413#gid=293050413) to assign quality score and convert the convertable/comparable values to be comparable to LUCAS `soc` values.
+
+```{python}
+# Define scope
+scope = ['https://spreadsheets.google.com/feeds',
+         'https://www.googleapis.com/auth/drive']
+
+# Path to your service-account JSON file
+creds = ServiceAccountCredentials.from_json_keyfile_name('/mnt/lacus/ai4sh_data.harmo/gaia-319808-913d36b5fca4.json', scope)
+
+# Authorize and open the sheet
+client = gspread.authorize(creds)
+spreadsheet = client.open_by_url(
+    'https://docs.google.com/spreadsheets/d/1J652XU_VWmbm1uLmeywlF6kfe7fUD5aJrfAIK97th1E/edit#gid=1254448729'
+)
+
+# Select the “soc” sheet
+mdf = spreadsheet.worksheet('soc')
+```
+
 ```{python}
 #| echo: true
 #| results: as-is
