@@ -252,7 +252,7 @@ def conversion(data_df, method_df, prop, keep=False):
         merged_df = merged_df.drop(columns= [''])
         
     if keep:
-        return merged_Df
+        return merged_df
     else:
         return merged_df.drop(columns= [f"{prop}_original"])
 
