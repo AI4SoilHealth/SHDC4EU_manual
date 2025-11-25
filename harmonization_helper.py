@@ -47,25 +47,25 @@ def register_methods(sheet, df, tab, prop, version):
         .to_numpy()
     )
 
-    # 3) first remove outdated ones
-    outdated_pairs = existing_pairs - set(tuple(p) for p in pairs)
-    if outdated_pairs:
-        print('Removing outdated entries:')
-        colA = sheet.col_values(1)[1:]  # skip header
-        colB = sheet.col_values(2)[1:]
-        row_map = {(a, b): i+2 for i, (a, b) in enumerate(zip(colA, colB))}
-        rows_to_del = []
-        for p in outdated_pairs:
-            if p in row_map:
-                rows_to_del.append(row_map[p])
-                print('Removing ', p)
+#     # 3) first remove outdated ones
+#     outdated_pairs = existing_pairs - set(tuple(p) for p in pairs)
+#     if outdated_pairs:
+#         print('Removing outdated entries:')
+#         colA = sheet.col_values(1)[1:]  # skip header
+#         colB = sheet.col_values(2)[1:]
+#         row_map = {(a, b): i+2 for i, (a, b) in enumerate(zip(colA, colB))}
+#         rows_to_del = []
+#         for p in outdated_pairs:
+#             if p in row_map:
+#                 rows_to_del.append(row_map[p])
+#                 print('Removing ', p)
                 
-        rows_to_del = sorted(rows_to_del, reverse=True)
-        for r in rows_to_del:
-            sheet.delete_rows(r)
+#         rows_to_del = sorted(rows_to_del, reverse=True)
+#         for r in rows_to_del:
+#             sheet.delete_rows(r)
             
-    else:
-        print('No outdated entries to be removed')
+#     else:
+#         print('No outdated entries to be removed')
  
     # 4) only new ones and shape as [A,B,C], add new ones
     new_pairs = [tuple(p) for p in pairs if tuple(p) not in existing_pairs]
@@ -189,7 +189,7 @@ def plot_subplots_histogram(df, column, ref_column, filt=None, value_range=None,
 
     
 ## do automatic conversion
-def conversion(data_df, method_df, prop, keep=False, dataset_colum_name='dataset_id'):
+def conversion(data_df, method_df, prop, keep=False):
     """
     Harmonize property measurements to comparable units using conversion formulas.
 
@@ -212,7 +212,7 @@ def conversion(data_df, method_df, prop, keep=False, dataset_colum_name='dataset
 
     # --- 1. check for missing methods ---
     existing_pairs = set(zip(method_df["src"], method_df["method"]))
-    new_pairs = set(zip(data_df[dataset_colum_name], data_df[mtod]))
+    new_pairs = set(zip(data_df["dataset_id"], data_df[mtod]))
 
     missing_pairs = new_pairs - existing_pairs
     if missing_pairs:
@@ -222,8 +222,8 @@ def conversion(data_df, method_df, prop, keep=False, dataset_colum_name='dataset
         print(f"All methods for {prop} are in registry.")
 
     # --- 2. merge method info ---
-    method_df = method_df.rename(columns={"src": dataset_colum_name,"method": mtod})
-    merged_df = pd.merge(data_df, method_df, on=[dataset_colum_name, mtod], how="left")
+    method_df = method_df.rename(columns={"src": "dataset_id","method": mtod})
+    merged_df = pd.merge(data_df, method_df, on=["dataset_id", mtod], how="left")
 
     # --- 3. apply conversion ---
     def apply_conversion(row):

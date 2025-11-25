@@ -7,7 +7,7 @@ project:
     - preface.qmd
     - 1-specifications.qmd
     - 2-layers.qmd
-    - 3-points.qmd
+    - example_pipeline.ipynb
 
 website:
   navbar:
@@ -46,7 +46,7 @@ website:
           - 2-layers.qmd
       - section: "Data use tutorials"
         contents:
-          - 3-points.qmd
+          - example_pipeline.ipynb
           - 4-shi.qmd
   page-footer:
     background: light
