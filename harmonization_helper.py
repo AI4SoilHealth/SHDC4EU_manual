@@ -8,16 +8,7 @@ os.environ['USE_PYGEOS'] = '0'
 import geopandas as gpd
 from scipy.stats import ks_2samp, mannwhitneyu, entropy
 from shapely.geometry import Point
-input_path = '/home/xuemeng/work_xuemeng/ai4sh_data.harmo/raw_data'  
-output_path = '/home/xuemeng/work_xuemeng/ai4sh_data.harmo/data_v2'
 
-# # create EU boundary file
-# eu_countries = gpd.read_file(f'{input_path}/EU/EU_nuts/NUTS_RG_20M_2021_3035.shp')
-# if eu_countries.crs != 'EPSG:4326':
-#     eu_countries = eu_countries.to_crs('EPSG:4326')
-# eu_boundary = eu_countries.dissolve()
-# eu_boundary = eu_boundary.drop(columns=['NUTS_ID', 'LEVL_CODE', 'CNTR_CODE', 'NAME_LATN','NUTS_NAME', 'MOUNT_TYPE', 'URBN_TYPE', 'COAST_TYPE', 'FID'])
-# eu_boundary['description'] = 'EU boundary'
 
 import time
 import random
@@ -113,9 +104,9 @@ def register_methods(sheet, df, tab, prop, version):
     return None
 
             
-def is_in_eu(df):
+def is_in_eu(df,eu_boundary_gpkg):
     # Load the unified EU boundary shapefile (GeoPackage format)
-    eu_boundary = gpd.read_file(f'{input_path}/EU/EU_nuts/eu_boundary.gpkg', driver='GPKG')
+    eu_boundary = gpd.read_file(eu_boundary_gpkg, driver='GPKG')
     
     # Extract the geometry of the EU boundary from the GeoDataFrame
     eu_polygon = eu_boundary.unary_union  # This combines all parts of the EU into a single shape
