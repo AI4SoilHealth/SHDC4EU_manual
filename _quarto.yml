@@ -7,7 +7,8 @@ project:
     - preface.qmd
     - 1-specifications.qmd
     - 2-layers.qmd
-    - example_pipeline.ipynb
+    - 3-soil_data_harmonization.ipynb
+    - 4-soil_data_download.qmd
 
 website:
   navbar:
@@ -46,7 +47,8 @@ website:
           - 2-layers.qmd
       - section: "Data use tutorials"
         contents:
-          - example_pipeline.ipynb
+          - 3-soil_data_harmonization.ipynb
+          - 4-soil_data_download.qmd
           - 4-shi.qmd
   page-footer:
     background: light
