@@ -45,27 +45,27 @@ The code section includes Jupyter notebooks used for importing, quality control,
 The standardization of format (e.g., arrangement of rows/columns, naming conventions) is done individually for each dataset. Here’s an example using the GEMAS dataset.
 
 First import necessary libraries and define input and output paths.
-
 ```{python}
-#| echo: true
+#| echo: false
 #| results: as-is
 # Initialization Cell: Import libraries and set paths
 import pandas as pd
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 import os
 import sys
 import numpy as np
 os.environ['USE_PYGEOS'] = '0'
 import geopandas as gpd
-from eumap.misc import find_files, nan_percentile, GoogleSheet, ttprint
-module_path = '/mnt/lacus/ai4sh_data.harmo/soil-data/code/' # Add the folder containing harmonization_tool_kit.py to the system path
-if module_path not in sys.path:
-    sys.path.append(module_path)
-    
-print(os.listdir(module_path))
-from harmonization_tool_kit import plot_subplots_histogram, conversion_and_score, plot_spatial_distribution
+#from misc import find_files, nan_percentile, GoogleSheet, ttprint
+from harmonization_helper import plot_subplots_histogram, conversion, plot_spatial_distribution
+```
+```{python}
+#| echo: true
+#| results: as-is
 
 input_path = '/mnt/lacus/ai4sh_data.harmo/raw_data'
-output_path = '/mnt/lacus/ai4sh_data.harmo/data_v2'
+output_path = 'data_v2'
 ```
 
 Then load GEMAS data, check its format and content.
@@ -170,6 +170,9 @@ Finally, ensure that the data is saved securely in the correct folder.
 ```{python}
 #| echo: true
 #| results: as-is
+# Create folder if it does not exist
+if not os.path.exists(output_path):
+    os.makedirs(output_path)
 temp.to_parquet(f'{output_path}/gemas.showcase_harmonized_l1.pq')
 print(temp.shape)
 ```
@@ -190,7 +193,7 @@ def find_soil_dataset(directory):
     listt = []
     for dirpath,_,filenames in os.walk(directory):
         for f in filenames:
-            if 'harmonized_l1.pq' in f:
+            if 'all_harmonized_v20250723.pq' in f:
                 listt.append(os.path.abspath(os.path.join(dirpath, f)))
     return listt
 
@@ -205,15 +208,16 @@ for ip in path_list:
     
 print()    
 data = pd.concat(data_list)
-
+```
+```{python}
 # unify the data format in each column
-meta_cols = ['id', 'lat', 'lon', 'time', 'hzn_top', 'hzn_btm', 'ref', 'nuts0']  # columns to indicate meta information
+meta_cols = ['id', 'lat', 'lon', 'year', 'hzn_top', 'hzn_btm', 'ref', 'nuts0']  # columns to indicate meta information
 prop_cols = ['soc', 'carbonates', 'total.n', 'ph.h2o', 'ph.cacl2', 'bulk.density.tot', 'bulk.density.fe',
              'clay', 'silt', 'sand', 'extractable.p', 'extractable.k','cec','ec','coarse.mass','coarse.vol']  # columns to indicate property values
 unit_cols = [i+'_unit' for i in prop_cols]  # columns to indicate the unit information for each property
 mtod_cols = [i+'_method' for i in prop_cols]  # columns to indicate the method used for each measurements
 
-num_cols = ['lat', 'lon', 'time', 'hzn_top', 'hzn_btm'] + prop_cols
+num_cols = ['lat', 'lon', 'year', 'hzn_top', 'hzn_btm'] + prop_cols
 for col in num_cols:
     data[col] = pd.to_numeric(data[col], errors='coerce')    
     
@@ -301,7 +305,7 @@ prop = 'soc'
 unit = f'{prop}_unit'
 mtod = f'{prop}_method'
 
-data_path = '/mnt/lacus/ai4sh_data.harmo/data_v2'
+data_path = 'data_v2'
 data = pd.read_parquet(f'{data_path}/soil.showcase_meta.cleaned_l2.pq')
 data.loc[:, :] = data.replace('None','nan')
 none_exists = (data == 'None').any().any()  # make sure all the invalid values are represented by 'nan'
@@ -340,6 +344,25 @@ data.loc[mask_unit,prop] = data.loc[mask_unit,prop]*10 # transform to g/kg
 ```
 
 Then we use the property harmonization information from [Harmonization sheet](https://docs.google.com/spreadsheets/d/1J652XU_VWmbm1uLmeywlF6kfe7fUD5aJrfAIK97th1E/edit?gid=293050413#gid=293050413) to assign quality score and convert the convertable/comparable values to be comparable to LUCAS `soc` values.
+
+```{python}
+# Define scope
+scope = ['https://spreadsheets.google.com/feeds',
+         'https://www.googleapis.com/auth/drive']
+
+# Path to your service-account JSON file
+creds = ServiceAccountCredentials.from_json_keyfile_name('/mnt/lacus/ai4sh_data.harmo/gaia-319808-913d36b5fca4.json', scope)
+
+# Authorize and open the sheet
+client = gspread.authorize(creds)
+spreadsheet = client.open_by_url(
+    'https://docs.google.com/spreadsheets/d/1J652XU_VWmbm1uLmeywlF6kfe7fUD5aJrfAIK97th1E/edit#gid=1254448729'
+)
+
+# Select the “soc” sheet
+mdf = spreadsheet.worksheet('soc')
+```
+
 ```{python}
 #| echo: true
 #| results: as-is
@@ -351,16 +374,16 @@ mdf = gsheet.soc
 
 # Use this function to convert all convertible measurements and assign quality scores to each measurement. 
 # After the conversion, a new quality score column 'soc_qa' is added.
-dff = conversion_and_score(data, mdf, prop) 
+dff = conversion(data, mdf, prop,dataset_colum_name="ref") 
+print(dff)
+# sampled_rows = (
+#     dff[['ref', 'id', 'time','hzn_dep', f'{prop}_original', prop, f'{prop}_qa',mtod,'conversion formula', 'conversion ref',unit]].groupby('ref')
+#     .apply(lambda x: x.sample(n=1))  # Sample one row per 'ref' group
+#     .sample(n=5, random_state=42)   # Randomly choose 5 rows from the sampled groups
+#     .reset_index(drop=True)         # Reset index for a clean DataFrame
+# )
 
-sampled_rows = (
-    dff[['ref', 'id', 'time','hzn_dep', f'{prop}_original', prop, f'{prop}_qa',mtod,'conversion formula', 'conversion ref',unit]].groupby('ref')
-    .apply(lambda x: x.sample(n=1))  # Sample one row per 'ref' group
-    .sample(n=5, random_state=42)   # Randomly choose 5 rows from the sampled groups
-    .reset_index(drop=True)         # Reset index for a clean DataFrame
-)
-
-sampled_rows
+# sampled_rows
 ```
 
 Once the conversion is complete, the data is cleaned based on its possible range. For `soc`, values must be positive and less than 1000.

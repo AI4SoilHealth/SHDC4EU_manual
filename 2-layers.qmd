@@ -77,16 +77,13 @@ The indices include:
   
 General steps of maps production are described below:
 
-```{r landsat-scheme, echo=FALSE, fig.cap="General workflow for processing Landsat-based spectral index predictors. Image source: @tian2024time.", out.width="100%"}
-knitr::include_graphics("images/landsat_datacube_workflow.png")
-```
+![General workflow for processing Landsat-based spectral index predictors. Image source: @tian2024time.](images/landsat_datacube_workflow.png){width=100%}
 
 A preview of the BSF (%) time series for the former Szczakowa sand mine, south Poland 
 is shown below.
 
-```{r bsf-example, echo=FALSE, fig.cap="The top panel provides zoomed-in view of NDVI, NDWI and BSF trends for the former Szczakowa sand mine, south Poland. Image source: @tian2024time.", out.width="90%"}
-knitr::include_graphics("images/landsat_example_bsf_ndvi_ndwi.jpg")
-```
+![The top panel provides zoomed-in view of NDVI, NDWI and BSF trends for the former Szczakowa sand mine, south Poland. Image source: @tian2024time.](images/landsat_example_bsf_ndvi_ndwi.jpg){width=90%}
+
 
 ### Access to the data cube
 

@@ -4,3 +4,10 @@
 .Ruserdata
 
 /.quarto/
+**/*.quarto_ipynb
+*_files/
+site_libs/
+# exclude folders containing the word "data"
+*data*/
+_pycache__/
+**/__pycache__/
