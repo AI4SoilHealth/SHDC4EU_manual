@@ -74,7 +74,7 @@ bibliography: references.bib
 
 format:
   html:
-    number-sections: true
+    # number-sections: true
     toc: true
     theme:
       light: flatly

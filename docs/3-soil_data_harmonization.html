@@ -428,14 +428,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#standardization" id="toc-standardization" class="nav-link active" data-scroll-target="#standardization"><span class="header-section-number">1</span> Standardization</a>
+  <li><a href="#standardization" id="toc-standardization" class="nav-link active" data-scroll-target="#standardization">Standardization</a>
   <ul class="collapse">
-  <li><a href="#extracting-metadata-into-a-standard-json-file" id="toc-extracting-metadata-into-a-standard-json-file" class="nav-link" data-scroll-target="#extracting-metadata-into-a-standard-json-file"><span class="header-section-number">1.1</span> Extracting Metadata into a Standard JSON File</a></li>
-  <li><a href="#the-standardization-etl" id="toc-the-standardization-etl" class="nav-link" data-scroll-target="#the-standardization-etl"><span class="header-section-number">1.2</span> The standardization ETL</a></li>
-  <li><a href="#observations-from-the-raw-data" id="toc-observations-from-the-raw-data" class="nav-link" data-scroll-target="#observations-from-the-raw-data"><span class="header-section-number">1.3</span> Observations from the Raw Data</a></li>
+  <li><a href="#extracting-metadata-into-a-standard-json-file" id="toc-extracting-metadata-into-a-standard-json-file" class="nav-link" data-scroll-target="#extracting-metadata-into-a-standard-json-file">Extracting Metadata into a Standard JSON File</a></li>
+  <li><a href="#the-standardization-etl" id="toc-the-standardization-etl" class="nav-link" data-scroll-target="#the-standardization-etl">The standardization ETL</a></li>
+  <li><a href="#observations-from-the-raw-data" id="toc-observations-from-the-raw-data" class="nav-link" data-scroll-target="#observations-from-the-raw-data">Observations from the Raw Data</a></li>
   </ul></li>
-  <li><a href="#combine-standardized-datasets" id="toc-combine-standardized-datasets" class="nav-link" data-scroll-target="#combine-standardized-datasets"><span class="header-section-number">2</span> Combine standardized datasets</a></li>
-  <li><a href="#harmonization-etl" id="toc-harmonization-etl" class="nav-link" data-scroll-target="#harmonization-etl"><span class="header-section-number">3</span> Harmonization ETL</a></li>
+  <li><a href="#combine-standardized-datasets" id="toc-combine-standardized-datasets" class="nav-link" data-scroll-target="#combine-standardized-datasets">Combine standardized datasets</a></li>
+  <li><a href="#harmonization-etl" id="toc-harmonization-etl" class="nav-link" data-scroll-target="#harmonization-etl">Harmonization ETL</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/AI4SoilHealth/SHDC4EU_manual/blob/main/3-soil_data_harmonization.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -469,14 +469,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>SC.50</strong> (Brazil)</li>
 </ul>
 <p>This covers three soil properties: - <strong>Soil Organic Carbon (soc)</strong> - <strong>pH measured in water (ph.h2o)</strong> - <strong>Clay content</strong> (mass percentage of particles &lt; 2 µm)</p>
-<section id="standardization" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="standardization"><span class="header-section-number">1</span> Standardization</h2>
+<section id="standardization" class="level2">
+<h2 class="anchored" data-anchor-id="standardization">Standardization</h2>
 <p>This step collects, standardizes, and unifies soil datasets from multiple formats (JSON, SHP, Excel, CSV, DBF).<br>
 For each data source, a notebook named <strong><code>{dataset_id}_standardize.ipynb</code></strong> performs the full standardization pipeline.<br>
 Metadata required for the later harmonization step is manually added in <strong><code>{dataset_id}_{subset_id}_meta.json</code></strong>.</p>
 <hr>
-<section id="extracting-metadata-into-a-standard-json-file" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="extracting-metadata-into-a-standard-json-file"><span class="header-section-number">1.1</span> Extracting Metadata into a Standard JSON File</h3>
+<section id="extracting-metadata-into-a-standard-json-file" class="level3">
+<h3 class="anchored" data-anchor-id="extracting-metadata-into-a-standard-json-file">Extracting Metadata into a Standard JSON File</h3>
 <p>Soil property metadata often appears in inconsistent formats and may contain varying levels of detail.<br>
 To standardize and automate the workflow, we define a set of metadata fields of interest and manually extract them into a JSON file. These metadata is required for downstream harmonization steps, including:</p>
 <table class="caption-top table">
@@ -536,8 +536,8 @@ To standardize and automate the workflow, we define a set of metadata fields of 
 </figure>
 </div>
 </section>
-<section id="the-standardization-etl" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="the-standardization-etl"><span class="header-section-number">1.2</span> The standardization ETL</h3>
+<section id="the-standardization-etl" class="level3">
+<h3 class="anchored" data-anchor-id="the-standardization-etl">The standardization ETL</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/standardize_ETL.png" class="img-fluid figure-img"></p>
@@ -606,8 +606,8 @@ the meta data looks like
 </div>
 </div>
 </section>
-<section id="observations-from-the-raw-data" class="level3" data-number="1.3">
-<h3 data-number="1.3" class="anchored" data-anchor-id="observations-from-the-raw-data"><span class="header-section-number">1.3</span> Observations from the Raw Data</h3>
+<section id="observations-from-the-raw-data" class="level3">
+<h3 class="anchored" data-anchor-id="observations-from-the-raw-data">Observations from the Raw Data</h3>
 <p>From the initial inspection, the dataset requires several standardization steps:</p>
 <ul>
 <li>Column names must follow the agreed naming convention (e.g., use <code>soc</code> instead of <code>SOC_target</code>).</li>
@@ -815,8 +815,8 @@ now the data contains columns
 </div>
 </section>
 </section>
-<section id="combine-standardized-datasets" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="combine-standardized-datasets"><span class="header-section-number">2</span> Combine standardized datasets</h2>
+<section id="combine-standardized-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="combine-standardized-datasets">Combine standardized datasets</h2>
 <p>Now we have all the example datasets standardized and put in directory <code>data_standardized</code> as shown in</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -927,8 +927,8 @@ missing data check
 </div>
 </div>
 </section>
-<section id="harmonization-etl" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="harmonization-etl"><span class="header-section-number">3</span> Harmonization ETL</h2>
+<section id="harmonization-etl" class="level2">
+<h2 class="anchored" data-anchor-id="harmonization-etl">Harmonization ETL</h2>
 <p>This step aligns measurement values across datasets so they are comparable with the <a href="https://esdac.jrc.ec.europa.eu/projects/lucas">LUCAS</a> reference methods.</p>
 <p>It uses the standardized dataset <code>all_standardized_{version_code}.pq</code> as input and harmonizes property values by accounting for both <strong>method</strong> and <strong>unit</strong> differences.</p>
 <div class="quarto-figure quarto-figure-center">
