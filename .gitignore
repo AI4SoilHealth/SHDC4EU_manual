@@ -3,10 +3,10 @@
 .RData
 .Ruserdata
 
-# /.quarto/
+/.quarto/
 **/*.quarto_ipynb
 *_files/
-site_libs/
+# site_libs/
 # exclude folders containing the word "data"
 *data*/
 _pycache__/

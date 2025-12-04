@@ -4,11 +4,11 @@ The **standardized** soil data used in this manual can be downloaded from the fo
 
 [sharable_standardized_v20250723.csv.gz](https://drive.google.com/file/d/1rBsdJWp5cZKw7B2xujpqbXjBSmiS83cW/view?usp=drive_link)
 
-Only the datasets that are allowed to be shared are included here. 
+Only the datasets that are allowed to be shared are included here and only in the standardized form. 
 
 LUCAS points have been anonymized by randomly shifting their coordinates within a 1000-meter radius.
 
-These are the datasets included in the standardized harmonized dataset used in this manual:
+These are the datasets included:
 
 -   BHR-P
 -   BIS
