@@ -1,4 +1,4 @@
-# Soil data download
+# Soil data download {#sec-soildatadownload}
 
 The **standardized** soil data used in this manual can be downloaded from the following link.
 

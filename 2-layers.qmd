@@ -166,7 +166,7 @@ predicting soil properties. This pipeline enhances model performance through
 hyper-parameter tuning, feature selection, and cross-validation. The process 
 begins with inputting harmonized soil data, covariate paths, and a defined quality 
 score threshold to ensure data reliability. The inputs, processing steps and 
-outputs are [@tian2025socd]:
+outputs are [@tian2025spatiotemporal]:
 
 - **Input Data Preparation**:
    - Harmonized soil data
