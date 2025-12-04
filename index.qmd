@@ -37,9 +37,11 @@ extrapolating process-based and/or ML models to future climate land-use scenario
 Compiled data (imported, standardized, quality-controlled) is available 
 through a diversity of standard formats:
 
-- Gridded data as COG files (compressed Cloud Optimized GeoTIFFs);
+- Gridded data as COG files (compressed Cloud Optimized GeoTIFFs), see stac
+  browser for more details ([STAC browser](https://stac.ecodatacube.eu/));
 - Vector data as GPKG files ([Geopackage file](https://www.geopackage.org/) ready to be opened in QGIS);
-- Tabular data is available either as CSV files or as Google Sheets;
+- Tabular data is available either as CSV files or as Google Sheets, see section [Soil data download](4-soil_data_download.html)
+  below for more details.;
 
 All files can be downloaded using the STAC browser and/or using embedded links 
 provided in this document.

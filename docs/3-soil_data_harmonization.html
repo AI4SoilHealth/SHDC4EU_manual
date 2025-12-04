@@ -428,14 +428,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#standardization" id="toc-standardization" class="nav-link active" data-scroll-target="#standardization">Standardization</a>
+  <li><a href="#standardization" id="toc-standardization" class="nav-link active" data-scroll-target="#standardization"><span class="header-section-number">1</span> Standardization</a>
   <ul class="collapse">
-  <li><a href="#extracting-metadata-into-a-standard-json-file" id="toc-extracting-metadata-into-a-standard-json-file" class="nav-link" data-scroll-target="#extracting-metadata-into-a-standard-json-file">Extracting Metadata into a Standard JSON File</a></li>
-  <li><a href="#the-standardization-etl" id="toc-the-standardization-etl" class="nav-link" data-scroll-target="#the-standardization-etl">The standardization ETL</a></li>
-  <li><a href="#observations-from-the-raw-data" id="toc-observations-from-the-raw-data" class="nav-link" data-scroll-target="#observations-from-the-raw-data">Observations from the Raw Data</a></li>
+  <li><a href="#extracting-metadata-into-a-standard-json-file" id="toc-extracting-metadata-into-a-standard-json-file" class="nav-link" data-scroll-target="#extracting-metadata-into-a-standard-json-file"><span class="header-section-number">1.1</span> Extracting Metadata into a Standard JSON File</a></li>
+  <li><a href="#the-standardization-etl" id="toc-the-standardization-etl" class="nav-link" data-scroll-target="#the-standardization-etl"><span class="header-section-number">1.2</span> The standardization ETL</a></li>
+  <li><a href="#observations-from-the-raw-data" id="toc-observations-from-the-raw-data" class="nav-link" data-scroll-target="#observations-from-the-raw-data"><span class="header-section-number">1.3</span> Observations from the Raw Data</a></li>
   </ul></li>
-  <li><a href="#combine-standardized-datasets" id="toc-combine-standardized-datasets" class="nav-link" data-scroll-target="#combine-standardized-datasets">Combine standardized datasets</a></li>
-  <li><a href="#harmonization-etl" id="toc-harmonization-etl" class="nav-link" data-scroll-target="#harmonization-etl">Harmonization ETL</a></li>
+  <li><a href="#combine-standardized-datasets" id="toc-combine-standardized-datasets" class="nav-link" data-scroll-target="#combine-standardized-datasets"><span class="header-section-number">2</span> Combine standardized datasets</a></li>
+  <li><a href="#harmonization-etl" id="toc-harmonization-etl" class="nav-link" data-scroll-target="#harmonization-etl"><span class="header-section-number">3</span> Harmonization ETL</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/AI4SoilHealth/SHDC4EU_manual/blob/main/3-soil_data_harmonization.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -469,14 +469,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>SC.50</strong> (Brazil)</li>
 </ul>
 <p>This covers three soil properties: - <strong>Soil Organic Carbon (soc)</strong> - <strong>pH measured in water (ph.h2o)</strong> - <strong>Clay content</strong> (mass percentage of particles &lt; 2 µm)</p>
-<section id="standardization" class="level2">
-<h2 class="anchored" data-anchor-id="standardization">Standardization</h2>
+<section id="standardization" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="standardization"><span class="header-section-number">1</span> Standardization</h2>
 <p>This step collects, standardizes, and unifies soil datasets from multiple formats (JSON, SHP, Excel, CSV, DBF).<br>
 For each data source, a notebook named <strong><code>{dataset_id}_standardize.ipynb</code></strong> performs the full standardization pipeline.<br>
 Metadata required for the later harmonization step is manually added in <strong><code>{dataset_id}_{subset_id}_meta.json</code></strong>.</p>
 <hr>
-<section id="extracting-metadata-into-a-standard-json-file" class="level3">
-<h3 class="anchored" data-anchor-id="extracting-metadata-into-a-standard-json-file">Extracting Metadata into a Standard JSON File</h3>
+<section id="extracting-metadata-into-a-standard-json-file" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="extracting-metadata-into-a-standard-json-file"><span class="header-section-number">1.1</span> Extracting Metadata into a Standard JSON File</h3>
 <p>Soil property metadata often appears in inconsistent formats and may contain varying levels of detail.<br>
 To standardize and automate the workflow, we define a set of metadata fields of interest and manually extract them into a JSON file. These metadata is required for downstream harmonization steps, including:</p>
 <table class="caption-top table">
@@ -536,8 +536,8 @@ To standardize and automate the workflow, we define a set of metadata fields of 
 </figure>
 </div>
 </section>
-<section id="the-standardization-etl" class="level3">
-<h3 class="anchored" data-anchor-id="the-standardization-etl">The standardization ETL</h3>
+<section id="the-standardization-etl" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="the-standardization-etl"><span class="header-section-number">1.2</span> The standardization ETL</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/standardize_ETL.png" class="img-fluid figure-img"></p>
@@ -553,7 +553,7 @@ To standardize and automate the workflow, we define a set of metadata fields of 
 <figcaption>Directory structure</figcaption>
 </figure>
 </div>
-<div id="06666de7-2b05-44c4-aba3-93450d0c6513" class="cell" data-tags="[]" data-execution_count="21">
+<div id="06666de7-2b05-44c4-aba3-93450d0c6513" class="cell" data-tags="[]" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os  <span class="co"># for file parsing</span></span>
@@ -570,7 +570,7 @@ To standardize and automate the workflow, we define a set of metadata fields of 
 <p>Standardize the LimeSoDa subset NSW.52 so that it follows a consistent format and includes all required metadata columns.</p>
 <p>Define <strong>version, dataset_id, and subset_ids</strong> to keep your input and output paths well-organized and structured.</p>
 <p>These identifiers allow you to systematically build directory paths and manage data across different stages of processing. Using these paths, the <strong>metadata JSON, the main datasets, and the coordinate datasets</strong> are loaded.</p>
-<div id="21101417-d45a-4ce9-a31e-755e34121c02" class="cell" data-tags="[]" data-execution_count="22">
+<div id="21101417-d45a-4ce9-a31e-755e34121c02" class="cell" data-tags="[]" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>version <span class="op">=</span> <span class="st">'v20250723'</span> <span class="co"># version id, can be anything, here we use date string</span></span>
@@ -606,8 +606,8 @@ the meta data looks like
 </div>
 </div>
 </section>
-<section id="observations-from-the-raw-data" class="level3">
-<h3 class="anchored" data-anchor-id="observations-from-the-raw-data">Observations from the Raw Data</h3>
+<section id="observations-from-the-raw-data" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="observations-from-the-raw-data"><span class="header-section-number">1.3</span> Observations from the Raw Data</h3>
 <p>From the initial inspection, the dataset requires several standardization steps:</p>
 <ul>
 <li>Column names must follow the agreed naming convention (e.g., use <code>soc</code> instead of <code>SOC_target</code>).</li>
@@ -625,7 +625,7 @@ Update property-related column names to follow the standardized schema.</p></li>
 <li><p><strong>Identify and Convert Coordinate Columns</strong><br>
 Detect the coordinate columns provided in local projection and convert them into the required geographic coordinate system.</p></li>
 </ol>
-<div id="1a61fb32-ef2b-4a21-9f6a-46cce8098328" class="cell" data-execution_count="23">
+<div id="1a61fb32-ef2b-4a21-9f6a-46cce8098328" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rename the columns to be standard</span></span>
@@ -675,7 +675,7 @@ For this dataset, all required metadata are available except <code>lc_survey</co
 </ul>
 <p>After attaching metadata, <strong>irrelevant columns are removed</strong> to keep the dataset clean and consistent using the <code>standardize_column_types(df)</code> function.</p>
 <p>These steps are commonly needed for most datasets, which is why they have been implemented as helper functions—to reduce repetitive manual work.</p>
-<div id="cc927b9f-f7cf-4dd6-9154-5f4334618b32" class="cell" data-tags="[]" data-execution_count="24">
+<div id="cc927b9f-f7cf-4dd6-9154-5f4334618b32" class="cell" data-tags="[]" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> standardize_helper <span class="im">import</span> attach_metadata, standardize_column_types <span class="co"># helpers tailored</span></span>
@@ -707,7 +707,7 @@ now the data contains columns
 <p>Once the data is standardized, we save the processed dataset.</p>
 <p>Up to this point, <strong>no measurements (rows) have been removed</strong>, regardless of their quality.<br>
 All filtering or quality-control steps will be handled later in the workflow.</p>
-<div id="3de4ee0d-18ac-4c65-a171-8b708a4fe6ae" class="cell" data-tags="[]" data-execution_count="25">
+<div id="3de4ee0d-18ac-4c65-a171-8b708a4fe6ae" class="cell" data-tags="[]" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>now_len <span class="op">=</span> <span class="bu">len</span>(df)</span>
@@ -720,7 +720,7 @@ All filtering or quality-control steps will be handled later in the workflow.</p
 </div>
 </div>
 <p>Now we repeat the process for another subset: <strong>BB.51</strong>.</p>
-<div id="d11ee2cd-2362-4ea5-94d5-360f9f759e83" class="cell" data-tags="[]" data-execution_count="26">
+<div id="d11ee2cd-2362-4ea5-94d5-360f9f759e83" class="cell" data-tags="[]" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>subset_id <span class="op">=</span> <span class="st">"SC.50"</span> <span class="co"># id for 1st subset in this demonstration</span></span>
@@ -815,8 +815,8 @@ now the data contains columns
 </div>
 </section>
 </section>
-<section id="combine-standardized-datasets" class="level2">
-<h2 class="anchored" data-anchor-id="combine-standardized-datasets">Combine standardized datasets</h2>
+<section id="combine-standardized-datasets" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="combine-standardized-datasets"><span class="header-section-number">2</span> Combine standardized datasets</h2>
 <p>Now we have all the example datasets standardized and put in directory <code>data_standardized</code> as shown in</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -825,7 +825,7 @@ now the data contains columns
 </figure>
 </div>
 <p>Next we combine them together, and clean based on meta data.</p>
-<div id="e3c2a4ff-9046-4265-92c2-229f1c991188" class="cell" data-tags="[]" data-execution_count="27">
+<div id="e3c2a4ff-9046-4265-92c2-229f1c991188" class="cell" data-tags="[]" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> []</span>
@@ -875,7 +875,7 @@ missing data check
 </div>
 <p>We now clean the data based on metadata: records lacking valid depth, year, or coordinate information are removed. Then we save the data.</p>
 <p>We also standardize: - <strong>Depth</strong> into a single column, <code>hzn_dep</code>. If <code>hzn_dep</code> is missing, it is computed as the mean of <code>hzn_top</code> and <code>hzn_btm</code>. - <strong>Year</strong> information, extracted and standardized from the original time column (since current covariate layers support year-level resolution).</p>
-<div id="5872caf4-5201-4696-acec-e528ea1331f3" class="cell" data-execution_count="28">
+<div id="5872caf4-5201-4696-acec-e528ea1331f3" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate hzn_dep</span></span>
@@ -927,8 +927,8 @@ missing data check
 </div>
 </div>
 </section>
-<section id="harmonization-etl" class="level2">
-<h2 class="anchored" data-anchor-id="harmonization-etl">Harmonization ETL</h2>
+<section id="harmonization-etl" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="harmonization-etl"><span class="header-section-number">3</span> Harmonization ETL</h2>
 <p>This step aligns measurement values across datasets so they are comparable with the <a href="https://esdac.jrc.ec.europa.eu/projects/lucas">LUCAS</a> reference methods.</p>
 <p>It uses the standardized dataset <code>all_standardized_{version_code}.pq</code> as input and harmonizes property values by accounting for both <strong>method</strong> and <strong>unit</strong> differences.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -941,7 +941,7 @@ missing data check
 <ul>
 <li>For each combination of <code>dataset_id</code> and <code>{prop}_method</code>, register any <strong>unknown methods</strong> in the harmonization sheet using the <code>register_method</code> function from <code>harmonization_helpers.py</code>.</li>
 </ul>
-<div id="f206266d-263f-4045-8b67-e79a47653b1d" class="cell" data-tags="[]" data-execution_count="29">
+<div id="f206266d-263f-4045-8b67-e79a47653b1d" class="cell" data-tags="[]" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gspread</span>
@@ -986,7 +986,7 @@ These entries—especially the <em>formula</em> column—define how the <code>co
 <figcaption>Example of harmonization sheet</figcaption>
 </figure>
 </div>
-<div id="eefdbdfb-b425-46fa-b0da-b1e576218f8c" class="cell" data-tags="[]" data-execution_count="30">
+<div id="eefdbdfb-b425-46fa-b0da-b1e576218f8c" class="cell" data-tags="[]" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> harmonization_helper <span class="im">import</span> conversion</span>
@@ -1018,7 +1018,7 @@ All methods for clay are in registry.
 <p>After this, each property one by one should be examined, to normalize units across datasets. specifically, we do: - Checking unit metadata<br>
 - Inspecting value distributions when needed<br>
 - Removing unrealistic values (extreme outliers, negative values where invalid, etc.)</p>
-<div id="e7c5eead-2ffd-44cd-95c6-4fad65cf2e25" class="cell" data-tags="[]" data-execution_count="31">
+<div id="e7c5eead-2ffd-44cd-95c6-4fad65cf2e25" class="cell" data-tags="[]" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1070,14 +1070,14 @@ Therefore, no additional processing is required. We remove all unit and method c
 - Property information<br>
 - Harmonized values</p>
 <p>This dataset is ready for spatial overlay and modeling.</p>
-<div id="c1b49603-0015-4736-a43a-5cbbbd370579" class="cell" data-tags="[]" data-execution_count="32">
+<div id="c1b49603-0015-4736-a43a-5cbbbd370579" class="cell" data-tags="[]" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>harmonize_folder <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>parent_path<span class="sc">}</span><span class="ss">/data_harmonized'</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>harmonized_df.to_parquet(<span class="ss">f'</span><span class="sc">{</span>harmonize_folder<span class="sc">}</span><span class="ss">/all_harmonized_</span><span class="sc">{</span>version<span class="sc">}</span><span class="ss">.pq'</span>)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>harmonized_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="32">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 
 
