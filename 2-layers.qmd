@@ -117,15 +117,14 @@ The folder **[soil_property_model_pipeline](https://github.com/AI4SoilHealth/Soi
 models for 10 key soil properties:
 
 1. Soil Organic Carbon (SOC)
-2. Nitrogen (N)
-3. Carbonate (CaCO3)
-4. Cation Exchange Capacity (CEC)
-5. Electrical Conductivity (EC)
-6. pH in Water
-7. pH in CaCl2 Solution
-8. Bulk Density
-9. Extractable Phosphorus (P)
-10. Extractable Potassium (K)
+2. Soil Organic Carbon Density (SOCD)
+3. Sand Content (Sand)
+4. Silt Content (Silt)
+5. Clay Content (Clay)
+6. pH in Water (pH_H2O)
+7. pH in CaCl2 Solution (pH_CaCl2)
+8. Bulk Density (BD)
+9. Extractable Potassium (K)
 
 The [notebooks and their content](https://github.com/AI4SoilHealth/SoilHealthDataCube/tree/main/SOCD_map):
 
