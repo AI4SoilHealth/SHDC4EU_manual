@@ -5,9 +5,9 @@
 
 /.quarto/
 **/*.quarto_ipynb
-*_files/
+# *_files/
 # site_libs/
 # exclude folders containing the word "data"
-*data*/
+example_data/
 _pycache__/
 **/__pycache__/
