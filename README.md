@@ -3,7 +3,7 @@
 This repository hosts the source code of the
 book *Soil Health Data Cube for pan-EU (SHDC4EU)*.
 
-[<img src="./images/cover.png" alt="Book front" width="450"/>](https://shdc.ai4soilhealth.eu)
+[<img src="./images/shdc_manual_cover.jpg" alt="Book front" width="450"/>](https://shdc.ai4soilhealth.eu)
 
 ## Acknowledgments
 
