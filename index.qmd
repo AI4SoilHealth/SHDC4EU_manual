@@ -1,18 +1,11 @@
 # Welcome {.unnumbered}
 
-```{r, include=FALSE, message=FALSE, results='hide'}
-ls <- c("jsonlite", "RCurl", "emo", "stringi")
-new.packages <- ls[!(ls %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages, repos = "https://cloud.r-project.org")
-#devtools::install_github("hadley/emo")
-lapply(ls, require, character.only = TRUE)
-```
 
 <a rel="license" href="https://zenodo.org/doi/10.5281/zenodo.13838797"><img alt="DOI" style="border-width:0" src="https://zenodo.org/badge/DOI/10.5281/zenodo.13838797.svg" /></a><br />
 
 This document provides information about the **Soil Health Data Cube** for pan-EU (SHDC4EU). The main purpose of the SHDC is to be as a platform for more detailed computing i.e. to estimate trends in important soil health indicators (e.g. Bare Soil Fraction, vegetation cover, chemical soil properties and similar). The SHDC is available via S3 (Simple Storage Service) and STAC as open data, which means that any researcher across EU can access data directly using [rstac](https://cran.r-project.org/package=rstac) or similar, and fetch values / aggregate per polygon or farm. list will be continuously updated and extended. **This document is continuously updated and new layers are continuously added**.
 
-<a href="https://a4soilhealth.eu/"><img src="./images/cover.png" alt="AI4SoilHealth logo" width="300"></a>
+<a href="https://a4soilhealth.eu/"><img src="./images/shdc_manual_cover.jpg" alt="AI4SoilHealth logo" width="300"></a>
 
 Soil Health Data Cube for pan-EU (SHDC4EU) is compilation of pan-EU layers 
 organized into a data cube and served through an API as analysis or decision 
@@ -44,9 +37,11 @@ extrapolating process-based and/or ML models to future climate land-use scenario
 Compiled data (imported, standardized, quality-controlled) is available 
 through a diversity of standard formats:
 
-- Gridded data as COG files (compressed Cloud Optimized GeoTIFFs);
+- Gridded data as COG files (compressed Cloud Optimized GeoTIFFs), see stac
+  browser for more details ([STAC browser](https://stac.ecodatacube.eu/));
 - Vector data as GPKG files ([Geopackage file](https://www.geopackage.org/) ready to be opened in QGIS);
-- Tabular data is available either as CSV files or as Google Sheets;
+- Tabular data is available either as CSV files or as Google Sheets, see section [Soil data download](4-soil_data_download.html)
+  below for more details.;
 
 All files can be downloaded using the STAC browser and/or using embedded links 
 provided in this document.
@@ -110,13 +105,13 @@ To cite this document please use:
 
 ```
 @book{shdc4eu_2024,
-  author       = {Hengl, T., Minarik, R., Tian, X., Parente, L., Ho, Y.-F., Consoli, D., Simoes, R., and contributors},
+  author       = {Genova, G., Hengl, T., Tian, X., Parente, L., Ho, Y.-F., and contributors},
   title        = {{Soil Health Data Cube for pan-EU technical manual}},
-  year         = {2024},
+  year         = {2025},
   publisher    = {OpenGeoHub foundation},
   address      = {Doorwerth},
-  version      = {v0.1},
-  doi          = {10.5281/zenodo.13838797},
+  version      = {v0.2},
+  doi          = {},
   url          = {https://shdc.ai4soilhealth.eu/}
 }
 ```

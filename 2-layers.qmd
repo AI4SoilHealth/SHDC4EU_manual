@@ -77,16 +77,13 @@ The indices include:
   
 General steps of maps production are described below:
 
-```{r landsat-scheme, echo=FALSE, fig.cap="General workflow for processing Landsat-based spectral index predictors. Image source: @tian2024time.", out.width="100%"}
-knitr::include_graphics("images/landsat_datacube_workflow.png")
-```
+![General workflow for processing Landsat-based spectral index predictors. Image source: @tian2024time.](images/landsat_datacube_workflow.png){width=100%}
 
 A preview of the BSF (%) time series for the former Szczakowa sand mine, south Poland 
 is shown below.
 
-```{r bsf-example, echo=FALSE, fig.cap="The top panel provides zoomed-in view of NDVI, NDWI and BSF trends for the former Szczakowa sand mine, south Poland. Image source: @tian2024time.", out.width="90%"}
-knitr::include_graphics("images/landsat_example_bsf_ndvi_ndwi.jpg")
-```
+![The top panel provides zoomed-in view of NDVI, NDWI and BSF trends for the former Szczakowa sand mine, south Poland. Image source: @tian2024time.](images/landsat_example_bsf_ndvi_ndwi.jpg){width=90%}
+
 
 ### Access to the data cube
 
@@ -120,15 +117,14 @@ The folder **[soil_property_model_pipeline](https://github.com/AI4SoilHealth/Soi
 models for 10 key soil properties:
 
 1. Soil Organic Carbon (SOC)
-2. Nitrogen (N)
-3. Carbonate (CaCO3)
-4. Cation Exchange Capacity (CEC)
-5. Electrical Conductivity (EC)
-6. pH in Water
-7. pH in CaCl2 Solution
-8. Bulk Density
-9. Extractable Phosphorus (P)
-10. Extractable Potassium (K)
+2. Soil Organic Carbon Density (SOCD)
+3. Sand Content (Sand)
+4. Silt Content (Silt)
+5. Clay Content (Clay)
+6. pH in Water (pH_H2O)
+7. pH in CaCl2 Solution (pH_CaCl2)
+8. Bulk Density (BD)
+9. Extractable Potassium (K)
 
 The [notebooks and their content](https://github.com/AI4SoilHealth/SoilHealthDataCube/tree/main/SOCD_map):
 
@@ -169,7 +165,7 @@ predicting soil properties. This pipeline enhances model performance through
 hyper-parameter tuning, feature selection, and cross-validation. The process 
 begins with inputting harmonized soil data, covariate paths, and a defined quality 
 score threshold to ensure data reliability. The inputs, processing steps and 
-outputs are [@tian2025socd]:
+outputs are [@tian2025spatiotemporal]:
 
 - **Input Data Preparation**:
    - Harmonized soil data

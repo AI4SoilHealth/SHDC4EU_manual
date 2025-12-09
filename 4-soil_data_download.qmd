@@ -1,0 +1,25 @@
+# Soil data download {#sec-soildatadownload}
+
+The **standardized** soil data used in this manual can be downloaded from the following link.
+
+[sharable_standardized_v20250723.csv.gz](https://drive.google.com/file/d/1rBsdJWp5cZKw7B2xujpqbXjBSmiS83cW/view?usp=drive_link)
+
+Only the datasets that are allowed to be shared are included here and only in the standardized form. 
+
+LUCAS points have been anonymized by randomly shifting their coordinates within a 1000-meter radius.
+
+These are the datasets included:
+
+-   BHR-P
+-   BIS
+-   GLanCE
+-   Geocradle
+-   INFOSOLO
+-   LUCAS
+-   LimeSoDa
+-   MarSOC
+-   SoDaH
+
+Please ensure to comply with the data usage policies and citation requirements of each dataset when using them for research or other purposes.
+
+For more information about the datasets, please refer to the [harmonization sheet](https://docs.google.com/spreadsheets/d/1J652XU_VWmbm1uLmeywlF6kfe7fUD5aJrfAIK97th1E/edit?usp=sharing)
