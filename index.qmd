@@ -110,7 +110,7 @@ To cite this document please use:
   year         = {2025},
   publisher    = {OpenGeoHub foundation},
   address      = {Doorwerth},
-  version      = {v0.2},
+  version      = {v1.1},
   doi          = {},
   url          = {https://shdc.ai4soilhealth.eu/}
 }
