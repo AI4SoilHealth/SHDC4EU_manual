@@ -76,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
 
 <meta property="og:title" content="Soil Health Data Cube for Europe">
 <meta property="og:description" content="Soil Health Data Cube for pan-EU (SHDC4EU) is compilation of pan-EU layers organized into a data cube and served through an API as analysis or decision ready data.">
-<meta property="og:image" content="./images/cover.png">
+<meta property="og:image" content="./images/shdc_manual_cover.jpg">
 <meta property="og:site_name" content="Soil Health Data Cube for Europe">
 <meta property="og:image:alt" content="AI4SoilHealth logo">
 <meta name="twitter:title" content="Soil Health Data Cube for Europe">
@@ -415,7 +415,7 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="unnumbered">Welcome</h1>
 <p><a rel="license" href="https://zenodo.org/doi/10.5281/zenodo.13838797"><img alt="DOI" style="border-width:0" src="https://zenodo.org/badge/DOI/10.5281/zenodo.13838797.svg"></a><br></p>
 <p>This document provides information about the <strong>Soil Health Data Cube</strong> for pan-EU (SHDC4EU). The main purpose of the SHDC is to be as a platform for more detailed computing i.e.&nbsp;to estimate trends in important soil health indicators (e.g.&nbsp;Bare Soil Fraction, vegetation cover, chemical soil properties and similar). The SHDC is available via S3 (Simple Storage Service) and STAC as open data, which means that any researcher across EU can access data directly using <a href="https://cran.r-project.org/package=rstac">rstac</a> or similar, and fetch values / aggregate per polygon or farm. list will be continuously updated and extended. <strong>This document is continuously updated and new layers are continuously added</strong>.</p>
-<p><a href="https://a4soilhealth.eu/"><img src="./images/cover.png" alt="AI4SoilHealth logo" width="300"></a></p>
+<p><a href="https://a4soilhealth.eu/"><img src="./images/shdc_manual_cover.jpg" alt="AI4SoilHealth logo" width="300"></a></p>
 <p>Soil Health Data Cube for pan-EU (SHDC4EU) is compilation of pan-EU layers organized into a data cube and served through an API as analysis or decision ready data. It will be published via the EcoDataCube.eu infrastructure and served with unrestricted access as a genuine open data project comparable to Copernicus Land Monitoring services, Zenodo.org, Amazon AWS Open Data and similar. It aims at serving the <a href="https://joint-research-centre.ec.europa.eu/eu-soil-observatory-euso_en">EU Soil Observatory</a> hosted by the European Commission JRC. We are preparing a complete, consistent Data Cube which will include EU-wide seasonal crop-type maps, primary soil properties, land degradation indices, terrain parameters, and similar EO products, all at 30-m resolution and encompassing the period 2000–2024+, climatic time-series images (rainfall, soil moisture, surface temperature) and projected crop models (typically only at 1-km spatial resolution). These will then be combined into a unified complete consistent data cube that can be used to run machine learning models to detect and examine relationships between the field-estimated and EO-based SHI. The general workflow of using the SHDC4EU, in a nutshell, is: (1) assess the management and eventual degradation history of a piece of land, (2) assess current properties and states, and (3) assess potential of soil + land under different (climate change) scenarios. This is the basic framework which other WPs can use as a computing engine on top of which to build their particular applications. For processing: (1) data is used to assess the history of each pixel in terms of positive and negative trends in GPP, vegetation cover, SOC and other soil properties, (2) the most recent (actual) soil properties and classes will be provided to individual pixels / farms, and (3) the land potential will be estimated by extrapolating process-based and/or ML models to future climate land-use scenarios.</p>
 <section id="download-compiled-data" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="download-compiled-data">Download compiled data</h2>
@@ -468,13 +468,13 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="unnumbered anchored" data-anchor-id="how-to-cite">How to cite</h2>
 <p>To cite this document please use:</p>
 <pre><code>@book{shdc4eu_2024,
-  author       = {Hengl, T., Minarik, R., Tian, X., Parente, L., Ho, Y.-F., Consoli, D., Simoes, R., and contributors},
+  author       = {Genova, G., Hengl, T., Tian, X., Parente, L., Ho, Y.-F., and contributors},
   title        = {{Soil Health Data Cube for pan-EU technical manual}},
-  year         = {2024},
+  year         = {2025},
   publisher    = {OpenGeoHub foundation},
   address      = {Doorwerth},
-  version      = {v0.1},
-  doi          = {10.5281/zenodo.13838797},
+  version      = {v0.2},
+  doi          = {},
   url          = {https://shdc.ai4soilhealth.eu/}
 }</code></pre>
 </section>

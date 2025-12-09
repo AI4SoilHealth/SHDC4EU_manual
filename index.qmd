@@ -5,7 +5,7 @@
 
 This document provides information about the **Soil Health Data Cube** for pan-EU (SHDC4EU). The main purpose of the SHDC is to be as a platform for more detailed computing i.e. to estimate trends in important soil health indicators (e.g. Bare Soil Fraction, vegetation cover, chemical soil properties and similar). The SHDC is available via S3 (Simple Storage Service) and STAC as open data, which means that any researcher across EU can access data directly using [rstac](https://cran.r-project.org/package=rstac) or similar, and fetch values / aggregate per polygon or farm. list will be continuously updated and extended. **This document is continuously updated and new layers are continuously added**.
 
-<a href="https://a4soilhealth.eu/"><img src="./images/cover.png" alt="AI4SoilHealth logo" width="300"></a>
+<a href="https://a4soilhealth.eu/"><img src="./images/shdc_manual_cover.jpg" alt="AI4SoilHealth logo" width="300"></a>
 
 Soil Health Data Cube for pan-EU (SHDC4EU) is compilation of pan-EU layers 
 organized into a data cube and served through an API as analysis or decision 
