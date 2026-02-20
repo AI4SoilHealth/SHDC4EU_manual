@@ -1,6 +1,8 @@
 # Soil data download {#sec-soildatadownload}
 
-The **standardized** soil data used in this manual can be downloaded from the following link.
+## Soil properties data
+
+The **standardized** soil properties data used in this manual can be downloaded from the following link.
 
 [sharable_standardized_v20250723.csv.gz](https://drive.google.com/file/d/1rBsdJWp5cZKw7B2xujpqbXjBSmiS83cW/view?usp=drive_link)
 
@@ -23,3 +25,12 @@ These are the datasets included:
 Please ensure to comply with the data usage policies and citation requirements of each dataset when using them for research or other purposes.
 
 For more information about the datasets, please refer to the [harmonization sheet](https://docs.google.com/spreadsheets/d/1J652XU_VWmbm1uLmeywlF6kfe7fUD5aJrfAIK97th1E/edit?usp=sharing)
+
+## Soil types data
+
+The **harmonized** soil types data used in this manual can be downloaded from the following link.
+
+[sharable_soil.type.wrb_epsg3035_v20260220.csv](https://drive.google.com/file/d/1yPxo0yaEZHuDPtUZpXrrNNOGeoxzkNBJ/view?usp=drive_link)
+
+For additional information about the soil types data, please refer to the 
+[Soil types harmonization](3-soil_types.qmd) section and the [harmonization sheet](https://docs.google.com/spreadsheets/d/1GaNpiH65yiuHusNVkUrKog2FCiVUO6kz_wNdIzHbdfg/edit?usp=sharing).

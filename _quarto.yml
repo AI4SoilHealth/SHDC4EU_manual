@@ -8,6 +8,7 @@ project:
     - 1-specifications.qmd
     - 2-layers.qmd
     - 3-soil_data_harmonization.ipynb
+    - 3-soil_types.qmd
     - 4-soil_data_download.qmd
 
 website:
@@ -48,11 +49,12 @@ website:
       - section: "Data use tutorials"
         contents:
           - 3-soil_data_harmonization.ipynb
+          - 3-soil_types.qmd
           - 4-soil_data_download.qmd
           - 4-shi.qmd
   page-footer:
     background: light
-    left: "© 2024, OpenGeoHub foundation"
+    left: "© 2026, OpenGeoHub foundation"
     right:
       - icon: github
         href: https://github.com/AI4SoilHealth/SHDC4EU_manual/

@@ -1,0 +1,27 @@
+# Soil types harmonization
+
+To construct a harmonized pan-European training dataset, legacy soil profile observations were collated from international, national, regional, and publicly available sources provided by project partners and national institutions. All datasets were standardized into a unified schema through a multi-step harmonization workflow that included: (i) reprojection of coordinates into the common European reference system (EPSG:3035), (ii) alignment of soil class information to the IUSS WRB classification, and (iii) normalization of attribute structure and metadata fields. Where multiple WRB labels existed for the same profile, duplicate records were intentionally retained to introduce controlled label noise during model training. Due to data protection agreements signed by OpenGeoHub, some of the source point datasets cannot be redistributed publicly.
+
+To address spatial underrepresentation, pseudo-training samples were generated for regions with sparse observations (notably parts of Spain, France, Poland, the Balkans, and Scandinavia). This was achieved by randomly selecting 1,000 centroids of 1 km raster cells from the ESDB v2 WRB Full Legend layer within data-poor countries. These synthetic samples were included solely to maintain spatial sampling density comparable to major continental and global soil databases and were treated as auxiliary training points rather than true field observations.
+
+Conversely, strongly overrepresented datasets were downsampled to prevent class and spatial imbalance. For example, the Dutch national soil profile database (\~200,000 profiles) was reduced to 2,061 observations (\~1 %) using doubly balanced sampling to ensure stratification across both geographic space and WRB class distribution.
+
+The complete harmonization workflow, including dataset provenance, transformation rules, class crosswalks, is documented in a harmonization lookup table available as a project spreadsheet (see provided link). This table serves as the authoritative reference for data integration and reproducibility.
+
+harmonization table: <https://docs.google.com/spreadsheets/d/1GaNpiH65yiuHusNVkUrKog2FCiVUO6kz_wNdIzHbdfg/edit?usp=sharing>
+
+The harmonized datasets available for download are listed in the following table and can be accessed at the link provided in the [Soil data download](4-soil_data_download.qmd) section.
+
+
+
+| Name | Source | License | Access link if possible |
+|--------------|------------------|--------------|--------------------------|
+| Germany | Poeplau2020inventory | CC-BY | https://www.openagrar.de/receive/openagrar_mods_00054877 |
+| Belgium | Aardewerk-Vlaanderen-2010 |  | https://www.dov.vlaanderen.be/geonetwork/srv/eng/catalog.search#/metadata/78e15dd4-8070-4220-afac-258ea040fb30 |
+| Netherlands | BHR-P | CC-BY | https://www.pdok.nl/datasets?p_p_id=KadasterSearchPortlet&p_p_lifecycle=1&p_auth=UJTlaA5U&\_KadasterSearchPortlet_javax.portlet.action=%2Fsearch%2Fexecute&searchType=search |
+| Slovenia | institute |  | https://soildb.openlandmap.org/025-import_chemical_data.html#slovenian-soil-profile-db |
+| Portugal | RAMOS2017390 |  | https://data.isric.org/geonetwork/srv/api/records/25d0cf4d-1865-4d2a-be32-40a1b2483936 |
+| GeoCradle | geocradle |  | http://datahub.geocradle.eu/dataset/regional-soil-spectral-library |
+| SOTER | batjes2005soter |  | https://data.isric.org/geonetwork/srv/api/records/1069afa2-e7ee-4c57-8e5f-06cf489b7623#/search?keyword=soil%20profiles |
+| WoSIS | batjes2017wosis_batjes2024providing |  | https://data.isric.org/geonetwork/srv/eng/catalog.search#/metadata/f41367e5-f4d2-4b73-81aa-a472730e1519 |
+| ESDB v2 | panagos2022european |  | This dataset was synthetically generated from ESDB v2 maps |
