@@ -25,3 +25,23 @@ The harmonized datasets available for download are listed in the following table
 | SOTER | batjes2005soter |  | https://data.isric.org/geonetwork/srv/api/records/1069afa2-e7ee-4c57-8e5f-06cf489b7623#/search?keyword=soil%20profiles |
 | WoSIS | batjes2017wosis_batjes2024providing |  | https://data.isric.org/geonetwork/srv/eng/catalog.search#/metadata/f41367e5-f4d2-4b73-81aa-a472730e1519 |
 | ESDB v2 | panagos2022european |  | This dataset was synthetically generated from ESDB v2 maps |
+
+
+
+References:
+
+Aardewerk-2010 (2011). Aardewerk-vlaanderen-2010. https://www.dov.vlaanderen.be.
+
+Batjes, N. H. (2005). SOTER-based soil parameter estimates for Central and Eastern Europe (ver. 2.0). Technical report, ISRIC.
+
+Batjes, N. H., Ribeiro, E., van Oostrum, A., Leenaars, J., Hengl, T., and de Jesus, J. M. (2017). WoSIS: providing standardised soil profile data for the world. Earth System Science Data, 9(1):1.
+
+GeoCradle (2021). Regional soil spectral library. http://datahub.geocradle.eu/dataset/regional-soil-spectral-library.
+
+Panagos, P., Van Liedekerke, M., Borrelli, P., Koninger, J., Ballabio, C., Orgiazzi, A., Lugato, E., Liakos, L., Hervas, J., Jones, A., et al. (2022). European Soil Data Centre 2.0: Soil data and knowledge in support of the EU policies. European Journal of Soil Science, 73(6):e13315.
+
+PDOK (2020). Bro bodemkundig booronderzoek. https://www.pdok.nl/atom-downloadservices/-/article/bro-bodemkundig-booronderzoek-bhr-p-.
+
+Poeplau, C., Don, A., Flessa, H., Heidkamp, A., Jacobs, A., and Prietz, R. (2020). First German Agricultural Soil Inventory – Core dataset. OpenAgrar, Gottingen.
+
+Ramos, T. B., Horta, A., Gon c¸ alves, M. C., Pires, F. P., Duffy, D., and Martins, J. C. (2017). The infosolo database as a first step towards the development of a soil information system in portugal. Catena, 158:390–412.941
