@@ -42,9 +42,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-bd1225a1195220ef6aed0cf2263fcf36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-c403f6089f60ab3e275d7bcfaab1b03e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-bd1225a1195220ef6aed0cf2263fcf36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-44a39cadf0e37ed064dd1b1f28a6468b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-beca23c3f243dea71461ef5c64f36189.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-44a39cadf0e37ed064dd1b1f28a6468b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,7 +76,9 @@ ul.task-list li input[type="checkbox"] {
 
 <meta property="og:title" content="Soil Health Data Cube for Europe">
 <meta property="og:description" content="Soil Health Data Cube for pan-EU (SHDC4EU) is compilation of pan-EU layers organized into a data cube and served through an API as analysis or decision ready data.">
+<meta property="og:image" content="images/soiltypes_data_distribution.png">
 <meta property="og:site_name" content="Soil Health Data Cube for Europe">
+<meta property="og:image:alt" content="Distribution of soil types datasets">
 <meta name="twitter:title" content="Soil Health Data Cube for Europe">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="images/cover.png">
@@ -309,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./3-soil_data_harmonization.html">Data use tutorials</a></li><li class="breadcrumb-item"><a href="./3-soil_types.html">Soil types harmonization</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./3-soil_data_harmonization.html">Data use tutorials</a></li><li class="breadcrumb-item"><a href="./3-soil_types.html">Harmonization of WRB soil types training data</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -374,7 +376,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./3-soil_types.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Soil types harmonization</span></a>
+ <span class="menu-text">Harmonization of WRB soil types training data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -395,19 +397,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#soil-types-harmonization" id="toc-soil-types-harmonization" class="nav-link active" data-scroll-target="#soil-types-harmonization">Soil types harmonization</a></li>
+  <li><a href="#harmonization-of-wrb-soil-types-training-data" id="toc-harmonization-of-wrb-soil-types-training-data" class="nav-link active" data-scroll-target="#harmonization-of-wrb-soil-types-training-data">Harmonization of WRB soil types training data</a>
+  <ul class="collapse">
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#disclaimer" id="toc-disclaimer" class="nav-link" data-scroll-target="#disclaimer">Disclaimer</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/edit/main/3-soil_types.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/AI4SoilHealth/SHDC4EU_manual/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./3-soil_data_harmonization.html">Data use tutorials</a></li><li class="breadcrumb-item"><a href="./3-soil_types.html">Soil types harmonization</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./3-soil_data_harmonization.html">Data use tutorials</a></li><li class="breadcrumb-item"><a href="./3-soil_types.html">Harmonization of WRB soil types training data</a></li></ol></nav></header>
 
 
 
 
 
-<section id="soil-types-harmonization" class="level1">
-<h1>Soil types harmonization</h1>
+<section id="harmonization-of-wrb-soil-types-training-data" class="level1">
+<h1>Harmonization of WRB soil types training data</h1>
 <p>To construct a harmonized pan-European training dataset, legacy soil profile observations were collated from international, national, regional, and publicly available sources provided by project partners and national institutions. All datasets were standardized into a unified schema through a multi-step harmonization workflow that included: (i) reprojection of coordinates into the common European reference system (EPSG:3035), (ii) alignment of soil class information to the IUSS WRB classification, and (iii) normalization of attribute structure and metadata fields. Where multiple WRB labels existed for the same profile, duplicate records were intentionally retained to introduce controlled label noise during model training. Due to data protection agreements signed by OpenGeoHub, some of the source point datasets cannot be redistributed publicly.</p>
 <p>To address spatial underrepresentation, pseudo-training samples were generated for regions with sparse observations (notably parts of Spain, France, Poland, the Balkans, and Scandinavia). This was achieved by randomly selecting 1,000 centroids of 1 km raster cells from the ESDB v2 WRB Full Legend layer within data-poor countries. These synthetic samples were included solely to maintain spatial sampling density comparable to major continental and global soil databases and were treated as auxiliary training points rather than true field observations.</p>
 <p>Conversely, strongly overrepresented datasets were downsampled to prevent class and spatial imbalance. For example, the Dutch national soil profile database (~200,000 profiles) was reduced to 2,061 observations (~1 %) using doubly balanced sampling to ensure stratification across both geographic space and WRB class distribution.</p>
@@ -415,12 +421,6 @@ ul.task-list li input[type="checkbox"] {
 <p>harmonization table: <a href="https://docs.google.com/spreadsheets/d/1GaNpiH65yiuHusNVkUrKog2FCiVUO6kz_wNdIzHbdfg/edit?usp=sharing" class="uri">https://docs.google.com/spreadsheets/d/1GaNpiH65yiuHusNVkUrKog2FCiVUO6kz_wNdIzHbdfg/edit?usp=sharing</a></p>
 <p>The harmonized datasets available for download are listed in the following table and can be accessed at the link provided in the <a href="./4-soil_data_download.html">Soil data download</a> section.</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 19%">
-<col style="width: 25%">
-<col style="width: 19%">
-<col style="width: 36%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -434,59 +434,71 @@ ul.task-list li input[type="checkbox"] {
 <td>Germany</td>
 <td>Poeplau2020inventory</td>
 <td>CC-BY</td>
-<td>https://www.openagrar.de/receive/openagrar_mods_00054877</td>
+<td><a href="https://www.openagrar.de/receive/openagrar_mods_00054877">Open Agrar</a></td>
 </tr>
 <tr class="even">
 <td>Belgium</td>
 <td>Aardewerk-Vlaanderen-2010</td>
 <td></td>
-<td>https://www.dov.vlaanderen.be/geonetwork/srv/eng/catalog.search#/metadata/78e15dd4-8070-4220-afac-258ea040fb30</td>
+<td><a href="https://www.dov.vlaanderen.be/geonetwork/srv/eng/catalog.search#/metadata/78e15dd4-8070-4220-afac-258ea040fb30">AARDEWERK</a></td>
 </tr>
 <tr class="odd">
 <td>Netherlands</td>
 <td>BHR-P</td>
 <td>CC-BY</td>
-<td>https://www.pdok.nl/datasets?p_p_id=KadasterSearchPortlet&amp;p_p_lifecycle=1&amp;p_auth=UJTlaA5U&amp;_KadasterSearchPortlet_javax.portlet.action=%2Fsearch%2Fexecute&amp;searchType=search</td>
+<td><a href="https://www.pdok.nl/datasets?p_p_id=KadasterSearchPortlet&amp;p_p_lifecycle=1&amp;p_auth=UJTlaA5U&amp;_KadasterSearchPortlet_javax.portlet.action=%2Fsearch%2Fexecute&amp;searchType=search">PDOK</a></td>
 </tr>
 <tr class="even">
 <td>Slovenia</td>
 <td>institute</td>
 <td></td>
-<td>https://soildb.openlandmap.org/025-import_chemical_data.html#slovenian-soil-profile-db</td>
+<td><a href="https://soildb.openlandmap.org/025-import_chemical_data.html#slovenian-soil-profile-db">OpenLandMap</a></td>
 </tr>
 <tr class="odd">
 <td>Portugal</td>
 <td>RAMOS2017390</td>
 <td></td>
-<td>https://data.isric.org/geonetwork/srv/api/records/25d0cf4d-1865-4d2a-be32-40a1b2483936</td>
+<td><a href="https://data.isric.org/geonetwork/srv/api/records/25d0cf4d-1865-4d2a-be32-40a1b2483936">INFOSOLO</a></td>
 </tr>
 <tr class="even">
 <td>GeoCradle</td>
 <td>geocradle</td>
 <td></td>
-<td>http://datahub.geocradle.eu/dataset/regional-soil-spectral-library</td>
+<td><a href="http://datahub.geocradle.eu/dataset/regional-soil-spectral-library">GeoCradle</a></td>
 </tr>
 <tr class="odd">
 <td>SOTER</td>
 <td>batjes2005soter</td>
 <td></td>
-<td>https://data.isric.org/geonetwork/srv/api/records/1069afa2-e7ee-4c57-8e5f-06cf489b7623#/search?keyword=soil%20profiles</td>
+<td><a href="https://data.isric.org/geonetwork/srv/api/records/1069afa2-e7ee-4c57-8e5f-06cf489b7623#/search?keyword=soil%20profiles">ISRIC</a></td>
 </tr>
 <tr class="even">
 <td>WoSIS</td>
 <td>batjes2017wosis_batjes2024providing</td>
 <td></td>
-<td>https://data.isric.org/geonetwork/srv/eng/catalog.search#/metadata/f41367e5-f4d2-4b73-81aa-a472730e1519</td>
+<td><a href="https://data.isric.org/geonetwork/srv/eng/catalog.search#/metadata/f41367e5-f4d2-4b73-81aa-a472730e1519">ISRIC</a></td>
 </tr>
 <tr class="odd">
 <td>ESDB v2</td>
 <td>panagos2022european</td>
 <td></td>
-<td>This dataset was synthetically generated from ESDB v2 maps</td>
+<td>This dataset was synthetically generated from <a href="https://esdac.jrc.ec.europa.eu/content/european-soil-database-v20-vector-and-attribute-data">ESDB v2 maps</a></td>
 </tr>
 </tbody>
 </table>
-<p>References:</p>
+<p><img src="images/soiltypes_data_distribution.png" class="img-fluid" style="width:100.0%" data-fig-cap="Soil types data distribution across countries." alt="Distribution of soil types datasets"></p>
+<p>Please cite as:</p>
+<pre><code>@Article{minarik2025wrb,
+AUTHOR = {Mina\v{r}\'{\i}k, R. and Hengl, T. and Simoes, R. and Isik, M.S. and Ho, Y.-F. and Tian, X.},
+TITLE = {Soil type (World Reference Base) map of Europe based on Ensemble Machine Learning and multiscale EO data},
+JOURNAL = {PeerJ},
+VOLUME = {in review},
+YEAR = {2024?},
+PAGES = {1--32},
+DOI = {https://doi.org/10.21203/rs.3.rs-5244083/v1}
+}</code></pre>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
 <p>Aardewerk-2010 (2011). Aardewerk-vlaanderen-2010. https://www.dov.vlaanderen.be.</p>
 <p>Batjes, N. H. (2005). SOTER-based soil parameter estimates for Central and Eastern Europe (ver. 2.0). Technical report, ISRIC.</p>
 <p>Batjes, N. H., Ribeiro, E., van Oostrum, A., Leenaars, J., Hengl, T., and de Jesus, J. M. (2017). WoSIS: providing standardised soil profile data for the world. Earth System Science Data, 9(1):1.</p>
@@ -495,8 +507,13 @@ ul.task-list li input[type="checkbox"] {
 <p>PDOK (2020). Bro bodemkundig booronderzoek. https://www.pdok.nl/atom-downloadservices/-/article/bro-bodemkundig-booronderzoek-bhr-p-.</p>
 <p>Poeplau, C., Don, A., Flessa, H., Heidkamp, A., Jacobs, A., and Prietz, R. (2020). First German Agricultural Soil Inventory – Core dataset. OpenAgrar, Gottingen.</p>
 <p>Ramos, T. B., Horta, A., Gon c¸ alves, M. C., Pires, F. P., Duffy, D., and Martins, J. C. (2017). The infosolo database as a first step towards the development of a soil information system in portugal. Catena, 158:390–412.941</p>
+</section>
+<section id="disclaimer" class="level2">
+<h2 class="anchored" data-anchor-id="disclaimer">Disclaimer</h2>
+<p>The production of these data layers are parts of <a href="https://cordis.europa.eu/project/id/101086179">AI4SoilHealth</a> project. The AI4SoilHealth project project has received funding from the European Union’s Horizon Europe research an innovation programme under grant agreement No.&nbsp;101086179. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or European Commision. Neither the European Union nor the granting authority can be held responsible for them. The data is provided “as is”. AI4SoilHealth project consortium and its suppliers and licensors hereby disclaim all warranties of any kind, express or implied, including, without limitation, the warranties of merchantability, fitness for a particular purpose and non-infringement. Neither AI4SoilHealth Consortium nor its suppliers and licensors, makes any warranty that the Website will be error free or that access thereto will be continuous or uninterrupted. You understand that you download from, or otherwise obtain content or services through, the Website at your own discretion and risk.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
