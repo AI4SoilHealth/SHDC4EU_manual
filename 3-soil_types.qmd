@@ -1,4 +1,4 @@
-# Soil types harmonization
+# Harmonization of WRB soil types training data
 
 To construct a harmonized pan-European training dataset, legacy soil profile observations were collated from international, national, regional, and publicly available sources provided by project partners and national institutions. All datasets were standardized into a unified schema through a multi-step harmonization workflow that included: (i) reprojection of coordinates into the common European reference system (EPSG:3035), (ii) alignment of soil class information to the IUSS WRB classification, and (iii) normalization of attribute structure and metadata fields. Where multiple WRB labels existed for the same profile, duplicate records were intentionally retained to introduce controlled label noise during model training. Due to data protection agreements signed by OpenGeoHub, some of the source point datasets cannot be redistributed publicly.
 
@@ -26,6 +26,7 @@ The harmonized datasets available for download are listed in the following table
 | WoSIS | batjes2017wosis_batjes2024providing |  | [ISRIC](https://data.isric.org/geonetwork/srv/eng/catalog.search#/metadata/f41367e5-f4d2-4b73-81aa-a472730e1519) |
 | ESDB v2 | panagos2022european |  | This dataset was synthetically generated from [ESDB v2 maps](https://esdac.jrc.ec.europa.eu/content/european-soil-database-v20-vector-and-attribute-data) |
 
+![](images/soiltypes_data_distribution.png){fig-alt="Distribution of soil types datasets" fig-cap="Soil types data distribution across countries." width=100%}
 
 Please cite as:
 
