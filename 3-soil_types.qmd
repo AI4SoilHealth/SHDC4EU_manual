@@ -16,19 +16,33 @@ The harmonized datasets available for download are listed in the following table
 
 | Name | Source | License | Access link if possible |
 |--------------|------------------|--------------|--------------------------|
-| Germany | Poeplau2020inventory | CC-BY | https://www.openagrar.de/receive/openagrar_mods_00054877 |
-| Belgium | Aardewerk-Vlaanderen-2010 |  | https://www.dov.vlaanderen.be/geonetwork/srv/eng/catalog.search#/metadata/78e15dd4-8070-4220-afac-258ea040fb30 |
-| Netherlands | BHR-P | CC-BY | https://www.pdok.nl/datasets?p_p_id=KadasterSearchPortlet&p_p_lifecycle=1&p_auth=UJTlaA5U&\_KadasterSearchPortlet_javax.portlet.action=%2Fsearch%2Fexecute&searchType=search |
-| Slovenia | institute |  | https://soildb.openlandmap.org/025-import_chemical_data.html#slovenian-soil-profile-db |
-| Portugal | RAMOS2017390 |  | https://data.isric.org/geonetwork/srv/api/records/25d0cf4d-1865-4d2a-be32-40a1b2483936 |
-| GeoCradle | geocradle |  | http://datahub.geocradle.eu/dataset/regional-soil-spectral-library |
-| SOTER | batjes2005soter |  | https://data.isric.org/geonetwork/srv/api/records/1069afa2-e7ee-4c57-8e5f-06cf489b7623#/search?keyword=soil%20profiles |
-| WoSIS | batjes2017wosis_batjes2024providing |  | https://data.isric.org/geonetwork/srv/eng/catalog.search#/metadata/f41367e5-f4d2-4b73-81aa-a472730e1519 |
-| ESDB v2 | panagos2022european |  | This dataset was synthetically generated from ESDB v2 maps |
+| Germany | Poeplau2020inventory | CC-BY | [Open Agrar](https://www.openagrar.de/receive/openagrar_mods_00054877) |
+| Belgium | Aardewerk-Vlaanderen-2010 |  | [AARDEWERK](https://www.dov.vlaanderen.be/geonetwork/srv/eng/catalog.search#/metadata/78e15dd4-8070-4220-afac-258ea040fb30) |
+| Netherlands | BHR-P | CC-BY | [PDOK](https://www.pdok.nl/datasets?p_p_id=KadasterSearchPortlet&p_p_lifecycle=1&p_auth=UJTlaA5U&_KadasterSearchPortlet_javax.portlet.action=%2Fsearch%2Fexecute&searchType=search) |
+| Slovenia | institute |  | [OpenLandMap](https://soildb.openlandmap.org/025-import_chemical_data.html#slovenian-soil-profile-db) |
+| Portugal | RAMOS2017390 |  | [INFOSOLO](https://data.isric.org/geonetwork/srv/api/records/25d0cf4d-1865-4d2a-be32-40a1b2483936) |
+| GeoCradle | geocradle |  | [GeoCradle](http://datahub.geocradle.eu/dataset/regional-soil-spectral-library) |
+| SOTER | batjes2005soter |  | [ISRIC](https://data.isric.org/geonetwork/srv/api/records/1069afa2-e7ee-4c57-8e5f-06cf489b7623#/search?keyword=soil%20profiles) |
+| WoSIS | batjes2017wosis_batjes2024providing |  | [ISRIC](https://data.isric.org/geonetwork/srv/eng/catalog.search#/metadata/f41367e5-f4d2-4b73-81aa-a472730e1519) |
+| ESDB v2 | panagos2022european |  | This dataset was synthetically generated from [ESDB v2 maps](https://esdac.jrc.ec.europa.eu/content/european-soil-database-v20-vector-and-attribute-data) |
 
 
+Please cite as:
 
-References:
+```
+@Article{minarik2025wrb,
+AUTHOR = {Mina\v{r}\'{\i}k, R. and Hengl, T. and Simoes, R. and Isik, M.S. and Ho, Y.-F. and Tian, X.},
+TITLE = {Soil type (World Reference Base) map of Europe based on Ensemble Machine Learning and multiscale EO data},
+JOURNAL = {PeerJ},
+VOLUME = {in review},
+YEAR = {2024?},
+PAGES = {1--32},
+DOI = {https://doi.org/10.21203/rs.3.rs-5244083/v1}
+}
+```
+
+
+## References
 
 Aardewerk-2010 (2011). Aardewerk-vlaanderen-2010. https://www.dov.vlaanderen.be.
 
@@ -45,3 +59,21 @@ PDOK (2020). Bro bodemkundig booronderzoek. https://www.pdok.nl/atom-downloadser
 Poeplau, C., Don, A., Flessa, H., Heidkamp, A., Jacobs, A., and Prietz, R. (2020). First German Agricultural Soil Inventory – Core dataset. OpenAgrar, Gottingen.
 
 Ramos, T. B., Horta, A., Gon c¸ alves, M. C., Pires, F. P., Duffy, D., and Martins, J. C. (2017). The infosolo database as a first step towards the development of a soil information system in portugal. Catena, 158:390–412.941
+
+
+## Disclaimer
+
+The production of these data layers are parts of [AI4SoilHealth](https://cordis.europa.eu/project/id/101086179) project. 
+The AI4SoilHealth project project has received funding from the European Union's 
+Horizon Europe research an innovation programme under grant agreement No. 101086179. 
+Views and opinions expressed are however those of the author(s) only and do not 
+necessarily reflect those of the European Union or European Commision. Neither 
+the European Union nor the granting authority can be held responsible for them. 
+The data is provided “as is”. AI4SoilHealth project consortium and its suppliers 
+and licensors hereby disclaim all warranties of any kind, express or implied, 
+including, without limitation, the warranties of merchantability, fitness for a 
+particular purpose and non-infringement. Neither AI4SoilHealth Consortium nor its 
+suppliers and licensors, makes any warranty that the Website will be error free or 
+that access thereto will be continuous or uninterrupted. You understand that you 
+download from, or otherwise obtain content or services through, the Website at 
+your own discretion and risk. 
